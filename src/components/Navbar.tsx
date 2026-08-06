@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "#about", label: "About Us" },
@@ -27,25 +27,19 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        solid ? "bg-white shadow-sm py-2" : "bg-transparent py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        solid
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <nav
-        className="mx-auto flex h-[64px] w-full max-w-[1320px] items-center justify-between px-6 lg:px-[80px]"
+        className="mx-auto flex h-[52px] w-full max-w-[1320px] items-center justify-between px-6 lg:px-12"
         aria-label="Primary"
       >
-        <Link href="#" className="inline-flex items-center">
-          <div className="relative h-10 w-36 sm:h-12 sm:w-40">
-            <Image
-              src="/logo.svg"
-              alt="THM Home"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </div>
-          <span className="sr-only">THM home</span>
+        {/* Brand Logo with Dynamic Variant Color */}
+        <Link href="#" className="group inline-flex items-center">
+          <Logo variant={solid ? "dark" : "light"} />
         </Link>
 
         {/* Clean, un-cluttered desktop links like MyFuture */}
@@ -66,18 +60,20 @@ export function Navbar() {
         </div>
 
         {/* Clean Login + Primary CTA Action buttons */}
-        <div className="hidden items-center gap-5 lg:flex font-poppins">
+        <div className="hidden items-center gap-6 lg:flex font-poppins">
           <Link
             href="#admissions"
             className={`text-[15px] font-semibold transition-colors ${
-              solid ? "text-thm-purple hover:text-thm-ink" : "text-white hover:text-thm-gold"
+              solid
+                ? "text-thm-purple hover:text-thm-ink"
+                : "text-white hover:text-thm-gold"
             }`}
           >
             Login
           </Link>
           <Link
             href="#admissions"
-            className="flex h-[44px] items-center justify-center rounded-full bg-thm-purple px-7 text-[15px] font-medium text-white transition-all hover:bg-thm-purple-dark hover:scale-[1.02] active:scale-[0.98]"
+            className="flex h-[44px] items-center justify-center rounded-full bg-thm-gold px-7 text-[15px] font-bold text-thm-ink transition-all hover:bg-thm-gold-hover hover:scale-[1.03] active:scale-[0.97] shadow-md"
           >
             Apply Now
           </Link>
@@ -100,7 +96,7 @@ export function Navbar() {
       {open && (
         <div
           id="mobile-nav"
-          className="lg:hidden flex max-h-[calc(100dvh-64px)] flex-col overflow-y-auto border-t border-slate-100 bg-white shadow-xl"
+          className="lg:hidden flex max-h-[calc(100dvh-68px)] flex-col overflow-y-auto border-t border-slate-100 bg-white shadow-xl animate-in slide-in-from-top duration-200"
         >
           <div className="flex flex-col gap-1 px-6 py-4">
             {links.map((link) => (
@@ -125,7 +121,7 @@ export function Navbar() {
             <Link
               href="#admissions"
               onClick={() => setOpen(false)}
-              className="font-poppins flex h-[48px] w-full items-center justify-center rounded-full bg-thm-purple text-white text-base font-medium"
+              className="font-poppins flex h-[48px] w-full items-center justify-center rounded-full bg-thm-gold text-thm-ink text-base font-bold shadow-md"
             >
               Apply Now
             </Link>

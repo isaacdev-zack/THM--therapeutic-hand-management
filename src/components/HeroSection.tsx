@@ -2,11 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] w-full bg-thm-purple-deep text-white overflow-hidden flex items-center pt-24 pb-16 lg:pt-28 lg:pb-24">
+      {/* Radiant Glowing Gradient Blobs */}
+      <div className="pointer-events-none absolute top-10 left-10 h-[450px] w-[450px] rounded-full bg-thm-purple/40 blur-[130px]" />
+      <div className="pointer-events-none absolute bottom-10 right-10 h-[400px] w-[400px] rounded-full bg-thm-gold/20 blur-[120px]" />
+
       {/* Background Image Layer with Solid Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -21,8 +26,22 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-[1320px] px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          
           {/* Asymmetric Left Editorial Column */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 flex flex-col gap-6"
+          >
+            {/* Soft Vibrant Pill Header */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 w-fit border border-thm-gold/40">
+              <Sparkles className="h-4 w-4 text-thm-gold" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-thm-cream">
+                NITA Approved Caregiver School Nairobi & Kisumu
+              </span>
+            </div>
+
             <h1 className="font-poppins text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl tracking-tight">
               Enabling Caregivers with <br className="hidden sm:inline" />
               <span className="text-thm-gold">Life Saving Skills</span>
@@ -35,14 +54,14 @@ export function HeroSection() {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="#admissions"
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 text-base font-bold text-thm-ink shadow-lg transition-all hover:bg-thm-gold-hover hover:scale-105 active:scale-95"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 text-base font-bold text-thm-ink shadow-xl transition-all hover:bg-thm-gold-hover hover:scale-105 active:scale-95"
               >
                 <span>Enroll Today</span>
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href="#curriculum"
-                className="inline-flex h-14 items-center justify-center rounded-full bg-thm-purple px-8 text-base font-semibold text-white border border-thm-gold/30 transition-all hover:bg-thm-purple-dark"
+                className="inline-flex h-14 items-center justify-center rounded-full bg-thm-purple px-8 text-base font-semibold text-white border border-thm-gold/30 transition-all hover:bg-thm-purple-dark hover:border-thm-gold"
               >
                 Explore 20+ Skills
               </Link>
@@ -62,21 +81,28 @@ export function HeroSection() {
                 <p className="text-xs sm:text-sm text-thm-cream/70 mt-0.5">Approved Standard</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Duotone Image Frame */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden border-4 border-thm-gold/40 shadow-2xl">
+          {/* Right Duotone Image Frame with Glass Floating Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5 relative"
+          >
+            <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden border-4 border-thm-gold/40 shadow-2xl group">
               <Image
                 src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1000&auto=format&fit=crop"
                 alt="Student caregiver performing vital signs check"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-thm-purple/40 mix-blend-multiply" />
-              <div className="absolute bottom-0 inset-x-0 bg-thm-purple-deep p-6 text-white border-t border-thm-gold/30">
+              
+              {/* Glassmorphic Badge Overlay */}
+              <div className="absolute bottom-0 inset-x-0 bg-thm-purple-deep/95 backdrop-blur-md p-6 text-white border-t border-thm-gold/30">
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-thm-gold flex items-center justify-center shrink-0">
+                  <div className="h-10 w-10 rounded-full bg-thm-gold flex items-center justify-center shrink-0 shadow-md">
                     <CheckCircle2 className="h-6 w-6 text-thm-ink" />
                   </div>
                   <div>
@@ -86,7 +112,8 @@ export function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
