@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-thm-purple: #702f99;
+  --color-thm-purple-dark: #4a1d66;
+  --color-thm-purple-deep: #2e0e42;
+  --color-thm-gold: #f8bc0a;
+  --color-thm-gold-hover: #d9a203;
+  --color-thm-cream: #faf7f2;
+  --color-thm-ink: #1e1326;
+  --color-thm-muted: #5e5466;
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1e1326;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #f8bc0a;
+  color: #1e1326;
+}
+
+/* Subtle paper grain texture overlay without soft gradients */
+.bg-grain {
+  background-color: #faf7f2;
+  background-image: radial-gradient(#702f99 0.4px, transparent 0.4px);
+  background-size: 16px 16px;
+  background-position: 0 0;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
