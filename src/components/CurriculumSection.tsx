@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle, Stethoscope, HeartHandshake, ShieldAlert, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle, Stethoscope, HeartHandshake, ShieldAlert, Sparkles, Laptop } from "lucide-react";
 
-type Category = "clinical" | "hygiene" | "equipment" | "monitoring";
+type Category = "clinical" | "hygiene" | "equipment" | "monitoring" | "ict";
 
 interface SkillGroup {
   id: Category;
@@ -23,6 +24,17 @@ const skillGroups: SkillGroup[] = [
       { name: "Tube Feeding (Gavage/NGT)", detail: "Safe enteral nutrition administration under nursing supervision." },
       { name: "Bedpan Administration", detail: "Assisting bedridden patients with elimination and comfort care." },
       { name: "Hot & Cold Therapy", detail: "Applying therapeutic heat compresses and cold ice packs safely." },
+    ],
+  },
+  {
+    id: "ict",
+    name: "ICT & Digital Health Literacy",
+    icon: Laptop,
+    skills: [
+      { name: "Electronic Health Records (EHR)", detail: "Digital patient vitals logging, medical charts, and record management." },
+      { name: "Tele-Care & Remote Monitoring", detail: "Operating digital pulse oximeters, smart monitors, and video consultations." },
+      { name: "Basic Computer & Productivity", detail: "Word processing, spreadsheet scheduling, and professional email dispatch." },
+      { name: "Medication App Reminders", detail: "Setting digital alarm schedules and dosage tracking software." },
     ],
   },
   {
@@ -73,18 +85,18 @@ export function CurriculumSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-[650px]">
             <span className="text-sm font-bold uppercase tracking-widest text-thm-purple">
-              NITA Curriculum Skills
+              NITA Curriculum & Practical Labs
             </span>
             <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-thm-ink mt-2">
-              Master 20+ Practical Caregiving Procedures
+              Master 20+ Practical Caregiving & ICT Skills
             </h2>
             <p className="mt-4 text-lg text-thm-muted">
-              Our holistic curriculum combines classroom theory with mandatory hospital clinical rotations under Registered Nurses.
+              Our holistic curriculum combines classroom theory with mandatory ICT computer literacy and hospital clinical rotations under Registered Nurses.
             </p>
           </div>
-          <div className="bg-thm-cream p-4 rounded-2xl border border-slate-200 shrink-0">
+          <div className="bg-thm-cream p-4 rounded-2xl border border-slate-200 shrink-0 shadow-sm">
             <p className="text-sm font-semibold text-thm-purple">Certificate in Caregiver II</p>
-            <p className="text-xs text-thm-muted">Complete Practical & Theoretical Modules</p>
+            <p className="text-xs text-thm-muted">Clinical & Digital Health Training</p>
           </div>
         </div>
 
@@ -116,7 +128,7 @@ export function CurriculumSection() {
           {currentGroup.skills.map((skill) => (
             <div
               key={skill.name}
-              className="p-6 rounded-2xl bg-thm-cream border-2 border-slate-200 flex flex-col justify-between hover:border-thm-purple transition-all"
+              className="p-6 rounded-2xl bg-thm-cream border-2 border-slate-200 flex flex-col justify-between hover:border-thm-purple transition-all shadow-sm"
             >
               <div>
                 <div className="flex items-center gap-3 mb-3">
@@ -129,11 +141,51 @@ export function CurriculumSection() {
                   {skill.detail}
                 </p>
               </div>
-              <div className="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-thm-purple">
-                Hands-on Clinical Skill
+              <div className="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-thm-purple flex items-center justify-between">
+                <span>Practical Skill Unit</span>
+                <span className="text-thm-gold font-bold">100% Certified</span>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Practical ICT & Nursing Lab Visual Banner */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group">
+            <Image
+              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
+              alt="Students in practical ICT computer lab"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-thm-purple-deep/90 via-thm-purple-deep/30 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="inline-block rounded-full bg-thm-gold px-3 py-1 text-xs font-bold text-thm-ink mb-1">
+                Practical ICT Computer Lab
+              </span>
+              <p className="font-poppins text-xl font-bold text-white">
+                Digital Record Keeping & Health Literacy
+              </p>
+            </div>
+          </div>
+
+          <div className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group">
+            <Image
+              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1000&auto=format&fit=crop"
+              alt="Students practicing clinical nursing procedures"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-thm-purple-deep/90 via-thm-purple-deep/30 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="inline-block rounded-full bg-thm-purple px-3 py-1 text-xs font-bold text-thm-gold mb-1 border border-thm-gold/30">
+                Hospital Simulation Wards
+              </span>
+              <p className="font-poppins text-xl font-bold text-white">
+                Clinical Patient Vitals & Hygiene Practicals
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

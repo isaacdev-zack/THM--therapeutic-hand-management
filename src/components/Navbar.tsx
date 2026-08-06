@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Logo } from "./Logo";
 
 const links = [
   { href: "#about", label: "About Us" },
@@ -27,23 +27,31 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        solid
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        solid ? "bg-white shadow-sm py-3" : "bg-transparent py-5"
       }`}
     >
       <nav
         className="mx-auto flex h-[52px] w-full max-w-[1320px] items-center justify-between px-6 lg:px-12"
         aria-label="Primary"
       >
-        {/* Brand Logo with Dynamic Variant Color */}
-        <Link href="#" className="group inline-flex items-center">
-          <Logo variant={solid ? "dark" : "light"} />
+        {/* Official THM SVG Logo */}
+        <Link href="#" className="flex items-center">
+          <div className="relative h-12 w-44 sm:h-14 sm:w-52">
+            <Image
+              src="/logo.svg"
+              alt="Therapeutic Hands Management"
+              fill
+              className={`object-contain object-left transition-all ${
+                solid ? "" : "brightness-0 invert"
+              }`}
+              priority
+            />
+          </div>
         </Link>
 
         {/* Clean, un-cluttered desktop links like MyFuture */}
-        <div className="hidden items-center gap-9 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -73,7 +81,7 @@ export function Navbar() {
           </Link>
           <Link
             href="#admissions"
-            className="flex h-[44px] items-center justify-center rounded-full bg-thm-gold px-7 text-[15px] font-bold text-thm-ink transition-all hover:bg-thm-gold-hover hover:scale-[1.03] active:scale-[0.97] shadow-md"
+            className="flex h-[44px] items-center justify-center rounded-full bg-thm-purple px-7 text-[15px] font-bold text-white transition-all hover:bg-thm-purple-dark hover:scale-[1.03] active:scale-[0.97] shadow-md"
           >
             Apply Now
           </Link>
@@ -121,7 +129,7 @@ export function Navbar() {
             <Link
               href="#admissions"
               onClick={() => setOpen(false)}
-              className="font-poppins flex h-[48px] w-full items-center justify-center rounded-full bg-thm-gold text-thm-ink text-base font-bold shadow-md"
+              className="font-poppins flex h-[48px] w-full items-center justify-center rounded-full bg-thm-purple text-white text-base font-bold shadow-md"
             >
               Apply Now
             </Link>
