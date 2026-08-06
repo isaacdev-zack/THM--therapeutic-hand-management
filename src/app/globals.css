@@ -1,17 +1,6 @@
-@import "tailwindcss";
-
-@theme inline {
-  --color-thm-purple: #702f99;
-  --color-thm-purple-dark: #4a1d66;
-  --color-thm-purple-deep: #2e0e42;
-  --color-thm-gold: #f8bc0a;
-  --color-thm-gold-hover: #d9a203;
-  --color-thm-cream: #faf7f2;
-  --color-thm-ink: #1e1326;
-  --color-thm-muted: #5e5466;
-  --font-inter: var(--font-inter);
-  --font-poppins: var(--font-poppins);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
