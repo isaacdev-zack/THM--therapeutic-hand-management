@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] w-full bg-thm-purple-deep text-white overflow-hidden flex items-center pt-24 pb-16 lg:pt-28 lg:pb-24">
-      {/* Background Image Layer with Solid Dark Overlay - No Soft Gradients */}
+      {/* Background Image Layer with Solid Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1920&auto=format&fit=crop"
@@ -23,13 +23,6 @@ export function HeroSection() {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Asymmetric Left Editorial Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-thm-purple border border-thm-purple-dark px-4 py-1.5 w-fit">
-              <ShieldCheck className="h-4 w-4 text-thm-gold" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-thm-cream">
-                NITA Curriculum Certified Institution
-              </span>
-            </div>
-
             <h1 className="font-poppins text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl tracking-tight">
               Enabling Caregivers with <br className="hidden sm:inline" />
               <span className="text-thm-gold">Life Saving Skills</span>

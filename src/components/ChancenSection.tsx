@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, ShieldCheck, Banknote, GraduationCap, ArrowRight } from "lucide-react";
+import { Check, ShieldCheck, GraduationCap, ArrowRight } from "lucide-react";
 
 export function ChancenSection() {
   const benefits = [
@@ -19,13 +19,6 @@ export function ChancenSection() {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: NGO Partnership Narrative */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-thm-purple-dark border border-thm-gold/40 px-4 py-1.5 w-fit">
-              <Banknote className="h-4 w-4 text-thm-gold" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-thm-gold">
-                NGO Financing Partnership
-              </span>
-            </div>
-
             <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               Study Now, Pay Later with <br />
               <span className="text-thm-gold">CHANCEN International</span>
