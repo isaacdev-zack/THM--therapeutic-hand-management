@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { CheckCircle, Stethoscope, HeartHandshake, ShieldAlert, Sparkles, Laptop } from "lucide-react";
 
-type Category = "clinical" | "hygiene" | "equipment" | "monitoring" | "ict";
+type Category = "clinical" | "ict" | "hygiene" | "equipment" | "monitoring";
 
 interface SkillGroup {
   id: Category;
@@ -76,13 +77,21 @@ const skillGroups: SkillGroup[] = [
 
 export function CurriculumSection() {
   const [activeTab, setActiveTab] = useState<Category>("clinical");
+  const shouldReduceMotion = useReducedMotion();
 
   const currentGroup = skillGroups.find((g) => g.id === activeTab) || skillGroups[0];
 
   return (
     <section id="curriculum" className="py-20 lg:py-28 bg-white text-thm-ink">
       <div className="mx-auto max-w-[1320px] px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Header Reveal */}
+        <motion.div
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+        >
           <div className="max-w-[650px]">
             <span className="text-sm font-bold uppercase tracking-widest text-thm-purple">
               NITA Curriculum & Practical Labs
@@ -98,10 +107,10 @@ export function CurriculumSection() {
             <p className="text-sm font-semibold text-thm-purple">Certificate in Caregiver II</p>
             <p className="text-xs text-thm-muted">Clinical & Digital Health Training</p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Tab Selector Buttons */}
-        <div className="flex flex-wrap gap-3 mb-10 border-b border-slate-200 pb-4">
+        {/* Tab Selector Buttons with Shared layoutId Indicator */}
+        <div className="flex flex-wrap gap-3 mb-10 border-b border-slate-200 pb-4 relative">
           {skillGroups.map((group) => {
             const IconComp = group.icon;
             const isActive = group.id === activeTab;
@@ -110,48 +119,74 @@ export function CurriculumSection() {
                 key={group.id}
                 type="button"
                 onClick={() => setActiveTab(group.id)}
-                className={`flex items-center gap-2.5 px-6 py-3.5 rounded-full font-poppins text-sm font-bold transition-all ${
-                  isActive
-                    ? "bg-thm-purple text-white shadow-md"
-                    : "bg-thm-cream text-thm-ink hover:bg-slate-200 border border-slate-200"
-                }`}
+                className="relative flex items-center gap-2.5 px-6 py-3.5 rounded-full font-poppins text-sm font-bold transition-colors z-10"
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabBadge"
+                    className="absolute inset-0 bg-thm-purple rounded-full shadow-md -z-10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
                 <IconComp className={`h-4 w-4 ${isActive ? "text-thm-gold" : "text-thm-purple"}`} />
-                <span>{group.name}</span>
+                <span className={isActive ? "text-white" : "text-thm-ink hover:text-thm-purple"}>
+                  {group.name}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Skills Index Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentGroup.skills.map((skill) => (
-            <div
-              key={skill.name}
-              className="p-6 rounded-2xl bg-thm-cream border-2 border-slate-200 flex flex-col justify-between hover:border-thm-purple transition-all shadow-sm"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="h-6 w-6 text-thm-gold shrink-0" />
-                  <h3 className="font-poppins text-lg font-bold text-thm-ink">
-                    {skill.name}
-                  </h3>
+        {/* Animated Skills Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -16 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {currentGroup.skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                whileHover={{ scale: 1.02, y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                className="p-6 rounded-2xl bg-thm-cream border-2 border-slate-200 flex flex-col justify-between hover:border-thm-purple transition-all shadow-sm cursor-pointer group"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <CheckCircle className="h-6 w-6 text-thm-gold shrink-0 group-hover:scale-110 transition-transform" />
+                    <h3 className="font-poppins text-lg font-bold text-thm-ink group-hover:text-thm-purple transition-colors">
+                      {skill.name}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-thm-muted leading-relaxed">
+                    {skill.detail}
+                  </p>
                 </div>
-                <p className="text-sm text-thm-muted leading-relaxed">
-                  {skill.detail}
-                </p>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-thm-purple flex items-center justify-between">
-                <span>Practical Skill Unit</span>
-                <span className="text-thm-gold font-bold">100% Certified</span>
-              </div>
-            </div>
-          ))}
-        </div>
+                <div className="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-thm-purple flex items-center justify-between">
+                  <span>Practical Skill Unit</span>
+                  <span className="text-thm-gold font-bold">100% Certified</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Practical ICT & Nursing Lab Visual Banner */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group">
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+            className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group cursor-pointer"
+          >
             <Image
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
               alt="Students in practical ICT computer lab"
@@ -160,16 +195,23 @@ export function CurriculumSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-thm-purple-deep/90 via-thm-purple-deep/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block rounded-full bg-thm-gold px-3 py-1 text-xs font-bold text-thm-ink mb-1">
+              <span className="inline-block rounded-full bg-thm-gold px-3 py-1 text-xs font-bold text-thm-ink mb-1 shadow">
                 Practical ICT Computer Lab
               </span>
               <p className="font-poppins text-xl font-bold text-white">
                 Digital Record Keeping & Health Literacy
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group">
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group cursor-pointer"
+          >
             <Image
               src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1000&auto=format&fit=crop"
               alt="Students practicing clinical nursing procedures"
@@ -185,7 +227,7 @@ export function CurriculumSection() {
                 Clinical Patient Vitals & Hygiene Practicals
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
