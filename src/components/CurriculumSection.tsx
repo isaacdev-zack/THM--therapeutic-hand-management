@@ -134,10 +134,10 @@ export function CurriculumSection() {
               <Image
                 src={
                   active === "clinical"
-                    ? "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop"
+                    ? "https://images.unsplash.com/photo-1643297654416-05795d62e39c?q=80&w=1200&auto=format&fit=crop"
                     : active === "support"
-                      ? "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200&auto=format&fit=crop"
-                      : "https://images.unsplash.com/photo-1631217868264-e5b90bb7e975?q=80&w=1200&auto=format&fit=crop"
+                      ? "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop"
+                      : "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=1200&auto=format&fit=crop"
                 }
                 alt={`${current.name} training at THM`}
                 fill

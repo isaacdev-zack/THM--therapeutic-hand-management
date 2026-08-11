@@ -5,35 +5,36 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+/** African / Kenyan-focused photography — verified subjects */
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop",
-    caption: "Graduation day — celebrating certified caregivers",
+    src: "https://images.unsplash.com/photo-1645263012675-bb72c4752882?q=80&w=1400&auto=format&fit=crop",
+    caption: "Graduation day in Nairobi — celebrating certified caregivers",
     span: "lg:col-span-7 lg:row-span-2 min-h-[380px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop",
-    caption: "Students learning together in practical class",
+    src: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=1000&auto=format&fit=crop",
+    caption: "Students learning with digital tools in practical class",
     span: "lg:col-span-5 min-h-[180px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
-    caption: "Nursing skills in focused practice",
+    src: "https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?q=80&w=1000&auto=format&fit=crop",
+    caption: "Proud nursing & caregiving graduates",
     span: "lg:col-span-5 min-h-[180px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1768489038182-7db6980fd841?q=80&w=1000&auto=format&fit=crop",
     caption: "Happy cohorts. Strong community.",
     span: "lg:col-span-4 min-h-[220px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1000&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1643297654416-05795d62e39c?q=80&w=1000&auto=format&fit=crop",
     caption: "Confident professionals ready for care roles",
     span: "lg:col-span-4 min-h-[220px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1000&auto=format&fit=crop",
-    caption: "Hands-on patient simulation",
+    src: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=1000&auto=format&fit=crop",
+    caption: "Hands-on lab & clinical practice",
     span: "lg:col-span-4 min-h-[220px]",
   },
 ];
@@ -56,7 +57,7 @@ export function MomentsSection() {
           </div>
           <p className="max-w-sm text-base leading-relaxed text-white/70 md:text-right">
             From practical labs and group study to graduation day — the energy
-            of a school that takes caregiving seriously.
+            of a Kenyan school that takes caregiving seriously.
           </p>
         </div>
 
@@ -77,7 +78,6 @@ export function MomentsSection() {
                 className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              {/* Solid overlay bar — no gradient fade */}
               <div className="absolute inset-x-0 bottom-0 bg-thm-purple-deep/90 px-5 py-4">
                 <p className="font-poppins text-base font-semibold text-white sm:text-lg">
                   {item.caption}

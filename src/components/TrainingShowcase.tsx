@@ -29,7 +29,6 @@ export function TrainingShowcase() {
         </motion.div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-12">
-          {/* Video / primary visual */}
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,26 +36,20 @@ export function TrainingShowcase() {
             transition={{ duration: 0.55 }}
             className="relative aspect-[16/10] overflow-hidden bg-thm-purple-deep lg:col-span-7"
           >
-            <video
-              className="h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="https://images.unsplash.com/photo-1631217868264-e5b90bb7e975?q=80&w=1400&auto=format&fit=crop"
-            >
-              <source
-                src="https://cdn.coverr.co/videos/coverr-a-nurse-taking-care-of-a-patient-5584/1080p.mp4"
-                type="video/mp4"
-              />
-            </video>
-            <div className="absolute inset-0 bg-thm-purple/25 mix-blend-multiply pointer-events-none" />
+            <Image
+              src="https://images.unsplash.com/photo-1536064479547-7ee40b74b807?q=80&w=1400&auto=format&fit=crop"
+              alt="African healthcare professional consulting with a young patient"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-thm-purple/30 mix-blend-multiply pointer-events-none" />
             <div className="absolute bottom-0 left-0 right-0 bg-thm-purple-deep/90 px-5 py-4">
               <p className="font-poppins text-sm font-semibold text-thm-gold">
-                Clinical practice in motion
+                Clinical practice in focus
               </p>
               <p className="text-sm text-white/80">
-                Hands-on caregiving — muted loop preview
+                Patient-centred care skills for hospitals and homes
               </p>
             </div>
           </motion.div>
@@ -70,8 +63,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
-                alt="Students collaborating in a practical digital skills class"
+                src="https://images.unsplash.com/photo-1655720357761-f18ea9e5e7e6?q=80&w=1000&auto=format&fit=crop"
+                alt="African student with laptop ready for digital skills training"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -92,10 +85,10 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1000&auto=format&fit=crop"
-                alt="Nursing student practicing patient care skills"
+                src="https://images.unsplash.com/photo-1643297654397-97b3201abc7c?q=80&w=1000&auto=format&fit=crop"
+                alt="Smiling African nurse in professional attire"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
               <div className="absolute inset-0 bg-thm-purple/40 mix-blend-multiply" />

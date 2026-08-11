@@ -1,92 +1,108 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
+  const containerRef = React.useRef<HTMLElement>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.1 });
   const reduce = useReducedMotion();
 
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video || reduce) return;
+    if (isInView) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isInView, reduce]);
+
   return (
-    <section className="relative min-h-[92vh] w-full overflow-hidden bg-thm-purple-deep text-white">
-      {/* Full-bleed photography */}
-      <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2000&auto=format&fit=crop"
-          alt="Caregiver supporting an elderly patient with warmth and professionalism"
-          fill
-          priority
-          className="object-cover object-[center_30%]"
-          sizes="100vw"
-        />
-        {/* Solid brand wash — no gradient */}
-        <div className="absolute inset-0 bg-thm-purple-deep/82" />
+    <section
+      ref={containerRef}
+      className="relative w-full overflow-hidden min-h-[562px] lg:min-h-[680px] bg-thm-purple-deep"
+    >
+      {/* Full-bleed video background — xBelong pattern */}
+      <div className="absolute inset-0 z-0">
+        {!reduce && (
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?q=80&w=1600&auto=format&fit=crop"
+            className="h-full w-full object-cover"
+          >
+            {isInView && (
+              <source
+                src="https://cdn.coverr.co/videos/coverr-a-nurse-taking-care-of-a-patient-5584/1080p.mp4"
+                type="video/mp4"
+              />
+            )}
+          </video>
+        )}
+        {reduce && (
+          <Image
+            src="https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?q=80&w=1600&auto=format&fit=crop"
+            alt="Kenyan healthcare graduate ready to care"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        )}
+        {/* Solid overlays only — no gradients */}
+        <div className="absolute inset-0 bg-thm-purple-deep/70" />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[92vh] w-full max-w-[1200px] flex-col justify-end px-5 pb-16 pt-32 sm:px-8 lg:px-10 lg:pb-24 lg:pt-36">
-        <div className="grid items-end gap-10 lg:grid-cols-12">
-          {/* Editorial headline — oversized, overlapping photo edge feel */}
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            className="lg:col-span-8"
-          >
-            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.18em] text-thm-gold">
-              NITA-certified · Nairobi & Kisumu
-            </p>
-
-            <h1 className="mt-4 font-poppins text-[2.6rem] font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.75rem] lg:leading-[1.02]">
-              Enabling Caregivers with{" "}
-              <span className="text-thm-gold">Life Saving Skills</span>
-            </h1>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-              Therapeutic Hands Management equips caregivers with high-quality
-              skills to safeguard children and adults at risk — with empathy,
-              love, and respect.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+      {/* Desktop — Belong-style split: headline + CTA left, support line right */}
+      <div className="relative z-10 hidden h-[680px] w-full items-center lg:flex">
+        <div className="mx-auto w-full max-w-[1200px] px-10">
+          <div className="flex max-w-[980px] flex-row items-start justify-between gap-10">
+            <div className="flex max-w-[620px] flex-col gap-10">
+              <h1 className="font-poppins text-[64px] font-bold leading-[1.05] tracking-[-0.02em] text-white">
+                Enabling Caregivers with{" "}
+                <span className="text-thm-gold">Life Saving Skills</span>
+              </h1>
               <Link
                 href="#admissions"
-                className="inline-flex h-12 items-center gap-2 rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
+                className="inline-flex h-[56px] w-fit items-center justify-center gap-2 rounded-full bg-thm-gold px-8 font-poppins text-lg font-bold text-thm-ink transition-all hover:bg-thm-gold-hover hover:scale-[1.02] active:scale-[0.98]"
               >
                 Enroll Today
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="#curriculum"
-                className="inline-flex h-12 items-center rounded-full border border-white/35 bg-transparent px-7 font-poppins text-base font-semibold text-white transition-colors hover:border-thm-gold hover:text-thm-gold"
-              >
-                Explore the Curriculum
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
-          </motion.div>
-
-          {/* Side photo panel — asymmetric magazine layout */}
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 36 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.12, ease: "easeOut" }}
-            className="relative hidden lg:col-span-4 lg:block"
-          >
-            <div className="relative ml-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden border-4 border-thm-gold">
-              <Image
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=900&auto=format&fit=crop"
-                alt="Healthcare professional ready to care"
-                fill
-                className="object-cover"
-                sizes="340px"
-              />
-              <div className="absolute inset-0 bg-thm-purple/35 mix-blend-multiply" />
-            </div>
-            <p className="mt-4 max-w-[280px] ml-auto text-right text-sm leading-relaxed text-white/70">
-              Hands-on training for hospitals, elder care, childcare, and
-              private home-based care.
+            <p className="mt-16 max-w-[320px] font-poppins text-xl font-normal leading-relaxed text-white/90">
+              NITA-certified caregiver training in Nairobi & Kisumu — with Study
+              Now, Pay Later financing.
             </p>
-          </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile — centered Belong-style stack */}
+      <div className="relative z-10 flex h-[562px] w-full flex-col items-center justify-center px-6 pt-16 lg:hidden">
+        <div className="flex max-w-[340px] flex-col items-center gap-7 text-center">
+          <h1 className="font-poppins text-[2.4rem] font-bold leading-[1.08] tracking-tight text-white">
+            Enabling Caregivers with{" "}
+            <span className="text-thm-gold">Life Saving Skills</span>
+          </h1>
+          <p className="font-poppins text-base font-medium leading-snug text-white/85">
+            NITA-certified training in Nairobi & Kisumu.
+          </p>
+          <Link
+            href="#admissions"
+            className="inline-flex h-11 items-center justify-center rounded-full bg-thm-gold px-6 font-poppins text-base font-semibold text-thm-ink active:scale-95"
+          >
+            Enroll Today
+          </Link>
         </div>
       </div>
     </section>
