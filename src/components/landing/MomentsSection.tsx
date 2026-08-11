@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
 const gallery = [
   {
@@ -36,7 +37,7 @@ export function MomentsSection() {
   return (
     <section className="bg-thm-ink px-5 py-14 text-white sm:px-8 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-[1120px]">
-        <div className="flex flex-col gap-2 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <FadeUp className="flex flex-col gap-2 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-poppins text-xs font-semibold uppercase tracking-[0.16em] text-thm-gold">
               Life at THM
@@ -47,35 +48,38 @@ export function MomentsSection() {
           </div>
           <Link
             href="/about"
-            className="font-poppins text-sm font-semibold text-thm-gold hover:underline"
+            className="group font-poppins text-sm font-semibold text-thm-gold"
           >
-            About the school →
+            About the school
+            <span className="inline-block transition-transform group-hover:translate-x-1">
+              {" "}
+              →
+            </span>
           </Link>
-        </div>
+        </FadeUp>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {gallery.map((item, i) => (
-            <motion.div
-              key={item.caption}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04 }}
-              className={`relative overflow-hidden ${item.span}`}
-            >
-              <Image
-                src={item.src}
-                alt={item.caption}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-thm-ink/90 px-4 py-3">
+        <Stagger className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3" stagger={0.06}>
+          {gallery.map((item) => (
+            <StaggerItem key={item.caption} className={`relative overflow-hidden ${item.span}`}>
+              <motion.div
+                className="absolute inset-0"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.55 }}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.caption}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
+              </motion.div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-thm-ink/90 px-4 py-3">
                 <p className="font-poppins text-sm font-semibold">{item.caption}</p>
               </div>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

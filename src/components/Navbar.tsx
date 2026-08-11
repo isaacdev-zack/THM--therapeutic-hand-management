@@ -32,6 +32,7 @@ export function Navbar() {
 
   const isHome = pathname === "/";
   const solid = isScrolled || open || !isHome;
+  const logoSrc = solid ? "/logo-mark.png" : "/logo-mark-light.png";
 
   return (
     <header
@@ -47,7 +48,7 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="relative h-11 w-40 sm:h-12 sm:w-48 shrink-0"
+          className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0"
           onClick={(e) => {
             if (isHome) {
               e.preventDefault();
@@ -57,12 +58,11 @@ export function Navbar() {
           }}
         >
           <Image
-            src="/logo.svg"
+            src={logoSrc}
             alt="Therapeutic Hands Management"
             fill
-            className={`object-contain object-left transition-all duration-300 ${
-              solid ? "" : "brightness-0 invert"
-            }`}
+            sizes="56px"
+            className="object-contain object-left"
             priority
           />
         </Link>

@@ -70,6 +70,15 @@ a {
   cursor: pointer;
 }
 
+/* Subtle image zoom utility for static servers without JS hover */
+.img-zoom {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.05);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

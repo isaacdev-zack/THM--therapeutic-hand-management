@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
 const places = [
   {
@@ -23,7 +26,7 @@ export function OutcomesSection() {
   return (
     <section className="bg-white px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-[1120px]">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <FadeUp className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="font-poppins text-xs font-semibold uppercase tracking-[0.16em] text-thm-purple">
               Outcomes
@@ -34,25 +37,28 @@ export function OutcomesSection() {
           </div>
           <Link
             href="/careers"
-            className="font-poppins text-sm font-semibold text-thm-purple hover:underline"
+            className="group font-poppins text-sm font-semibold text-thm-purple"
           >
-            See career pathways →
+            See career pathways
+            <span className="inline-block transition-transform group-hover:translate-x-1">
+              {" "}
+              →
+            </span>
           </Link>
-        </div>
+        </FadeUp>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {places.map((p) => (
-            <div
-              key={p.title}
-              className="border-l-4 border-thm-gold bg-thm-cream px-5 py-5"
-            >
-              <h3 className="font-poppins font-bold text-thm-ink">{p.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-thm-muted">
-                {p.detail}
-              </p>
-            </div>
+            <StaggerItem key={p.title}>
+              <div className="h-full border-l-4 border-thm-gold bg-thm-cream px-5 py-5 transition-transform hover:-translate-y-1 hover:bg-white hover:shadow-[0_8px_24px_rgba(30,19,38,0.08)]">
+                <h3 className="font-poppins font-bold text-thm-ink">{p.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-thm-muted">
+                  {p.detail}
+                </p>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

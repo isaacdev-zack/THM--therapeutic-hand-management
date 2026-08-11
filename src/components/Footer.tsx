@@ -16,12 +16,13 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="relative block h-11 w-40">
+            <Link href="/" className="relative block h-16 w-16">
               <Image
-                src="/logo.svg"
+                src="/logo-mark-light.png"
                 alt="Therapeutic Hands Management"
                 fill
-                className="object-contain object-left brightness-0 invert"
+                sizes="64px"
+                className="object-contain object-left"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/70">

@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/landing/HeroSection";
+import { ScrollProgress } from "@/components/landing/ScrollProgress";
 import { ImpactSection } from "@/components/landing/ImpactSection";
 import { PromiseSection } from "@/components/landing/PromiseSection";
 import { PathwaySection } from "@/components/landing/PathwaySection";
@@ -12,6 +13,7 @@ import { CloseSection } from "@/components/landing/CloseSection";
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col overflow-x-clip bg-white">
+      <ScrollProgress />
       <HeroSection />
       <ImpactSection />
       <PromiseSection />

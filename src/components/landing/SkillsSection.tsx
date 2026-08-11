@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { FadeUp } from "./Motion";
 
 const groups = [
   {
@@ -56,7 +58,7 @@ export function SkillsSection() {
   return (
     <section className="bg-white px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
       <div className="mx-auto max-w-[1120px]">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <FadeUp className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="font-poppins text-xs font-semibold uppercase tracking-[0.16em] text-thm-purple">
               Curriculum
@@ -70,19 +72,23 @@ export function SkillsSection() {
           </div>
           <Link
             href="/programs"
-            className="font-poppins text-sm font-semibold text-thm-purple hover:underline"
+            className="group font-poppins text-sm font-semibold text-thm-purple"
           >
-            Full programs →
+            Full programs
+            <span className="inline-block transition-transform group-hover:translate-x-1">
+              {" "}
+              →
+            </span>
           </Link>
-        </div>
+        </FadeUp>
 
-        <div className="mt-7 flex flex-wrap gap-2 border-b border-thm-ink/10 pb-3">
+        <FadeUp delay={0.08} className="mt-7 flex flex-wrap gap-2 border-b border-thm-ink/10 pb-3">
           {groups.map((g) => (
             <button
               key={g.id}
               type="button"
               onClick={() => setActive(g.id)}
-              className={`px-4 py-2.5 font-poppins text-sm font-semibold transition-colors ${
+              className={`relative px-4 py-2.5 font-poppins text-sm font-semibold transition-colors ${
                 active === g.id
                   ? "bg-thm-purple text-white"
                   : "bg-thm-cream text-thm-ink hover:bg-thm-lilac"
@@ -91,33 +97,52 @@ export function SkillsSection() {
               {g.name}
             </button>
           ))}
-        </div>
+        </FadeUp>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-12">
-          <ul className="grid gap-2 sm:grid-cols-2 lg:col-span-6">
-            {current.skills.map((skill) => (
-              <li
-                key={skill}
-                className="flex items-start gap-2.5 border border-thm-ink/10 bg-white px-3.5 py-3 text-[15px] text-thm-ink"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-6 grid gap-6 lg:grid-cols-12"
+          >
+            <ul className="grid gap-2 sm:grid-cols-2 lg:col-span-6">
+              {current.skills.map((skill, i) => (
+                <motion.li
+                  key={skill}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.04, duration: 0.3 }}
+                  className="flex items-start gap-2.5 border border-thm-ink/10 bg-white px-3.5 py-3 text-[15px] text-thm-ink transition-colors hover:border-thm-purple/40"
+                >
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
+                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                  </span>
+                  {skill}
+                </motion.li>
+              ))}
+            </ul>
+            <div className="relative min-h-[240px] overflow-hidden lg:col-span-6 lg:min-h-0">
+              <motion.div
+                className="absolute inset-0"
+                initial={{ scale: 1.06 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6 }}
               >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
-                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                </span>
-                {skill}
-              </li>
-            ))}
-          </ul>
-          <div className="relative min-h-[240px] overflow-hidden lg:col-span-6 lg:min-h-0">
-            <Image
-              src={current.image}
-              alt={`${current.name} training`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-thm-purple/30 mix-blend-multiply" />
-          </div>
-        </div>
+                <Image
+                  src={current.image}
+                  alt={`${current.name} training`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </motion.div>
+              <div className="absolute inset-0 bg-thm-purple/30 mix-blend-multiply" />
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
