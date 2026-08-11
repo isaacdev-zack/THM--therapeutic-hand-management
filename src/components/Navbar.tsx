@@ -47,7 +47,7 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0"
+          className="relative h-11 w-40 sm:h-12 sm:w-48 shrink-0"
           onClick={(e) => {
             if (isHome) {
               e.preventDefault();
@@ -57,11 +57,12 @@ export function Navbar() {
           }}
         >
           <Image
-            src={solid ? "/logo-mark.png" : "/logo-mark-light.png"}
+            src="/logo.svg"
             alt="Therapeutic Hands Management"
             fill
-            sizes="56px"
-            className="object-contain object-left"
+            className={`object-contain object-left transition-all duration-300 ${
+              solid ? "" : "brightness-0 invert"
+            }`}
             priority
           />
         </Link>
