@@ -1,186 +1,92 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
-import { AnimatedCounter } from "./AnimatedCounter";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export function HeroSection() {
-  const containerRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-
-  // Parallax Scroll Binding
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const backgroundY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    shouldReduceMotion ? ["0%", "0%"] : ["0%", "25%"]
-  );
+  const reduce = useReducedMotion();
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[90vh] w-full bg-thm-purple-deep text-white overflow-hidden flex items-center pt-24 pb-16 lg:pt-28 lg:pb-24"
-    >
-      {/* Radiant Glowing Gradient Blobs */}
-      <div className="pointer-events-none absolute top-10 left-10 h-[450px] w-[450px] rounded-full bg-thm-purple/40 blur-[130px]" />
-      <div className="pointer-events-none absolute bottom-10 right-10 h-[400px] w-[400px] rounded-full bg-thm-gold/20 blur-[120px]" />
-
-      {/* Parallax Background Image Layer */}
-      <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-0">
+    <section className="relative min-h-[92vh] w-full overflow-hidden bg-thm-purple-deep text-white">
+      {/* Full-bleed photography */}
+      <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1920&auto=format&fit=crop"
-          alt="Professional caregiver holding hand of senior patient with empathy"
+          src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2000&auto=format&fit=crop"
+          alt="Caregiver supporting an elderly patient with warmth and professionalism"
           fill
           priority
-          className="object-cover object-center opacity-30 mix-blend-luminosity"
+          className="object-cover object-[center_30%]"
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-thm-purple-deep/85" />
-      </motion.div>
+        {/* Solid brand wash — no gradient */}
+        <div className="absolute inset-0 bg-thm-purple-deep/82" />
+      </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1320px] px-6 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          
-          {/* Left Column: Staggered Content Reveal */}
+      <div className="relative z-10 mx-auto flex min-h-[92vh] w-full max-w-[1200px] flex-col justify-end px-5 pb-16 pt-32 sm:px-8 lg:px-10 lg:pb-24 lg:pt-36">
+        <div className="grid items-end gap-10 lg:grid-cols-12">
+          {/* Editorial headline — oversized, overlapping photo edge feel */}
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-7 flex flex-col gap-6"
+            initial={reduce ? false : { opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="lg:col-span-8"
           >
-            {/* Pill Header */}
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 w-fit border border-thm-gold/40"
-            >
-              <Sparkles className="h-4 w-4 text-thm-gold" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-thm-cream">
-                NITA Approved Caregiver School Nairobi & Kisumu
-              </span>
-            </motion.div>
+            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.18em] text-thm-gold">
+              NITA-certified · Nairobi & Kisumu
+            </p>
 
-            <motion.h1
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-poppins text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl tracking-tight"
-            >
-              Enabling Caregivers with <br className="hidden sm:inline" />
+            <h1 className="mt-4 font-poppins text-[2.6rem] font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.75rem] lg:leading-[1.02]">
+              Enabling Caregivers with{" "}
               <span className="text-thm-gold">Life Saving Skills</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-thm-cream/90 max-w-[580px] leading-relaxed"
-            >
-              Equipping passionate individuals in Nairobi & Kisumu with high-quality caregiver expertise to safeguard children, hospital patients, and elderly adults with empathy, love, and respect.
-            </motion.p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+              Therapeutic Hands Management equips caregivers with high-quality
+              skills to safeguard children and adults at risk — with empathy,
+              love, and respect.
+            </p>
 
-            {/* Micro-interactive Action CTAs */}
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-4 pt-2"
-            >
-              <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.96 }}>
-                <Link
-                  href="#admissions"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 text-base font-bold text-thm-ink shadow-xl transition-shadow hover:shadow-2xl"
-                >
-                  <span>Enroll Today</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </motion.div>
-
-              <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.96 }}>
-                <Link
-                  href="#curriculum"
-                  className="inline-flex h-14 items-center justify-center rounded-full bg-thm-purple px-8 text-base font-semibold text-white border border-thm-gold/30 transition-all hover:bg-thm-purple-dark hover:border-thm-gold"
-                >
-                  Explore 20+ Skills
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            {/* Animated Numeral Counters */}
-            <motion.div
-              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="pt-6 grid grid-cols-3 gap-4 border-t border-thm-purple/50 max-w-[560px]"
-            >
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-thm-gold font-poppins">
-                  <AnimatedCounter to={150} suffix="+" />
-                </p>
-                <p className="text-xs sm:text-sm text-thm-cream/70 mt-0.5">Graduates Trained</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-thm-gold font-poppins">
-                  <AnimatedCounter to={100} suffix="%" />
-                </p>
-                <p className="text-xs sm:text-sm text-thm-cream/70 mt-0.5">CHANCEN Financed</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-thm-gold font-poppins">NITA</p>
-                <p className="text-xs sm:text-sm text-thm-cream/70 mt-0.5">Approved Standard</p>
-              </div>
-            </motion.div>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                href="#admissions"
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
+              >
+                Enroll Today
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="#curriculum"
+                className="inline-flex h-12 items-center rounded-full border border-white/35 bg-transparent px-7 font-poppins text-base font-semibold text-white transition-colors hover:border-thm-gold hover:text-thm-gold"
+              >
+                Explore the Curriculum
+              </Link>
+            </div>
           </motion.div>
 
-          {/* Right Duotone Image Frame */}
+          {/* Side photo panel — asymmetric magazine layout */}
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.94, y: 32 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:col-span-5 relative"
+            initial={reduce ? false : { opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12, ease: "easeOut" }}
+            className="relative hidden lg:col-span-4 lg:block"
           >
-            <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden border-4 border-thm-gold/40 shadow-2xl group"
-            >
+            <div className="relative ml-auto aspect-[4/5] w-full max-w-[340px] overflow-hidden border-4 border-thm-gold">
               <Image
-                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1000&auto=format&fit=crop"
-                alt="Student caregiver performing vital signs check"
+                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=900&auto=format&fit=crop"
+                alt="Healthcare professional ready to care"
                 fill
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="object-cover"
+                sizes="340px"
               />
-              <div className="absolute inset-0 bg-thm-purple/40 mix-blend-multiply" />
-              
-              {/* Glassmorphic Badge Overlay */}
-              <div className="absolute bottom-0 inset-x-0 bg-thm-purple-deep/95 backdrop-blur-md p-6 text-white border-t border-thm-gold/30">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-thm-gold flex items-center justify-center shrink-0 shadow-md">
-                    <CheckCircle2 className="h-6 w-6 text-thm-ink" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-sm text-thm-cream">Study Now, Pay Later</p>
-                    <p className="text-xs text-thm-cream/80">0 upfront fees for youth aged 19-35 via CHANCEN International</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              <div className="absolute inset-0 bg-thm-purple/35 mix-blend-multiply" />
+            </div>
+            <p className="mt-4 max-w-[280px] ml-auto text-right text-sm leading-relaxed text-white/70">
+              Hands-on training for hospitals, elder care, childcare, and
+              private home-based care.
+            </p>
           </motion.div>
-
         </div>
       </div>
     </section>
