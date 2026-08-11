@@ -2,131 +2,132 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, ShieldCheck, GraduationCap, ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { AnimatedCounter } from "./AnimatedCounter";
 
-export function ChancenSection() {
-  const shouldReduceMotion = useReducedMotion();
+const benefits = [
+  "No upfront tuition fees to begin your studies",
+  "No collateral required",
+  "Repay only after finishing your studies",
+  "For Kenyan youth aged 19–35",
+  "Covers Certificate in Caregiver training at THM",
+];
 
-  const benefits = [
-    "No upfront tuition fees required to begin your studies",
-    "Zero collateral or financial guarantors needed",
-    "Repay only after completing your studies and getting employed",
-    "Open to less privileged Kenyan youth aged 19 to 35 years",
-    "Covers full Certificate in Caregiver II training at THM",
-  ];
+export function ChancenSection() {
+  const reduce = useReducedMotion();
 
   return (
-    <section id="chancen" className="py-20 lg:py-28 bg-thm-purple text-white relative overflow-hidden">
-      {/* Solid Accent Line Top */}
-      <div className="absolute top-0 inset-x-0 h-2 bg-thm-gold" />
+    <section id="chancen" className="relative bg-thm-purple py-20 text-white lg:py-28">
+      {/* Solid gold accent bar — not a glow */}
+      <div className="absolute inset-x-0 top-0 h-1.5 bg-thm-gold" />
 
-      {/* Radiant Glow Orb */}
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-thm-gold/15 blur-[120px]" />
-
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-12 relative z-10">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          
-          {/* Left Column: NGO Partnership Narrative */}
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
+        <div className="grid items-start gap-12 lg:grid-cols-12">
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 flex flex-col gap-6"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7"
           >
-            <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-              Study Now, Pay Later with <br />
-              <span className="text-thm-gold">CHANCEN International</span>
+            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-gold">
+              Financing partnership
+            </p>
+            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              Study Now, Pay Later with CHANCEN International
             </h2>
-
-            <p className="text-lg text-thm-cream/90 leading-relaxed">
-              Therapeutic Hands Management is proud to partner with <strong>CHANCEN International</strong>, an NGO dedicated to financing education for bright youth aged 19–35. Remove financial barriers and secure your professional future today.
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
+              THM partners with CHANCEN International so less-privileged youth
+              can train as caregivers without paying fees upfront — then repay
+              after completing their studies.
             </p>
 
-            {/* Benefit Bullets */}
-            <div className="space-y-3 pt-2">
-              {benefits.map((b, index) => (
-                <motion.div
-                  key={b}
-                  initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="h-6 w-6 rounded-full bg-thm-gold text-thm-ink flex items-center justify-center shrink-0 mt-0.5 font-bold shadow">
-                    <Check className="h-4 w-4 stroke-[3]" />
-                  </div>
-                  <span className="text-base text-thm-cream">{b}</span>
-                </motion.div>
+            <ul className="mt-8 space-y-3">
+              {benefits.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
+                    <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                  </span>
+                  <span className="text-[15px] text-white/90">{b}</span>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <div className="pt-4 flex flex-wrap gap-4">
-              <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.96 }}>
-                <Link
-                  href="#admissions"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 text-base font-bold text-thm-ink shadow-lg transition-shadow hover:shadow-xl"
-                >
-                  <span>Apply for CHANCEN Funding</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </motion.div>
-            </div>
+            <Link
+              href="#admissions"
+              className="mt-9 inline-flex h-12 items-center gap-2 rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
+            >
+              Apply for CHANCEN funding
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
 
-          {/* Right Column: Solid Proof Card & Stats */}
+          {/* Ledger / progress motif — solid shapes only */}
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.94, y: 32 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={reduce ? false : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, delay: 0.1 }}
             className="lg:col-span-5"
           >
-            <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
-              className="bg-thm-purple-dark border-4 border-thm-gold p-8 sm:p-10 rounded-3xl shadow-2xl flex flex-col gap-8"
-            >
-              <div className="flex items-center justify-between border-b border-thm-purple/80 pb-6">
-                <div>
-                  <h3 className="font-poppins text-2xl font-bold text-thm-gold">CHANCEN Track Record</h3>
-                  <p className="text-sm text-thm-cream/70">6+ Years of Global Impact</p>
-                </div>
-                <div className="h-12 w-12 rounded-2xl bg-thm-gold text-thm-ink flex items-center justify-center font-bold">
-                  <ShieldCheck className="h-7 w-7" />
-                </div>
-              </div>
+            <div className="border-2 border-thm-gold bg-thm-purple-dark p-8">
+              <p className="font-poppins text-sm font-semibold uppercase tracking-[0.14em] text-thm-gold">
+                CHANCEN track record
+              </p>
 
-              {/* Animated Numeral Counters */}
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-thm-purple p-5 rounded-2xl border border-thm-purple/60 shadow-inner">
+              {/* Simple line-drawn progress/ledger graphic */}
+              <svg
+                viewBox="0 0 280 56"
+                className="mt-6 w-full text-thm-gold"
+                aria-hidden
+              >
+                <line x1="8" y1="28" x2="272" y2="28" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+                <circle cx="28" cy="28" r="10" fill="#F8BC0A" />
+                <circle cx="100" cy="28" r="10" fill="#F8BC0A" />
+                <circle cx="172" cy="28" r="10" fill="#F8BC0A" />
+                <circle cx="244" cy="28" r="10" fill="none" stroke="#F8BC0A" strokeWidth="2" />
+                <text x="28" y="52" textAnchor="middle" fill="#FAF7F2" fontSize="9" opacity="0.7">
+                  Enroll
+                </text>
+                <text x="100" y="52" textAnchor="middle" fill="#FAF7F2" fontSize="9" opacity="0.7">
+                  Train
+                </text>
+                <text x="172" y="52" textAnchor="middle" fill="#FAF7F2" fontSize="9" opacity="0.7">
+                  Graduate
+                </text>
+                <text x="244" y="52" textAnchor="middle" fill="#FAF7F2" fontSize="9" opacity="0.7">
+                  Repay
+                </text>
+              </svg>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="bg-thm-purple p-5">
                   <p className="font-poppins text-3xl font-bold text-white">
                     <AnimatedCounter to={9000} suffix="+" />
                   </p>
-                  <p className="text-xs text-thm-gold mt-1 font-semibold uppercase">Students Financed</p>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-wide text-thm-gold">
+                    Students financed globally
+                  </p>
                 </div>
-                <div className="bg-thm-purple p-5 rounded-2xl border border-thm-purple/60 shadow-inner">
+                <div className="bg-thm-purple p-5">
                   <p className="font-poppins text-3xl font-bold text-thm-gold">
                     <AnimatedCounter to={93} suffix="%" />
                   </p>
-                  <p className="text-xs text-thm-cream mt-1 font-semibold uppercase">Graduation Rate</p>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-wide text-white/75">
+                    Graduation rate
+                  </p>
                 </div>
               </div>
 
-              <div className="bg-thm-purple/80 p-5 rounded-2xl border border-thm-gold/30">
-                <div className="flex items-center gap-3 mb-2">
-                  <GraduationCap className="h-5 w-5 text-thm-gold" />
-                  <p className="font-bold text-sm text-white">Eligibility Criteria</p>
-                </div>
-                <p className="text-xs text-thm-cream/80 leading-relaxed">
-                  Kenyan youth aged 19–35 with a passion for caregiving and healthcare, admitted into THM Certificate in Caregiver II.
+              <div className="mt-5 border border-thm-gold/40 bg-thm-purple p-4">
+                <p className="text-sm font-semibold text-white">Eligibility</p>
+                <p className="mt-1 text-sm leading-relaxed text-white/75">
+                  Kenyan youth aged 19–35 admitted into THM&apos;s caregiver
+                  program.
                 </p>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
-
         </div>
       </div>
     </section>

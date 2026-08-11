@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, User, Send, CheckCircle2 } from "lucide-react";
 
 export function AdmissionsSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,112 +12,117 @@ export function AdmissionsSection() {
   };
 
   return (
-    <section id="admissions" className="py-20 lg:py-28 bg-thm-purple-deep text-white relative">
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-          {/* Left Contact & Location Details */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
-            <span className="text-sm font-bold uppercase tracking-widest text-thm-gold">
-              Admissions & Contact
-            </span>
-
-            <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
-              Take the Next Step Towards a Lifesaving Career
+    <section id="admissions" className="bg-thm-purple-deep py-20 text-white lg:py-28">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
+        <div className="grid items-start gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-gold">
+              Admissions
+            </p>
+            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+              Take the next step
             </h2>
-
-            <p className="text-lg text-thm-cream/90 leading-relaxed">
-              Enroll today in Nairobi or Kisumu. Speak with our admissions advisors to verify your eligibility for CHANCEN International funding or schedule a campus visit.
+            <p className="mt-4 text-lg leading-relaxed text-white/80">
+              Apply for caregiver training in Nairobi or Kisumu. Ask about
+              CHANCEN Study Now, Pay Later financing when you reach out.
             </p>
 
-            <div className="space-y-4 pt-4">
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-thm-purple border border-thm-purple-dark">
-                <MapPin className="h-6 w-6 text-thm-gold shrink-0 mt-1" />
+            <ul className="mt-8 space-y-5">
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-thm-gold" />
                 <div>
-                  <p className="font-bold text-white text-base">Campus Location</p>
-                  <p className="text-sm text-thm-cream/80">New Waumini House, 3rd Floor, Westlands</p>
-                  <p className="text-xs text-thm-cream/60">P.O. Box 27268 – 00100 Nairobi, Kenya</p>
+                  <p className="font-semibold">Campus</p>
+                  <p className="mt-0.5 text-sm text-white/75">
+                    New Waumini House, 3rd Floor, Westlands, Nairobi
+                  </p>
+                  <p className="text-sm text-white/55">
+                    P.O. Box 27268–00100
+                  </p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-thm-purple border border-thm-purple-dark">
-                <Phone className="h-6 w-6 text-thm-gold shrink-0 mt-1" />
+              </li>
+              <li className="flex gap-3">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-thm-gold" />
                 <div>
-                  <p className="font-bold text-white text-base">Direct Phone Lines</p>
-                  <p className="text-sm text-thm-cream/80">0722 590 457 / 0700 589 647</p>
+                  <p className="font-semibold">Phone</p>
+                  <p className="mt-0.5 text-sm text-white/75">
+                    0722 590 457 / 0700 589 647
+                  </p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-thm-purple border border-thm-purple-dark">
-                <Mail className="h-6 w-6 text-thm-gold shrink-0 mt-1" />
+              </li>
+              <li className="flex gap-3">
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-thm-gold" />
                 <div>
-                  <p className="font-bold text-white text-base">Official Email</p>
-                  <p className="text-sm text-thm-cream/80">info@thm.co.ke</p>
+                  <p className="font-semibold">Email</p>
+                  <p className="mt-0.5 text-sm text-white/75">info@thm.co.ke</p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-thm-purple border border-thm-purple-dark">
-                <Clock className="h-6 w-6 text-thm-gold shrink-0 mt-1" />
+              </li>
+              <li className="flex gap-3">
+                <User className="mt-0.5 h-5 w-5 shrink-0 text-thm-gold" />
                 <div>
-                  <p className="font-bold text-white text-base">Contact Person</p>
-                  <p className="text-sm text-thm-cream/80">Mrs. Janipher Aluoch Otieno (CEO)</p>
+                  <p className="font-semibold">CEO</p>
+                  <p className="mt-0.5 text-sm text-white/75">
+                    Mrs. Janipher Aluoch Otieno
+                  </p>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
 
-          {/* Right Application Form */}
-          <div className="lg:col-span-6">
-            <div className="bg-white text-thm-ink p-8 sm:p-10 rounded-3xl border-4 border-thm-gold shadow-2xl">
-              <h3 className="font-poppins text-2xl font-bold text-thm-purple mb-2">
-                Caregiver Program Application
+          <div className="lg:col-span-7">
+            <div className="border-2 border-thm-gold bg-white p-7 text-thm-ink sm:p-9">
+              <h3 className="font-poppins text-xl font-bold text-thm-purple sm:text-2xl">
+                Program application
               </h3>
-              <p className="text-sm text-thm-muted mb-6">
-                Fill in your details below to apply for Certificate in Caregiver II and CHANCEN funding.
+              <p className="mt-1.5 text-sm text-thm-muted">
+                Submit your details and our admissions team will follow up.
               </p>
 
               {submitted ? (
-                <div className="p-8 bg-thm-cream rounded-2xl border-2 border-thm-gold text-center flex flex-col items-center">
-                  <CheckCircle2 className="h-16 w-16 text-thm-purple mb-4" />
-                  <h4 className="font-poppins text-2xl font-bold text-thm-purple">Application Received!</h4>
-                  <p className="text-sm text-thm-muted mt-2 max-w-[360px]">
-                    Thank you for applying to THM Caregiver School. Our admissions team will call you shortly at the provided phone number.
+                <div className="mt-8 flex flex-col items-center bg-thm-cream px-6 py-10 text-center">
+                  <CheckCircle2 className="h-12 w-12 text-thm-purple" />
+                  <h4 className="mt-4 font-poppins text-xl font-bold text-thm-purple">
+                    Application received
+                  </h4>
+                  <p className="mt-2 max-w-sm text-sm text-thm-muted">
+                    Thank you. Our admissions team will contact you shortly at
+                    the phone number you provided.
                   </p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 px-6 py-2.5 rounded-full bg-thm-purple text-white text-sm font-bold"
+                    className="mt-6 h-11 rounded-full bg-thm-purple px-6 text-sm font-semibold text-white"
                   >
-                    Submit Another Inquiry
+                    Submit another inquiry
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-thm-muted mb-1">
-                      Full Name *
+                    <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-thm-muted">
+                      Full name *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Jane Wanjiru"
-                      className="w-full h-12 rounded-xl border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
+                      placeholder="Your full name"
+                      className="h-12 w-full border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-thm-muted mb-1">
-                        Phone Number *
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-thm-muted">
+                        Phone *
                       </label>
                       <input
                         type="tel"
                         required
                         placeholder="07XX XXX XXX"
-                        className="w-full h-12 rounded-xl border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
+                        className="h-12 w-full border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-thm-muted mb-1">
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-thm-muted">
                         Age *
                       </label>
                       <input
@@ -126,37 +131,39 @@ export function AdmissionsSection() {
                         max={65}
                         required
                         placeholder="e.g. 24"
-                        className="w-full h-12 rounded-xl border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
+                        className="h-12 w-full border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-thm-muted mb-1">
-                      Preferred Training Campus *
+                    <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-thm-muted">
+                      Preferred campus *
                     </label>
-                    <select className="w-full h-12 rounded-xl border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple bg-white">
-                      <option value="nairobi">Nairobi Campus (Westlands)</option>
-                      <option value="kisumu">Kisumu Campus</option>
+                    <select className="h-12 w-full border-2 border-slate-200 bg-white px-4 text-sm outline-none focus:border-thm-purple">
+                      <option value="nairobi">Nairobi (Westlands)</option>
+                      <option value="kisumu">Kisumu</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-thm-muted mb-1">
-                      Financing Option *
+                    <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-thm-muted">
+                      Financing *
                     </label>
-                    <select className="w-full h-12 rounded-xl border-2 border-slate-200 px-4 text-sm outline-none focus:border-thm-purple bg-white">
-                      <option value="chancen">Apply for CHANCEN &quot;Study Now, Pay Later&quot;</option>
-                      <option value="self">Self Funded / Direct Payment</option>
+                    <select className="h-12 w-full border-2 border-slate-200 bg-white px-4 text-sm outline-none focus:border-thm-purple">
+                      <option value="chancen">
+                        CHANCEN — Study Now, Pay Later
+                      </option>
+                      <option value="self">Self-funded</option>
                     </select>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full h-14 rounded-full bg-thm-purple text-white font-poppins font-bold text-base shadow-lg hover:bg-thm-purple-dark transition-all flex items-center justify-center gap-2 pt-1"
+                    className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-thm-purple font-poppins text-base font-semibold text-white transition-colors hover:bg-thm-purple-dark"
                   >
-                    <span>Submit Application</span>
-                    <Send className="h-5 w-5 text-thm-gold" />
+                    Submit application
+                    <Send className="h-4 w-4 text-thm-gold" />
                   </button>
                 </form>
               )}

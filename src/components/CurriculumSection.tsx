@@ -2,233 +2,152 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { CheckCircle, Stethoscope, HeartHandshake, ShieldAlert, Sparkles, Laptop } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check } from "lucide-react";
 
-type Category = "clinical" | "ict" | "hygiene" | "equipment" | "monitoring";
+type Category = "clinical" | "support" | "safety";
 
-interface SkillGroup {
+const groups: {
   id: Category;
   name: string;
-  icon: typeof Stethoscope;
-  skills: { name: string; detail: string }[];
-}
-
-const skillGroups: SkillGroup[] = [
+  blurb: string;
+  skills: string[];
+}[] = [
   {
     id: "clinical",
-    name: "Clinical Procedures & Care",
-    icon: Stethoscope,
+    name: "Clinical Basics",
+    blurb: "Core clinical procedures every caregiver must perform safely.",
     skills: [
-      { name: "Vital Signs Measurement", detail: "Taking blood pressure, temperature, pulse rate & respiration." },
-      { name: "Catheter & Perineum Care", detail: "Sterile maintenance and daily hygiene for catheterized patients." },
-      { name: "Tube Feeding (Gavage/NGT)", detail: "Safe enteral nutrition administration under nursing supervision." },
-      { name: "Bedpan Administration", detail: "Assisting bedridden patients with elimination and comfort care." },
-      { name: "Hot & Cold Therapy", detail: "Applying therapeutic heat compresses and cold ice packs safely." },
+      "Vital signs measurement",
+      "Blood sugar level monitoring",
+      "Oxygen administration support",
+      "Catheter and perineum care",
+      "Tube feeding",
+      "Bedpan administration",
+      "Hot and cold therapy",
     ],
   },
   {
-    id: "ict",
-    name: "ICT & Digital Health Literacy",
-    icon: Laptop,
+    id: "support",
+    name: "Patient Support",
+    blurb: "Daily living support that protects dignity and comfort.",
     skills: [
-      { name: "Electronic Health Records (EHR)", detail: "Digital patient vitals logging, medical charts, and record management." },
-      { name: "Tele-Care & Remote Monitoring", detail: "Operating digital pulse oximeters, smart monitors, and video consultations." },
-      { name: "Basic Computer & Productivity", detail: "Word processing, spreadsheet scheduling, and professional email dispatch." },
-      { name: "Medication App Reminders", detail: "Setting digital alarm schedules and dosage tracking software." },
+      "Bed bath and patient grooming",
+      "Bed making",
+      "Back care",
+      "Positioning",
+      "Wheelchair transfer",
+      "Use of medical equipment & assistive devices",
     ],
   },
   {
-    id: "hygiene",
-    name: "Patient Support & Personal Hygiene",
-    icon: HeartHandshake,
+    id: "safety",
+    name: "Safety & Equipment",
+    blurb: "Infection control and safe handling of care environments.",
     skills: [
-      { name: "Bed Bath & Personal Grooming", detail: "Comprehensive patient bathing, nail care, hair washing, and oral hygiene." },
-      { name: "Bed Making & Linen Change", detail: "Occupied and unoccupied bed technique maintaining sterile ergonomics." },
-      { name: "Back Care & Pressure Massage", detail: "Preventing bedsores/decubitus ulcers through back rubs and positioning." },
-      { name: "Positioning & Body Mechanics", detail: "Fowler's, lateral, and prone positioning for optimal patient recovery." },
-      { name: "Wheelchair Transfer", detail: "Safe ergonomic patient transfer from bed to wheelchair and stretcher." },
-    ],
-  },
-  {
-    id: "equipment",
-    name: "Safety & Equipment Management",
-    icon: ShieldAlert,
-    skills: [
-      { name: "Hand Hygiene & Proper Gloving", detail: "Surgical and aseptic hand washing protocol to prevent cross-contamination." },
-      { name: "Disinfection & Decontamination", detail: "Cleaning medical instruments and surface sanitation protocols." },
-      { name: "Use of Assistive Devices & Comfort", detail: "Operating walkers, canes, crutches, egg-crate mattresses, and pillows." },
-      { name: "Standard & Transmission Precautions", detail: "PPE usage (masks, gowns, shields) for airborne and contact isolation." },
-      { name: "Proper Waste Management", detail: "Color-coded biomedical segregation of sharp, hazardous, and general waste." },
-    ],
-  },
-  {
-    id: "monitoring",
-    name: "Diagnostic & Advanced Monitoring",
-    icon: Sparkles,
-    skills: [
-      { name: "Blood Sugar Level Monitoring", detail: "Glucometer testing, recording capillary glucose readings, and reporting." },
-      { name: "Oxygen Administration Support", detail: "Monitoring nasal cannulas, oxygen flowmeters, and pulse oximeter saturation." },
-      { name: "Post-Stroke Recovery Support", detail: "Specialized rehabilitation assistance for paralyzed or post-surgery patients." },
-      { name: "Child & Elderly Safeguarding", detail: "Specialized pediatric and geriatric safety, nutrition, and emotional care." },
+      "Hand hygiene",
+      "Proper gloving",
+      "Disinfection & decontamination",
+      "Standard & transmission-based precautions",
     ],
   },
 ];
 
 export function CurriculumSection() {
-  const [activeTab, setActiveTab] = useState<Category>("clinical");
-  const shouldReduceMotion = useReducedMotion();
-
-  const currentGroup = skillGroups.find((g) => g.id === activeTab) || skillGroups[0];
+  const [active, setActive] = useState<Category>("clinical");
+  const reduce = useReducedMotion();
+  const current = groups.find((g) => g.id === active)!;
 
   return (
-    <section id="curriculum" className="py-20 lg:py-28 bg-white text-thm-ink">
-      <div className="mx-auto max-w-[1320px] px-6 lg:px-12">
-        {/* Header Reveal */}
-        <motion.div
-          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
-        >
-          <div className="max-w-[650px]">
-            <span className="text-sm font-bold uppercase tracking-widest text-thm-purple">
-              NITA Curriculum & Practical Labs
-            </span>
-            <h2 className="font-poppins text-3xl sm:text-4xl lg:text-5xl font-bold text-thm-ink mt-2">
-              Master 20+ Practical Caregiving & ICT Skills
+    <section id="curriculum" className="bg-grain py-20 lg:py-28 text-thm-ink">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-purple">
+              What you&apos;ll learn
+            </p>
+            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+              NITA curriculum, organized for real practice
             </h2>
-            <p className="mt-4 text-lg text-thm-muted">
-              Our holistic curriculum combines classroom theory with mandatory ICT computer literacy and hospital clinical rotations under Registered Nurses.
+            <p className="mt-4 text-lg leading-relaxed text-thm-muted">
+              Skills are grouped the way caregivers use them on the ward and in
+              the home — not as a long checklist.
             </p>
           </div>
-          <div className="bg-thm-cream p-4 rounded-2xl border border-slate-200 shrink-0 shadow-sm">
-            <p className="text-sm font-semibold text-thm-purple">Certificate in Caregiver II</p>
-            <p className="text-xs text-thm-muted">Clinical & Digital Health Training</p>
-          </div>
-        </motion.div>
+        </div>
 
-        {/* Tab Selector Buttons with Shared layoutId Indicator */}
-        <div className="flex flex-wrap gap-3 mb-10 border-b border-slate-200 pb-4 relative">
-          {skillGroups.map((group) => {
-            const IconComp = group.icon;
-            const isActive = group.id === activeTab;
+        {/* Tab index */}
+        <div
+          role="tablist"
+          aria-label="Curriculum categories"
+          className="mt-10 flex flex-wrap gap-2 border-b border-slate-200 pb-1"
+        >
+          {groups.map((g) => {
+            const isActive = g.id === active;
             return (
               <button
-                key={group.id}
+                key={g.id}
                 type="button"
-                onClick={() => setActiveTab(group.id)}
-                className="relative flex items-center gap-2.5 px-6 py-3.5 rounded-full font-poppins text-sm font-bold transition-colors z-10"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActive(g.id)}
+                className={`px-5 py-3 font-poppins text-sm font-semibold transition-colors ${
+                  isActive
+                    ? "bg-thm-purple text-white"
+                    : "bg-white text-thm-ink hover:bg-thm-purple/10"
+                }`}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabBadge"
-                    className="absolute inset-0 bg-thm-purple rounded-full shadow-md -z-10"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-                <IconComp className={`h-4 w-4 ${isActive ? "text-thm-gold" : "text-thm-purple"}`} />
-                <span className={isActive ? "text-white" : "text-thm-ink hover:text-thm-purple"}>
-                  {group.name}
-                </span>
+                {g.name}
               </button>
             );
           })}
         </div>
 
-        {/* Animated Skills Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
-            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+            key={active}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            exit={reduce ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.3 }}
+            className="mt-8 grid gap-8 lg:grid-cols-12"
+            role="tabpanel"
           >
-            {currentGroup.skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                whileHover={{ scale: 1.02, y: -4 }}
-                whileTap={{ scale: 0.98 }}
-                className="p-6 rounded-2xl bg-thm-cream border-2 border-slate-200 flex flex-col justify-between hover:border-thm-purple transition-all shadow-sm cursor-pointer group"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <CheckCircle className="h-6 w-6 text-thm-gold shrink-0 group-hover:scale-110 transition-transform" />
-                    <h3 className="font-poppins text-lg font-bold text-thm-ink group-hover:text-thm-purple transition-colors">
-                      {skill.name}
-                    </h3>
-                  </div>
-                  <p className="text-sm text-thm-muted leading-relaxed">
-                    {skill.detail}
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-thm-purple flex items-center justify-between">
-                  <span>Practical Skill Unit</span>
-                  <span className="text-thm-gold font-bold">100% Certified</span>
-                </div>
-              </motion.div>
-            ))}
+            <div className="lg:col-span-5">
+              <h3 className="font-poppins text-2xl font-bold">{current.name}</h3>
+              <p className="mt-2 text-thm-muted">{current.blurb}</p>
+              <ul className="mt-6 space-y-3">
+                {current.skills.map((skill) => (
+                  <li key={skill} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    </span>
+                    <span className="text-[15px] leading-snug text-thm-ink">
+                      {skill}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="relative aspect-[4/3] overflow-hidden lg:col-span-7">
+              <Image
+                src={
+                  active === "clinical"
+                    ? "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop"
+                    : active === "support"
+                      ? "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1200&auto=format&fit=crop"
+                      : "https://images.unsplash.com/photo-1631217868264-e5b90bb7e975?q=80&w=1200&auto=format&fit=crop"
+                }
+                alt={`${current.name} training at THM`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+              <div className="absolute inset-0 bg-thm-purple/30 mix-blend-multiply" />
+            </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Practical ICT & Nursing Lab Visual Banner */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.02 }}
-            className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group cursor-pointer"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
-              alt="Students in practical ICT computer lab"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-thm-purple-deep/90 via-thm-purple-deep/30 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block rounded-full bg-thm-gold px-3 py-1 text-xs font-bold text-thm-ink mb-1 shadow">
-                Practical ICT Computer Lab
-              </span>
-              <p className="font-poppins text-xl font-bold text-white">
-                Digital Record Keeping & Health Literacy
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            whileHover={{ scale: 1.02 }}
-            className="relative h-[260px] rounded-3xl overflow-hidden shadow-lg border-2 border-thm-purple/20 group cursor-pointer"
-          >
-            <Image
-              src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=1000&auto=format&fit=crop"
-              alt="Students practicing clinical nursing procedures"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-thm-purple-deep/90 via-thm-purple-deep/30 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="inline-block rounded-full bg-thm-purple px-3 py-1 text-xs font-bold text-thm-gold mb-1 border border-thm-gold/30">
-                Hospital Simulation Wards
-              </span>
-              <p className="font-poppins text-xl font-bold text-white">
-                Clinical Patient Vitals & Hygiene Practicals
-              </p>
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
