@@ -2,19 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#curriculum", label: "Programs" },
-  { href: "#chancen", label: "Financing" },
-  { href: "#career", label: "Careers" },
-  { href: "#admissions", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/programs", label: "Programs" },
+  { href: "/financing", label: "Financing" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,7 +26,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = isScrolled || open;
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const isHome = pathname === "/";
+  const solid = isScrolled || open || !isHome;
 
   return (
     <header
@@ -38,7 +45,17 @@ export function Navbar() {
         className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-5 sm:px-8 lg:px-10"
         aria-label="Primary"
       >
-        <Link href="#" className="relative h-11 w-40 sm:h-12 sm:w-48 shrink-0">
+        <Link
+          href="/"
+          className="relative h-11 w-40 sm:h-12 sm:w-48 shrink-0"
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              setOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+        >
           <Image
             src="/logo.svg"
             alt="Therapeutic Hands Management"
@@ -51,24 +68,29 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`font-poppins text-[15px] font-medium transition-colors ${
-                solid
-                  ? "text-thm-ink hover:text-thm-purple"
-                  : "text-white/90 hover:text-thm-gold"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-poppins text-[15px] font-medium transition-colors ${
+                  active
+                    ? "text-thm-purple"
+                    : solid
+                      ? "text-thm-ink hover:text-thm-purple"
+                      : "text-white/90 hover:text-thm-gold"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden lg:block">
           <Link
-            href="#admissions"
+            href="/contact"
             className="inline-flex h-11 items-center justify-center rounded-full bg-thm-gold px-6 font-poppins text-[15px] font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
           >
             Apply Now
@@ -103,13 +125,15 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="font-poppins py-3.5 text-base font-medium text-thm-ink border-b border-slate-100 last:border-0"
+                  className={`font-poppins py-3.5 text-base font-medium border-b border-slate-100 last:border-0 ${
+                    pathname === link.href ? "text-thm-purple" : "text-thm-ink"
+                  }`}
                 >
                   {link.label}
                 </Link>
               ))}
               <Link
-                href="#admissions"
+                href="/contact"
                 onClick={() => setOpen(false)}
                 className="mt-4 mb-2 inline-flex h-12 items-center justify-center rounded-full bg-thm-gold font-poppins text-base font-semibold text-thm-ink"
               >

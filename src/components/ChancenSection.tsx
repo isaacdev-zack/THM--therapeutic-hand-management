@@ -17,7 +17,7 @@ export function ChancenSection() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="chancen" className="relative bg-thm-purple py-20 text-white lg:py-28">
+    <section className="relative bg-thm-purple py-20 text-white lg:py-28">
       {/* Solid gold accent bar — not a glow */}
       <div className="absolute inset-x-0 top-0 h-1.5 bg-thm-gold" />
 
@@ -54,7 +54,7 @@ export function ChancenSection() {
             </ul>
 
             <Link
-              href="#admissions"
+              href="/contact"
               className="mt-9 inline-flex h-12 items-center gap-2 rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
             >
               Apply for CHANCEN funding

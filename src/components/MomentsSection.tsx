@@ -93,7 +93,7 @@ export function MomentsSection() {
             Kisumu.
           </p>
           <Link
-            href="#admissions"
+            href="/contact"
             className="inline-flex h-12 items-center gap-2 rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
           >
             Join next cohort

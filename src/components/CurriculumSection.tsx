@@ -59,7 +59,7 @@ export function CurriculumSection() {
   const current = groups.find((g) => g.id === active)!;
 
   return (
-    <section id="curriculum" className="bg-grain py-20 lg:py-28 text-thm-ink">
+    <section className="bg-grain py-20 lg:py-28 text-thm-ink">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">

@@ -12,7 +12,7 @@ export function AdmissionsSection() {
   };
 
   return (
-    <section id="admissions" className="bg-thm-purple-deep py-20 text-white lg:py-28">
+    <section className="bg-thm-purple-deep py-20 text-white lg:py-28">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid items-start gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">

@@ -25,30 +25,9 @@ export function AboutSection() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="about" className="bg-grain py-20 lg:py-28 text-thm-ink">
+    <section className="bg-grain py-16 lg:py-24 text-thm-ink">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
-          <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-purple">
-            About THM
-          </p>
-          <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            A Kenyan caregiver school built on skill, empathy, and trust
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-thm-muted">
-            Registered in April 2023, Therapeutic Hands Management trains
-            caregivers under the NITA curriculum in Nairobi and Kisumu — preparing
-            graduates to serve hospitals, care homes, childcare centres, and
-            private households.
-          </p>
-        </motion.div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           <div className="bg-thm-purple p-8 sm:p-10 text-white">
             <p className="font-poppins text-sm font-semibold uppercase tracking-[0.14em] text-thm-gold">
               Vision

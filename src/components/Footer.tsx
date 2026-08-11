@@ -2,20 +2,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
+const navLinks = [
+  { href: "/about", label: "About" },
+  { href: "/programs", label: "Programs" },
+  { href: "/financing", label: "CHANCEN financing" },
+  { href: "/careers", label: "Career pathways" },
+  { href: "/contact", label: "Admissions" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t-4 border-thm-gold bg-thm-purple-deep py-14 text-white">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="relative h-11 w-40">
+            <Link href="/" className="relative block h-11 w-40">
               <Image
                 src="/logo.svg"
                 alt="Therapeutic Hands Management"
                 fill
                 className="object-contain object-left brightness-0 invert"
               />
-            </div>
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               Enabling Caregivers with Life Saving Skills. NITA-curriculum
               training in Nairobi and Kisumu.
@@ -27,31 +35,13 @@ export function Footer() {
               Navigate
             </h4>
             <ul className="mt-4 space-y-2.5 text-sm text-white/75">
-              <li>
-                <Link href="#about" className="hover:text-thm-gold">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="#curriculum" className="hover:text-thm-gold">
-                  Programs
-                </Link>
-              </li>
-              <li>
-                <Link href="#chancen" className="hover:text-thm-gold">
-                  CHANCEN financing
-                </Link>
-              </li>
-              <li>
-                <Link href="#career" className="hover:text-thm-gold">
-                  Career pathways
-                </Link>
-              </li>
-              <li>
-                <Link href="#admissions" className="hover:text-thm-gold">
-                  Admissions
-                </Link>
-              </li>
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-thm-gold">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -83,7 +73,9 @@ export function Footer() {
               </li>
               <li className="flex gap-2.5">
                 <Mail className="h-4 w-4 shrink-0 text-thm-gold" />
-                <span>info@thm.co.ke</span>
+                <a href="mailto:info@thm.co.ke" className="hover:text-thm-gold">
+                  info@thm.co.ke
+                </a>
               </li>
             </ul>
             <p className="mt-4 text-xs text-white/50">

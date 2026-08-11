@@ -48,7 +48,7 @@ export function CareerSection() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="career" className="bg-grain py-20 lg:py-28 text-thm-ink">
+    <section className="bg-grain py-20 lg:py-28 text-thm-ink">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 20 }}
