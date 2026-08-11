@@ -46,7 +46,7 @@ export function TrainingShowcase() {
               poster="https://images.unsplash.com/photo-1631217868264-e5b90bb7e975?q=80&w=1400&auto=format&fit=crop"
             >
               <source
-                src="https://videos.pexels.com/video-files/5453622/5453622-uhd_2560_1440_25fps.mp4"
+                src="https://cdn.coverr.co/videos/coverr-a-nurse-taking-care-of-a-patient-5584/1080p.mp4"
                 type="video/mp4"
               />
             </video>
