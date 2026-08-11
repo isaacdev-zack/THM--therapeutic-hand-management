@@ -3,13 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-const stats = [
-  { value: 150, suffix: "+", label: "Graduates trained since 2023" },
-  { value: 2, suffix: "", label: "Counties — Nairobi & Kisumu" },
-  { value: 20, suffix: "+", label: "Practical caregiving skills" },
-  { value: 93, suffix: "%", label: "CHANCEN graduation rate" },
-];
-
 function AnimatedNumber({
   value,
   suffix,
@@ -57,65 +50,64 @@ function AnimatedNumber({
 export function ImpactSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: false, amount: 0.35 });
-  const reduceMotion = !!useReducedMotion();
+  const reduce = !!useReducedMotion();
+
+  const side = [
+    { value: 2, suffix: "", label: "Counties — Nairobi & Kisumu" },
+    { value: 20, suffix: "+", label: "Practical caregiving skills" },
+    { value: 93, suffix: "%", label: "CHANCEN graduation rate" },
+  ];
 
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden bg-thm-cream px-6 py-24 md:py-32"
-    >
-      <div className="mx-auto max-w-[1100px]">
-        <motion.p
-          initial={false}
-          animate={
-            reduceMotion || inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }
-          }
-          transition={{ duration: 0.5 }}
-          className="font-inter text-[13px] font-semibold uppercase tracking-[0.18em] text-thm-purple"
-        >
-          Clarity, measured
-        </motion.p>
-        <motion.h2
-          initial={false}
-          animate={
-            reduceMotion || inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }
-          }
-          transition={{ duration: 0.55, delay: inView ? 0.05 : 0 }}
-          className="font-poppins mt-3 max-w-[520px] text-[36px] font-bold leading-[1.05] tracking-[-0.02em] text-thm-ink sm:text-[48px]"
-        >
-          Numbers that mean a path — not a brochure.
-        </motion.h2>
+    <section ref={ref} className="bg-thm-purple text-white">
+      <div className="mx-auto grid max-w-[1200px] lg:grid-cols-12">
+        <div className="border-b border-white/15 px-6 py-16 sm:px-8 lg:col-span-7 lg:border-b-0 lg:border-r lg:py-24 lg:pl-10 lg:pr-12">
+          <p className="font-inter text-[13px] font-semibold uppercase tracking-[0.18em] text-thm-gold">
+            Track record
+          </p>
+          <p className="font-poppins mt-6 text-[88px] font-bold leading-none tracking-[-0.05em] text-thm-gold sm:text-[120px] lg:text-[140px]">
+            <AnimatedNumber
+              value={150}
+              suffix="+"
+              active={inView}
+              reduceMotion={reduce}
+            />
+          </p>
+          <h2 className="font-poppins mt-4 max-w-md text-[28px] font-bold leading-tight tracking-[-0.02em] sm:text-[36px]">
+            caregivers graduated since 2023
+          </h2>
+          <p className="font-inter mt-4 max-w-md text-[16px] leading-relaxed text-white/75">
+            NITA-aligned training that turns motivated youth into trusted care
+            professionals across Kenya.
+          </p>
+        </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-thm-ink/10 pt-10 md:mt-16 lg:grid-cols-4">
-          {stats.map((stat, i) => (
+        <div className="flex flex-col justify-center gap-0 px-6 py-10 sm:px-8 lg:col-span-5 lg:py-0 lg:pr-10">
+          {side.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={false}
               animate={
-                reduceMotion || inView
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: 20 }
+                reduce || inView
+                  ? { opacity: 1, x: 0 }
+                  : { opacity: 0, x: 16 }
               }
-              transition={{ duration: 0.5, delay: inView ? 0.1 + i * 0.08 : 0 }}
-              className="relative"
+              transition={{ duration: 0.45, delay: inView ? 0.1 + i * 0.08 : 0 }}
+              className={`border-b border-white/15 py-8 last:border-b-0 ${
+                i === 0 ? "lg:pt-0" : ""
+              }`}
             >
-              <p className="font-poppins text-[52px] font-bold leading-none tracking-[-0.04em] text-thm-ink sm:text-[72px]">
+              <p className="font-poppins text-[48px] font-bold leading-none tracking-[-0.03em] text-white sm:text-[56px]">
                 <AnimatedNumber
                   value={stat.value}
                   suffix={stat.suffix}
                   active={inView}
-                  reduceMotion={reduceMotion}
+                  reduceMotion={reduce}
                 />
               </p>
-              <p className="font-inter mt-3 max-w-[180px] text-[14px] leading-snug text-thm-muted sm:text-[15px]">
+              <p className="font-inter mt-2 text-[15px] text-white/70">
                 {stat.label}
               </p>
-              {i < stats.length - 1 && (
-                <span
-                  className="pointer-events-none absolute -right-3 top-2 hidden h-16 w-px bg-thm-ink/10 lg:block"
-                  aria-hidden
-                />
-              )}
             </motion.div>
           ))}
         </div>
