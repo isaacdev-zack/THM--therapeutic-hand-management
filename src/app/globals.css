@@ -9,7 +9,7 @@
   --thm-purple-dark: #4a1d66;
   --thm-purple-deep: #2e0e42;
   --thm-gold: #f8bc0a;
-  --thm-cream: #faf7f2;
+  --thm-cream: #fcf8e6;
   --thm-ink: #1e1326;
   --thm-muted: #5e5466;
   scroll-behavior: smooth;
@@ -29,7 +29,7 @@ body {
 
 /* Paper grain via SVG noise — not a color gradient */
 .bg-grain {
-  background-color: #faf7f2;
+  background-color: #fcf8e6;
   position: relative;
 }
 

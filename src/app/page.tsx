@@ -1,25 +1,27 @@
-import { HeroSection } from "@/components/HeroSection";
-import { ImpactStrip } from "@/components/ImpactStrip";
-import { TrainingShowcase } from "@/components/TrainingShowcase";
-import { MomentsSection } from "@/components/MomentsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import {
-  HomeAboutTeaser,
-  HomeCtaBand,
-  HomeFinancingTeaser,
-} from "@/components/PageChrome";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { LadderSection } from "@/components/landing/LadderSection";
+import { SkillRailSection } from "@/components/landing/SkillRailSection";
+import { ImpactSection } from "@/components/landing/ImpactSection";
+import { TopicsSection } from "@/components/landing/TopicsSection";
+import { GuideSection } from "@/components/landing/GuideSection";
+import { PathPinnedSection } from "@/components/landing/PathPinnedSection";
+import { MomentsSection } from "@/components/landing/MomentsSection";
+import { VoicesSection } from "@/components/landing/VoicesSection";
+import { CloseSection } from "@/components/landing/CloseSection";
 
 export default function HomePage() {
   return (
-    <main className="overflow-x-hidden bg-white">
+    <main className="flex min-h-screen flex-col overflow-x-clip bg-white">
       <HeroSection />
-      <ImpactStrip />
-      <HomeAboutTeaser />
-      <TrainingShowcase />
-      <HomeFinancingTeaser />
+      <LadderSection />
+      <SkillRailSection />
+      <ImpactSection />
+      <TopicsSection />
+      <GuideSection />
+      <PathPinnedSection />
       <MomentsSection />
-      <TestimonialsSection />
-      <HomeCtaBand />
+      <VoicesSection />
+      <CloseSection />
     </main>
   );
 }
