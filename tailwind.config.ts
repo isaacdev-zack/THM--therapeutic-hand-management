@@ -15,6 +15,7 @@ const config: Config = {
         "thm-gold": "#f8bc0a",
         "thm-gold-hover": "#d9a203",
         "thm-cream": "#faf7f2",
+        "thm-lilac": "#f3ebf8",
         "thm-ink": "#1e1326",
         "thm-muted": "#5e5466",
       },
