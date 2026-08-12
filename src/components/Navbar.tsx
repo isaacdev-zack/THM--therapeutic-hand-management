@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,7 +31,6 @@ export function Navbar() {
 
   const isHome = pathname === "/";
   const solid = isScrolled || open || !isHome;
-  const logoSrc = solid ? "/logo-mark.png" : "/logo-mark-light.png";
 
   return (
     <header
@@ -48,7 +46,7 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0"
+          className="flex h-[52px] w-[52px] sm:h-16 sm:w-16 shrink-0 items-center"
           onClick={(e) => {
             if (isHome) {
               e.preventDefault();
@@ -57,13 +55,13 @@ export function Navbar() {
             }
           }}
         >
-          <Image
-            src={logoSrc}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={solid ? "/logo-mark.png?v=4" : "/logo-mark-light.png?v=4"}
             alt="Therapeutic Hands Management"
-            fill
-            sizes="56px"
-            className="object-contain object-left"
-            priority
+            width={128}
+            height={128}
+            className="h-full w-full object-contain"
           />
         </Link>
 

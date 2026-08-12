@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
@@ -16,13 +15,14 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link href="/" className="relative block h-16 w-16">
-              <Image
-                src="/logo-mark-light.png"
+            <Link href="/" className="block h-16 w-16">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-mark-light.png?v=4"
                 alt="Therapeutic Hands Management"
-                fill
-                sizes="64px"
-                className="object-contain object-left"
+                width={128}
+                height={128}
+                className="h-full w-full object-contain"
               />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
