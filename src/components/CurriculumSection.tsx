@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
+import { useAutoRotatingTabs } from "@/hooks/useAutoRotatingTabs";
 
 type Category = "clinical" | "support" | "safety";
 
@@ -12,6 +12,7 @@ const groups: {
   name: string;
   blurb: string;
   skills: string[];
+  image: string;
 }[] = [
   {
     id: "clinical",
@@ -26,6 +27,8 @@ const groups: {
       "Bedpan administration",
       "Hot and cold therapy",
     ],
+    image:
+      "https://images.unsplash.com/photo-1643297654416-05795d62e39c?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "support",
@@ -39,6 +42,8 @@ const groups: {
       "Wheelchair transfer",
       "Use of medical equipment & assistive devices",
     ],
+    image:
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
   },
   {
     id: "safety",
@@ -50,104 +55,114 @@ const groups: {
       "Disinfection & decontamination",
       "Standard & transmission-based precautions",
     ],
+    image:
+      "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 
 export function CurriculumSection() {
-  const [active, setActive] = useState<Category>("clinical");
   const reduce = useReducedMotion();
+  const tabIds = groups.map((g) => g.id);
+  const { active, selectTab, sectionHandlers } = useAutoRotatingTabs(tabIds);
   const current = groups.find((g) => g.id === active)!;
 
   return (
-    <section className="bg-grain py-20 lg:py-28 text-thm-ink">
+    <section className="bg-thm-cream py-20 text-thm-ink lg:py-28">
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-purple">
-              What you&apos;ll learn
-            </p>
-            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
-              NITA curriculum, organized for real practice
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-thm-muted">
-              Skills are grouped the way caregivers use them on the ward and in
-              the home — not as a long checklist.
-            </p>
-          </div>
+        <div className="max-w-2xl">
+          <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+            NITA curriculum, organized for real practice
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-thm-muted">
+            Skills are grouped the way caregivers use them on the ward and in
+            the home — not as a long checklist.
+          </p>
         </div>
 
-        {/* Tab index */}
-        <div
-          role="tablist"
-          aria-label="Curriculum categories"
-          className="mt-10 flex flex-wrap gap-2 border-b border-slate-200 pb-1"
-        >
-          {groups.map((g) => {
-            const isActive = g.id === active;
-            return (
-              <button
-                key={g.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActive(g.id)}
-                className={`px-5 py-3 font-poppins text-sm font-semibold transition-colors ${
-                  isActive
-                    ? "bg-thm-purple text-white"
-                    : "bg-white text-thm-ink hover:bg-thm-purple/10"
-                }`}
-              >
-                {g.name}
-              </button>
-            );
-          })}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduce ? undefined : { opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="mt-8 grid gap-8 lg:grid-cols-12"
-            role="tabpanel"
+        <div {...sectionHandlers}>
+          <div
+            role="tablist"
+            aria-label="Curriculum categories"
+            className="mt-10 flex gap-1 overflow-x-auto border-b border-thm-ink/10"
           >
-            <div className="lg:col-span-5">
-              <h3 className="font-poppins text-2xl font-bold">{current.name}</h3>
-              <p className="mt-2 text-thm-muted">{current.blurb}</p>
-              <ul className="mt-6 space-y-3">
-                {current.skills.map((skill) => (
-                  <li key={skill} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
-                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+            {groups.map((g) => {
+              const isActive = g.id === active;
+              return (
+                <button
+                  key={g.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => selectTab(g.id)}
+                  className={`relative shrink-0 px-4 py-3.5 font-poppins text-sm font-semibold transition-colors sm:px-5 ${
+                    isActive
+                      ? "text-thm-purple"
+                      : "text-thm-muted hover:text-thm-ink"
+                  }`}
+                >
+                  {g.name}
+                  {isActive ? (
+                    <motion.span
+                      layoutId="curriculum-tab-line"
+                      className="absolute inset-x-0 bottom-0 h-[3px] bg-thm-gold"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={reduce ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? undefined : { opacity: 0, y: -8 }}
+              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12"
+              role="tabpanel"
+            >
+            <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px] lg:col-span-5 lg:min-h-[460px]">
+              <Image
+                src={current.image}
+                alt={`${current.name} training at THM`}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+              />
+              <div className="absolute inset-0 bg-thm-purple/20 mix-blend-multiply" />
+              <div className="absolute bottom-0 left-0 right-0 bg-thm-ink/85 px-5 py-4 sm:px-6">
+                <p className="font-poppins text-sm font-semibold text-thm-gold">
+                  {current.name}
+                </p>
+                <p className="mt-0.5 text-sm text-white/80">{current.blurb}</p>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center lg:col-span-7">
+              <ul className="divide-y divide-thm-ink/10">
+                {current.skills.map((skill, i) => (
+                  <motion.li
+                    key={skill}
+                    initial={reduce ? false : { opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04, duration: 0.28 }}
+                    className="flex items-center gap-4 py-3.5 first:pt-0 last:pb-0 sm:py-4"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center bg-thm-gold text-thm-ink">
+                      <Check className="h-4 w-4" strokeWidth={3} />
                     </span>
-                    <span className="text-[15px] leading-snug text-thm-ink">
+                    <span className="font-poppins text-[15px] font-medium text-thm-ink sm:text-base">
                       {skill}
                     </span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
-
-            <div className="relative aspect-[4/3] overflow-hidden lg:col-span-7">
-              <Image
-                src={
-                  active === "clinical"
-                    ? "https://images.unsplash.com/photo-1643297654416-05795d62e39c?q=80&w=1200&auto=format&fit=crop"
-                    : active === "support"
-                      ? "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop"
-                      : "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=1200&auto=format&fit=crop"
-                }
-                alt={`${current.name} training at THM`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-              <div className="absolute inset-0 bg-thm-purple/30 mix-blend-multiply" />
-            </div>
           </motion.div>
         </AnimatePresence>
+        </div>
       </div>
     </section>
   );

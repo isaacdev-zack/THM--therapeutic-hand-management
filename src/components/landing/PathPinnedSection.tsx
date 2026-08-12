@@ -101,10 +101,7 @@ export function PathPinnedSection() {
         </div>
 
         <div className="relative flex w-full flex-col justify-center px-6 py-16 lg:w-[54%] lg:px-14 xl:px-20">
-          <p className="font-inter text-[13px] font-semibold uppercase tracking-[0.18em] text-thm-gold">
-            Your story at THM
-          </p>
-          <div className="relative mt-10 min-h-[320px] sm:min-h-[280px]">
+          <div className="relative min-h-[320px] sm:min-h-[280px]">
             {chapters.map((c, i) => (
               <motion.div
                 key={c.num}

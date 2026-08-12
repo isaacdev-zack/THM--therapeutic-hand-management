@@ -16,10 +16,7 @@ export function AdmissionsSection() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid items-start gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-gold">
-              Admissions
-            </p>
-            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
               Take the next step
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-white/80">

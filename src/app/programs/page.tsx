@@ -15,7 +15,6 @@ export default function ProgramsPage() {
     <main className="bg-white">
       <PageHero
         tone="purple"
-        eyebrow="Programs"
         title="NITA caregiver curriculum, built for real practice"
         description="Master the clinical, support, and safety skills employers expect — organized the way caregivers use them on the ward and in the home."
       />

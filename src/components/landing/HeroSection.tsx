@@ -45,7 +45,7 @@ export function HeroSection() {
       </div>
 
       {/* Desktop */}
-      <div className="relative z-10 hidden h-[600px] w-full items-center lg:flex">
+      <div className="relative z-10 hidden h-[600px] w-full items-end pb-20 lg:flex xl:pb-24">
         <div className="mx-auto w-full max-w-[1200px] px-10 xl:px-12">
           <div className="flex max-w-[920px] flex-row items-start justify-between gap-10">
             <div className="flex max-w-[520px] flex-col gap-8">
@@ -70,7 +70,7 @@ export function HeroSection() {
       </div>
 
       {/* Mobile */}
-      <div className="relative z-10 flex h-[520px] w-full flex-col items-center justify-center px-6 pt-16 lg:hidden">
+      <div className="relative z-10 flex h-[520px] w-full flex-col items-center justify-end px-6 pb-14 pt-20 lg:hidden">
         <div className="flex max-w-[340px] flex-col items-center gap-5 text-center">
           <h1 className="font-poppins text-[32px] font-bold leading-[1.15] text-white sm:text-[36px]">
             Enabling Caregivers with{" "}

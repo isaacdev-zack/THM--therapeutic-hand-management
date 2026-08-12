@@ -32,10 +32,7 @@ export function PathwaySection() {
       <div className="mx-auto max-w-[1120px]">
         <FadeUp className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <p className="font-poppins text-xs font-semibold uppercase tracking-[0.16em] text-thm-purple">
-              Your path
-            </p>
-            <h2 className="mt-2 font-poppins text-[1.85rem] font-bold tracking-tight text-thm-ink sm:text-3xl">
+            <h2 className="font-poppins text-[1.85rem] font-bold tracking-tight text-thm-ink sm:text-3xl">
               From enrollment to employment
             </h2>
           </div>

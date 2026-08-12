@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const navLinks = [
-  { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
   { href: "/financing", label: "CHANCEN financing" },
   { href: "/careers", label: "Career pathways" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Admissions" },
 ];
 

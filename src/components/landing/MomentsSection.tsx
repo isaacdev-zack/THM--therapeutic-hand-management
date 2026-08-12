@@ -39,10 +39,7 @@ export function MomentsSection() {
       <div className="mx-auto max-w-[1120px]">
         <FadeUp className="flex flex-col gap-2 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-poppins text-xs font-semibold uppercase tracking-[0.16em] text-thm-gold">
-              Life at THM
-            </p>
-            <h2 className="mt-2 font-poppins text-[1.85rem] font-bold tracking-tight sm:text-3xl">
+            <h2 className="font-poppins text-[1.85rem] font-bold tracking-tight sm:text-3xl">
               Training. Community. Graduation.
             </h2>
           </div>

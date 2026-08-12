@@ -7,10 +7,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "/about", label: "About" },
   { href: "/programs", label: "Programs" },
   { href: "/financing", label: "Financing" },
   { href: "/careers", label: "Careers" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 

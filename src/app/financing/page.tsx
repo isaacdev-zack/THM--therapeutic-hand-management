@@ -14,7 +14,6 @@ export default function FinancingPage() {
     <main className="bg-white">
       <PageHero
         tone="deep"
-        eyebrow="Financing"
         title="Remove the fee barrier. Start training."
         description="THM partners with CHANCEN International so less-privileged youth can train as caregivers without paying tuition upfront."
       />

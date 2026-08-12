@@ -23,8 +23,8 @@ export function FadeUp({
       className={className}
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px", amount: 0.25 }}
-      transition={{ duration: 0.55, delay, ease }}
+      viewport={{ once: true, margin: "0px 0px -10%", amount: 0.08 }}
+      transition={{ duration: 0.45, delay, ease }}
       {...rest}
     >
       {children}
@@ -47,7 +47,7 @@ export function Stagger({
       className={className}
       initial={reduce ? false : "hidden"}
       whileInView="show"
-      viewport={{ once: true, margin: "-40px", amount: 0.2 }}
+      viewport={{ once: true, margin: "0px 0px -8%", amount: 0.08 }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: reduce ? 0 : stagger } },

@@ -1,14 +1,12 @@
 import Link from "next/link";
 
 interface PageHeroProps {
-  eyebrow: string;
   title: string;
   description: string;
   tone?: "cream" | "purple" | "deep";
 }
 
 export function PageHero({
-  eyebrow,
   title,
   description,
   tone = "cream",
@@ -20,16 +18,11 @@ export function PageHero({
   };
 
   const muted = tone === "cream" ? "text-thm-muted" : "text-white/80";
-  const eye =
-    tone === "cream" ? "text-thm-purple" : "text-thm-gold";
 
   return (
     <section className={`${tones[tone]} border-b border-black/5`}>
       <div className="mx-auto max-w-[1200px] px-5 py-14 sm:px-8 lg:px-10 lg:py-20">
-        <p className={`font-poppins text-sm font-semibold uppercase tracking-[0.16em] ${eye}`}>
-          {eyebrow}
-        </p>
-        <h1 className="mt-3 max-w-3xl font-poppins text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl lg:leading-tight">
+        <h1 className="max-w-3xl font-poppins text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl lg:leading-tight">
           {title}
         </h1>
         <p className={`mt-4 max-w-2xl text-lg leading-relaxed ${muted}`}>
@@ -78,10 +71,7 @@ export function HomeAboutTeaser() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-purple">
-              About THM
-            </p>
-            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
               A Kenyan caregiver school built on skill, empathy, and trust
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-thm-muted">
@@ -119,10 +109,7 @@ export function HomeFinancingTeaser() {
       <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-8">
-            <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-gold">
-              Financing
-            </p>
-            <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
               Study Now, Pay Later with CHANCEN
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">

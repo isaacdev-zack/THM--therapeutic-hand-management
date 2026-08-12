@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/PageChrome";
-import { CareerSection } from "@/components/CareerSection";
-import { HomeCtaBand } from "@/components/PageChrome";
+import { CareersHero } from "@/components/careers/CareersHero";
+import { CareerImpactStats } from "@/components/careers/CareerImpactStats";
+import { CareerIntro } from "@/components/careers/CareerIntro";
+import { PlacementProof } from "@/components/careers/PlacementProof";
+import { GraduateStories } from "@/components/careers/GraduateStories";
+import { CareersCta } from "@/components/careers/CareersCta";
 
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Where THM graduates work — hospitals, elder care homes, childcare centres, and private home-based care.",
+    "From THM training to real caregiving careers — hospital placements, elder care, childcare, and home care across Kenya.",
 };
 
 export default function CareersPage() {
   return (
     <main className="bg-white">
-      <PageHero
-        tone="cream"
-        eyebrow="Career pathways"
-        title="From classroom to caregiving career"
-        description="A clear path from NITA training to employment across Kenya’s care economy — hospitals, homes, and community care."
-      />
-      <CareerSection />
-      <HomeCtaBand />
+      <CareersHero />
+      <CareerImpactStats />
+      <CareerIntro />
+      <PlacementProof />
+      <GraduateStories />
+      <CareersCta />
     </main>
   );
 }

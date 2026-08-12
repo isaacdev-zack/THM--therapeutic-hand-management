@@ -16,10 +16,7 @@ export function TrainingShowcase() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl"
         >
-          <p className="font-poppins text-sm font-semibold uppercase tracking-[0.16em] text-thm-purple">
-            See the training
-          </p>
-          <h2 className="mt-3 font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
             Practical labs. Real patient care skills.
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-thm-muted">
