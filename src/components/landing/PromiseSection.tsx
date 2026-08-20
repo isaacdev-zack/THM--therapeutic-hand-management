@@ -53,14 +53,8 @@ export function PromiseSection() {
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
-                  href="/about"
-                  className="inline-flex h-12 items-center rounded-full bg-thm-purple px-7 font-poppins text-sm font-semibold text-white transition-colors hover:bg-thm-purple-dark"
-                >
-                  About THM
-                </Link>
-                <Link
                   href="/programs"
-                  className="inline-flex h-12 items-center rounded-full border border-thm-ink/15 px-7 font-poppins text-sm font-semibold text-thm-ink transition-colors hover:border-thm-purple hover:text-thm-purple"
+                  className="inline-flex h-12 items-center rounded-full bg-thm-purple px-7 font-poppins text-sm font-semibold text-white transition-colors hover:bg-thm-purple-dark"
                 >
                   View programs
                 </Link>
