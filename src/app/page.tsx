@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { ScrollProgress } from "@/components/landing/ScrollProgress";
 import { ImpactSection } from "@/components/landing/ImpactSection";
 import { PromiseSection } from "@/components/landing/PromiseSection";
+import { VitalSignsSection } from "@/components/landing/VitalSignsSection";
 import { PathwaySection } from "@/components/landing/PathwaySection";
 import { SkillsSection } from "@/components/landing/SkillsSection";
 import { FinancingSection } from "@/components/landing/FinancingSection";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <ImpactSection />
       <PromiseSection />
+      <VitalSignsSection />
       <PathwaySection />
       <SkillsSection />
       <FinancingSection />
