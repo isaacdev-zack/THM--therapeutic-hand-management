@@ -9,9 +9,9 @@ export function PromiseSection() {
     <section className="bg-thm-cream px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[1120px]">
         <FadeUp>
-          <div className="relative lg:min-h-[500px] xl:min-h-[540px]">
+          <div className="relative lg:min-h-[560px] xl:min-h-[600px]">
             {/* Image — left panel with rounded corners + overlay headline */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] sm:rounded-[36px] lg:absolute lg:inset-y-0 lg:left-0 lg:aspect-auto lg:w-[64%] lg:min-h-[480px]">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] sm:rounded-[36px] lg:absolute lg:inset-y-0 lg:left-0 lg:aspect-auto lg:w-[64%] lg:min-h-[540px]">
               <Image
                 src="https://images.unsplash.com/photo-1536064479547-7ee40b74b807?q=80&w=1400&auto=format&fit=crop"
                 alt="African healthcare professional with a young patient"
@@ -40,9 +40,13 @@ export function PromiseSection() {
                 </span>
               </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-thm-muted sm:text-base">
-                Registered April 2023. We equip caregivers with high-quality
-                skills to safeguard children and adults at risk — with empathy,
-                love, and respect.
+                Caregiver II performs mainly routine duties in healthcare
+                facilities with some limited autonomy in defined contexts and
+                within established parameters. THM trains caregivers to have
+                basic job-specific knowledge and skills to provide personal care
+                to a client at home, facilitate patient care and management,
+                ensure patient safety and environmental safety, and adhere to
+                healthcare professional ethics.
               </p>
               <p className="mt-3 text-sm text-thm-muted">
                 Westlands, Nairobi · also Kisumu — New Waumini House, 3rd Floor
