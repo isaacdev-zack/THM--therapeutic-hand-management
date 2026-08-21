@@ -26,7 +26,7 @@ const stats = [
   {
     kind: "text" as const,
     display: "100%",
-    label: "Hands-on labs & ward practice",
+    label: "Hands-on labs & practice",
   },
 ];
 
