@@ -10,13 +10,14 @@ import {
 import {
   FieldLabel,
   FormField,
-  FormGrid,
+  FormRow,
   FormSection,
   RadioOption,
   SelectInput,
   TextArea,
   TextInput,
 } from "./FormUi";
+import { SearchableSelect } from "./SearchableSelect";
 import {
   initialAdmissionForm,
   kenyanCounties,
@@ -88,8 +89,8 @@ export function CaregiverAdmissionForm() {
   }
 
   return (
-    <div className="min-w-0 max-w-full space-y-6 overflow-hidden">
-      <div className="min-w-0 overflow-hidden rounded-2xl border-2 border-thm-gold bg-white p-4 sm:p-6">
+    <div className="min-w-0 max-w-full space-y-6">
+      <div className="min-w-0 rounded-2xl border-2 border-thm-gold bg-white p-4 sm:p-6">
         <div className="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-wide text-thm-muted">
           <span>Step {step} of {steps.length}</span>
           <span className="text-right">{steps[step - 1].title}</span>
@@ -125,153 +126,159 @@ export function CaregiverAdmissionForm() {
             title="Applicant's personal details"
             description="Enter your details as they appear on your ID or passport."
           >
-            <FormGrid>
-              <FormField span={4}>
-                <FieldLabel required>First name</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.firstName}
-                  onChange={(e) => update("firstName", e.target.value)}
-                  placeholder="Jane"
-                />
-              </FormField>
-              <FormField span={4}>
-                <FieldLabel>Second name</FieldLabel>
-                <TextInput
-                  uppercase
-                  value={form.secondName}
-                  onChange={(e) => update("secondName", e.target.value)}
-                  placeholder="Wanjiku"
-                />
-              </FormField>
-              <FormField span={4}>
-                <FieldLabel required>Surname</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.surname}
-                  onChange={(e) => update("surname", e.target.value)}
-                  placeholder="Otieno"
-                />
-              </FormField>
+            <div className="space-y-5">
+              <FormRow columns={3}>
+                <FormField>
+                  <FieldLabel required>First name</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.firstName}
+                    onChange={(e) => update("firstName", e.target.value)}
+                    placeholder="Jane"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel>Second name</FieldLabel>
+                  <TextInput
+                    uppercase
+                    value={form.secondName}
+                    onChange={(e) => update("secondName", e.target.value)}
+                    placeholder="Wanjiku"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Surname</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.surname}
+                    onChange={(e) => update("surname", e.target.value)}
+                    placeholder="Otieno"
+                  />
+                </FormField>
+              </FormRow>
 
-              <FormField span={6}>
-                <FieldLabel required>ID / passport number</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.idNumber}
-                  onChange={(e) => update("idNumber", e.target.value)}
-                  placeholder="12345678"
-                />
-              </FormField>
-              <FormField span={6}>
-                <FieldLabel required>Date of birth</FieldLabel>
-                <TextInput
-                  required
-                  type="date"
-                  value={form.dateOfBirth}
-                  onChange={(e) => update("dateOfBirth", e.target.value)}
-                />
-              </FormField>
+              <FormRow columns={2}>
+                <FormField>
+                  <FieldLabel required>ID / passport number</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.idNumber}
+                    onChange={(e) => update("idNumber", e.target.value)}
+                    placeholder="12345678"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Date of birth</FieldLabel>
+                  <TextInput
+                    required
+                    type="date"
+                    value={form.dateOfBirth}
+                    onChange={(e) => update("dateOfBirth", e.target.value)}
+                  />
+                </FormField>
+              </FormRow>
 
-              <FormField span={3}>
-                <FieldLabel required>Gender</FieldLabel>
-                <SelectInput
-                  required
-                  value={form.gender}
-                  onChange={(e) => update("gender", e.target.value)}
-                >
-                  <option value="">Select gender</option>
-                  <option value="female">Female</option>
-                  <option value="male">Male</option>
-                  <option value="other">Other</option>
-                </SelectInput>
-              </FormField>
-              <FormField span={3}>
-                <FieldLabel required>Religion</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.religion}
-                  onChange={(e) => update("religion", e.target.value)}
-                  placeholder="Christian"
-                />
-              </FormField>
-              <FormField span={3}>
-                <FieldLabel required>Nationality</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.nationality}
-                  onChange={(e) => update("nationality", e.target.value)}
-                />
-              </FormField>
-              <FormField span={3}>
-                <FieldLabel required>Preferred campus</FieldLabel>
-                <SelectInput
-                  required
-                  value={form.preferredCampus}
-                  onChange={(e) =>
-                    update(
-                      "preferredCampus",
-                      e.target.value as AdmissionFormData["preferredCampus"],
-                    )
-                  }
-                >
-                  <option value="nairobi">Nairobi</option>
-                  <option value="kisumu">Kisumu</option>
-                </SelectInput>
-              </FormField>
+              <FormRow columns={2}>
+                <FormField>
+                  <FieldLabel required>Gender</FieldLabel>
+                  <SelectInput
+                    required
+                    value={form.gender}
+                    onChange={(e) => update("gender", e.target.value)}
+                  >
+                    <option value="">Select gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                  </SelectInput>
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Religion</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.religion}
+                    onChange={(e) => update("religion", e.target.value)}
+                    placeholder="Christian"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Nationality</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.nationality}
+                    onChange={(e) => update("nationality", e.target.value)}
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Preferred campus</FieldLabel>
+                  <SelectInput
+                    required
+                    value={form.preferredCampus}
+                    onChange={(e) =>
+                      update(
+                        "preferredCampus",
+                        e.target.value as AdmissionFormData["preferredCampus"],
+                      )
+                    }
+                  >
+                    <option value="nairobi">Nairobi</option>
+                    <option value="kisumu">Kisumu</option>
+                  </SelectInput>
+                </FormField>
+              </FormRow>
 
-              <FormField span={6}>
-                <FieldLabel required>County of origin</FieldLabel>
-                <SelectInput
-                  required
-                  value={form.countyOfOrigin}
-                  onChange={(e) => update("countyOfOrigin", e.target.value)}
-                >
-                  <option value="">Select county</option>
-                  {kenyanCounties.map((county) => (
-                    <option key={county} value={county}>
-                      {county}
-                    </option>
-                  ))}
-                </SelectInput>
-              </FormField>
-              <FormField span={6}>
-                <FieldLabel required>Current residence</FieldLabel>
-                <TextInput
-                  required
-                  uppercase
-                  value={form.currentResidence}
-                  onChange={(e) => update("currentResidence", e.target.value)}
-                  placeholder="Westlands, Nairobi"
-                />
-              </FormField>
+              <FormRow columns={2}>
+                <FormField>
+                  <FieldLabel required>County of origin</FieldLabel>
+                  <SearchableSelect
+                    required
+                    value={form.countyOfOrigin}
+                    onChange={(county) => update("countyOfOrigin", county)}
+                    options={kenyanCounties}
+                    placeholder="Select county"
+                    searchPlaceholder="Search county…"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Current residence</FieldLabel>
+                  <TextInput
+                    required
+                    uppercase
+                    value={form.currentResidence}
+                    onChange={(e) => update("currentResidence", e.target.value)}
+                    placeholder="Westlands, Nairobi"
+                  />
+                </FormField>
+              </FormRow>
 
-              <FormField span={6}>
-                <FieldLabel required>Active phone number</FieldLabel>
-                <TextInput
-                  required
-                  type="tel"
-                  value={form.phone}
-                  onChange={(e) => update("phone", e.target.value)}
-                  placeholder="07XX XXX XXX"
-                />
-              </FormField>
-              <FormField span={6}>
-                <FieldLabel required>Active email</FieldLabel>
-                <TextInput
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => update("email", e.target.value)}
-                  placeholder="you@email.com"
-                />
-              </FormField>
-            </FormGrid>
+              <FormRow columns={2}>
+                <FormField>
+                  <FieldLabel required>Active phone number</FieldLabel>
+                  <TextInput
+                    required
+                    type="tel"
+                    value={form.phone}
+                    onChange={(e) => update("phone", e.target.value)}
+                    placeholder="07XX XXX XXX"
+                  />
+                </FormField>
+                <FormField>
+                  <FieldLabel required>Active email</FieldLabel>
+                  <TextInput
+                    required
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => update("email", e.target.value)}
+                    placeholder="you@email.com"
+                  />
+                </FormField>
+              </FormRow>
+            </div>
           </FormSection>
         ) : null}
 
@@ -328,9 +335,9 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Father
                 </p>
-                <div className="mt-3">
-                  <FormGrid>
-                    <FormField span={12}>
+                <div className="mt-3 space-y-5">
+                  <FormRow columns={1}>
+                    <FormField>
                       <FieldLabel>Full name</FieldLabel>
                       <TextInput
                         uppercase
@@ -338,7 +345,9 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("fatherName", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={5}>
+                  </FormRow>
+                  <FormRow columns={2}>
+                    <FormField>
                       <FieldLabel>Phone</FieldLabel>
                       <TextInput
                         type="tel"
@@ -346,7 +355,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("fatherPhone", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={7}>
+                    <FormField>
                       <FieldLabel>Email</FieldLabel>
                       <TextInput
                         type="email"
@@ -354,7 +363,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("fatherEmail", e.target.value)}
                       />
                     </FormField>
-                  </FormGrid>
+                  </FormRow>
                 </div>
               </div>
 
@@ -362,9 +371,9 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Mother
                 </p>
-                <div className="mt-3">
-                  <FormGrid>
-                    <FormField span={12}>
+                <div className="mt-3 space-y-5">
+                  <FormRow columns={1}>
+                    <FormField>
                       <FieldLabel>Full name</FieldLabel>
                       <TextInput
                         uppercase
@@ -372,7 +381,9 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("motherName", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={5}>
+                  </FormRow>
+                  <FormRow columns={2}>
+                    <FormField>
                       <FieldLabel>Phone</FieldLabel>
                       <TextInput
                         type="tel"
@@ -380,7 +391,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("motherPhone", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={7}>
+                    <FormField>
                       <FieldLabel>Email</FieldLabel>
                       <TextInput
                         type="email"
@@ -388,7 +399,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("motherEmail", e.target.value)}
                       />
                     </FormField>
-                  </FormGrid>
+                  </FormRow>
                 </div>
               </div>
 
@@ -396,9 +407,9 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Other next of kin
                 </p>
-                <div className="mt-3">
-                  <FormGrid>
-                    <FormField span={12}>
+                <div className="mt-3 space-y-5">
+                  <FormRow columns={1}>
+                    <FormField>
                       <FieldLabel>Full name</FieldLabel>
                       <TextInput
                         uppercase
@@ -406,7 +417,9 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("otherNokName", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={5}>
+                  </FormRow>
+                  <FormRow columns={2}>
+                    <FormField>
                       <FieldLabel>Phone</FieldLabel>
                       <TextInput
                         type="tel"
@@ -414,7 +427,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("otherNokPhone", e.target.value)}
                       />
                     </FormField>
-                    <FormField span={7}>
+                    <FormField>
                       <FieldLabel>Email</FieldLabel>
                       <TextInput
                         type="email"
@@ -422,7 +435,7 @@ export function CaregiverAdmissionForm() {
                         onChange={(e) => update("otherNokEmail", e.target.value)}
                       />
                     </FormField>
-                  </FormGrid>
+                  </FormRow>
                 </div>
               </div>
             </FormSection>
@@ -457,8 +470,8 @@ export function CaregiverAdmissionForm() {
                 ))}
               </div>
               {form.feePayer === "other" ? (
-                <FormGrid>
-                  <FormField span={4}>
+                <FormRow columns={3}>
+                  <FormField>
                     <FieldLabel required>Full name</FieldLabel>
                     <TextInput
                       required
@@ -469,7 +482,7 @@ export function CaregiverAdmissionForm() {
                       }
                     />
                   </FormField>
-                  <FormField span={4}>
+                  <FormField>
                     <FieldLabel required>Relationship</FieldLabel>
                     <TextInput
                       required
@@ -480,7 +493,7 @@ export function CaregiverAdmissionForm() {
                       }
                     />
                   </FormField>
-                  <FormField span={4}>
+                  <FormField>
                     <FieldLabel required>Active phone</FieldLabel>
                     <TextInput
                       required
@@ -491,7 +504,7 @@ export function CaregiverAdmissionForm() {
                       }
                     />
                   </FormField>
-                </FormGrid>
+                </FormRow>
               ) : null}
             </FormSection>
 
@@ -500,76 +513,82 @@ export function CaregiverAdmissionForm() {
               title="Education background"
               description="Tell us about your most recent schooling."
             >
-              <FormGrid>
-                <FormField span={6}>
-                  <FieldLabel required>Last education level attained</FieldLabel>
-                  <SelectInput
-                    required
-                    value={form.educationLevel}
-                    onChange={(e) =>
-                      update(
-                        "educationLevel",
-                        e.target.value as AdmissionFormData["educationLevel"],
-                      )
-                    }
-                  >
-                    <option value="">Select level</option>
-                    <option value="primary">Primary</option>
-                    <option value="secondary">Secondary</option>
-                    <option value="college">College</option>
-                  </SelectInput>
-                </FormField>
-                <FormField span={6}>
-                  <FieldLabel required>Grade attained</FieldLabel>
-                  <TextInput
-                    required
-                    value={form.gradeAttained}
-                    onChange={(e) => update("gradeAttained", e.target.value)}
-                    placeholder="C+"
-                  />
-                </FormField>
-                <FormField span={6}>
-                  <FieldLabel required>Name of school attended</FieldLabel>
-                  <TextInput
-                    required
-                    uppercase
-                    value={form.schoolName}
-                    onChange={(e) => update("schoolName", e.target.value)}
-                  />
-                </FormField>
-                <FormField span={6}>
-                  <FieldLabel required>Year completed</FieldLabel>
-                  <TextInput
-                    required
-                    type="number"
-                    min={1980}
-                    max={2030}
-                    value={form.yearCompleted}
-                    onChange={(e) => update("yearCompleted", e.target.value)}
-                    placeholder="2020"
-                  />
-                </FormField>
-                <FormField span={12}>
-                  <FieldLabel required>How did you know about THM?</FieldLabel>
-                  <SelectInput
-                    required
-                    value={form.referralSource}
-                    onChange={(e) =>
-                      update(
-                        "referralSource",
-                        e.target.value as AdmissionFormData["referralSource"],
-                      )
-                    }
-                  >
-                    <option value="">Select one</option>
-                    {referralOptions.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </SelectInput>
-                </FormField>
-              </FormGrid>
+              <div className="space-y-5">
+                <FormRow columns={2}>
+                  <FormField>
+                    <FieldLabel required>Last education level attained</FieldLabel>
+                    <SelectInput
+                      required
+                      value={form.educationLevel}
+                      onChange={(e) =>
+                        update(
+                          "educationLevel",
+                          e.target.value as AdmissionFormData["educationLevel"],
+                        )
+                      }
+                    >
+                      <option value="">Select level</option>
+                      <option value="primary">Primary</option>
+                      <option value="secondary">Secondary</option>
+                      <option value="college">College</option>
+                    </SelectInput>
+                  </FormField>
+                  <FormField>
+                    <FieldLabel required>Grade attained</FieldLabel>
+                    <TextInput
+                      required
+                      value={form.gradeAttained}
+                      onChange={(e) => update("gradeAttained", e.target.value)}
+                      placeholder="C+"
+                    />
+                  </FormField>
+                </FormRow>
+                <FormRow columns={2}>
+                  <FormField>
+                    <FieldLabel required>Name of school attended</FieldLabel>
+                    <TextInput
+                      required
+                      uppercase
+                      value={form.schoolName}
+                      onChange={(e) => update("schoolName", e.target.value)}
+                    />
+                  </FormField>
+                  <FormField>
+                    <FieldLabel required>Year completed</FieldLabel>
+                    <TextInput
+                      required
+                      type="number"
+                      min={1980}
+                      max={2030}
+                      value={form.yearCompleted}
+                      onChange={(e) => update("yearCompleted", e.target.value)}
+                      placeholder="2020"
+                    />
+                  </FormField>
+                </FormRow>
+                <FormRow columns={1}>
+                  <FormField>
+                    <FieldLabel required>How did you know about THM?</FieldLabel>
+                    <SelectInput
+                      required
+                      value={form.referralSource}
+                      onChange={(e) =>
+                        update(
+                          "referralSource",
+                          e.target.value as AdmissionFormData["referralSource"],
+                        )
+                      }
+                    >
+                      <option value="">Select one</option>
+                      {referralOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </SelectInput>
+                  </FormField>
+                </FormRow>
+              </div>
             </FormSection>
           </>
         ) : null}

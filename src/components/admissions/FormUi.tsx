@@ -21,23 +21,50 @@ const lgSpan: Record<number, string> = {
   12: "lg:col-span-12",
 };
 
+const rowCols = {
+  1: "grid-cols-1",
+  2: "grid-cols-1 sm:grid-cols-2",
+  3: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+} as const;
+
+export function FormRow({
+  children,
+  columns = 2,
+}: {
+  children: ReactNode;
+  columns?: keyof typeof rowCols;
+}) {
+  return (
+    <div
+      className={`grid w-full max-w-full ${rowCols[columns]} gap-x-4 gap-y-5 sm:gap-x-5`}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** @deprecated Prefer FormRow for responsive layouts */
 export function FormGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="grid w-full max-w-full grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-x-5 lg:grid-cols-12">
+    <div className="grid w-full max-w-full grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-x-5">
       {children}
     </div>
   );
 }
 
 export function FormField({
-  span = 12,
+  span,
   children,
 }: {
   span?: keyof typeof lgSpan;
   children: ReactNode;
 }) {
   return (
-    <div className={`min-w-0 ${lgSpan[span] ?? lgSpan[12]}`}>{children}</div>
+    <div
+      className={`min-w-0 max-w-full ${span ? (lgSpan[span] ?? "") : ""}`}
+    >
+      {children}
+    </div>
   );
 }
 
@@ -52,7 +79,7 @@ export function FieldLabel({
 }) {
   return (
     <div className="mb-1.5">
-      <label className="block min-h-4 break-words text-xs font-semibold uppercase leading-4 tracking-wide text-thm-muted">
+      <label className="block min-h-4 break-words text-xs font-semibold uppercase leading-snug tracking-normal text-thm-muted">
         {children}
         {required ? <span className="text-thm-purple"> *</span> : null}
       </label>
@@ -110,7 +137,7 @@ export function FormSection({
   children: ReactNode;
 }) {
   return (
-    <div className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-thm-purple/10 bg-white p-5 shadow-[0_8px_32px_rgba(30,19,38,0.06)] sm:p-8">
+    <div className="min-w-0 max-w-full rounded-2xl border border-thm-purple/10 bg-white p-5 shadow-[0_8px_32px_rgba(30,19,38,0.06)] sm:p-8">
       <div className="mb-6 flex min-w-0 items-start gap-4 border-b border-thm-ink/8 pb-5">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-thm-purple font-poppins text-sm font-bold text-white">
           {step}
