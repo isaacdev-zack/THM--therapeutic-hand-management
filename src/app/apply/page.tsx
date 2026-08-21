@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ApplyPage() {
   return (
-    <main className="bg-white pt-[76px]">
+    <main className="overflow-x-clip bg-white pt-[76px]">
       <ApplySection />
     </main>
   );

@@ -3,7 +3,10 @@
 import type { ReactNode } from "react";
 
 const inputClass =
-  "h-12 w-full min-w-0 rounded-xl border-2 border-slate-200 bg-white px-4 text-sm text-thm-ink outline-none transition-colors placeholder:text-slate-400 focus:border-thm-purple";
+  "box-border h-12 w-full max-w-full min-w-0 rounded-xl border-2 border-slate-200 bg-white px-4 text-sm text-thm-ink outline-none transition-colors placeholder:text-slate-400 focus:border-thm-purple";
+
+const selectClass =
+  "box-border h-12 w-full max-w-full min-w-0 truncate rounded-xl border-2 border-slate-200 bg-white px-4 pr-9 text-sm text-thm-ink outline-none transition-colors focus:border-thm-purple";
 
 const textareaClass =
   "min-h-[96px] w-full min-w-0 resize-y rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-sm text-thm-ink outline-none transition-colors placeholder:text-slate-400 focus:border-thm-purple";
@@ -20,7 +23,7 @@ const lgSpan: Record<number, string> = {
 
 export function FormGrid({ children }: { children: ReactNode }) {
   return (
-    <div className="grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2 lg:grid-cols-12">
+    <div className="grid w-full max-w-full grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-x-5 lg:grid-cols-12">
       {children}
     </div>
   );
@@ -49,7 +52,7 @@ export function FieldLabel({
 }) {
   return (
     <div className="mb-1.5">
-      <label className="block min-h-4 text-xs font-semibold uppercase leading-4 tracking-wide text-thm-muted">
+      <label className="block min-h-4 break-words text-xs font-semibold uppercase leading-4 tracking-wide text-thm-muted">
         {children}
         {required ? <span className="text-thm-purple"> *</span> : null}
       </label>
@@ -88,7 +91,7 @@ export function SelectInput({
   return (
     <select
       {...props}
-      className={`${inputClass} normal-case ${className}`}
+      className={`${selectClass} normal-case ${className}`}
     >
       {children}
     </select>
@@ -107,23 +110,23 @@ export function FormSection({
   children: ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-thm-purple/10 bg-white p-6 shadow-[0_8px_32px_rgba(30,19,38,0.06)] sm:p-8">
-      <div className="mb-6 flex items-start gap-4 border-b border-thm-ink/8 pb-5">
+    <div className="min-w-0 max-w-full overflow-hidden rounded-2xl border border-thm-purple/10 bg-white p-5 shadow-[0_8px_32px_rgba(30,19,38,0.06)] sm:p-8">
+      <div className="mb-6 flex min-w-0 items-start gap-4 border-b border-thm-ink/8 pb-5">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-thm-purple font-poppins text-sm font-bold text-white">
           {step}
         </span>
-        <div>
-          <h4 className="font-poppins text-lg font-bold text-thm-ink sm:text-xl">
+        <div className="min-w-0 flex-1">
+          <h4 className="break-words font-poppins text-lg font-bold text-thm-ink sm:text-xl">
             {title}
           </h4>
           {description ? (
-            <p className="mt-1 text-sm leading-relaxed text-thm-muted">
+            <p className="mt-1 break-words text-sm leading-relaxed text-thm-muted">
               {description}
             </p>
           ) : null}
         </div>
       </div>
-      <div className="space-y-6">{children}</div>
+      <div className="min-w-0 space-y-6">{children}</div>
     </div>
   );
 }

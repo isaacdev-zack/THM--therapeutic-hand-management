@@ -19,6 +19,7 @@ import {
 } from "./FormUi";
 import {
   initialAdmissionForm,
+  kenyanCounties,
   referralOptions,
   type AdmissionFormData,
 } from "@/types/admission";
@@ -87,13 +88,11 @@ export function CaregiverAdmissionForm() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-2xl border-2 border-thm-gold bg-white p-5 sm:p-6">
-        <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-thm-muted">
-          <span>
-            Step {step} of {steps.length}
-          </span>
-          <span>{steps[step - 1].title}</span>
+    <div className="min-w-0 max-w-full space-y-6 overflow-hidden">
+      <div className="min-w-0 overflow-hidden rounded-2xl border-2 border-thm-gold bg-white p-4 sm:p-6">
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-semibold uppercase tracking-wide text-thm-muted">
+          <span>Step {step} of {steps.length}</span>
+          <span className="text-right">{steps[step - 1].title}</span>
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-slate-100">
           <div
@@ -119,7 +118,7 @@ export function CaregiverAdmissionForm() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="min-w-0 space-y-6">
         {step === 1 ? (
           <FormSection
             step={1}
@@ -228,13 +227,18 @@ export function CaregiverAdmissionForm() {
 
               <FormField span={6}>
                 <FieldLabel required>County of origin</FieldLabel>
-                <TextInput
+                <SelectInput
                   required
-                  uppercase
                   value={form.countyOfOrigin}
                   onChange={(e) => update("countyOfOrigin", e.target.value)}
-                  placeholder="Nairobi"
-                />
+                >
+                  <option value="">Select county</option>
+                  {kenyanCounties.map((county) => (
+                    <option key={county} value={county}>
+                      {county}
+                    </option>
+                  ))}
+                </SelectInput>
               </FormField>
               <FormField span={6}>
                 <FieldLabel required>Current residence</FieldLabel>

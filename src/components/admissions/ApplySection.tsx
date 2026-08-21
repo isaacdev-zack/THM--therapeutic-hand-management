@@ -5,8 +5,8 @@ import { CaregiverAdmissionForm } from "./CaregiverAdmissionForm";
 
 export function ApplySection() {
   return (
-    <section className="bg-thm-purple-deep pb-16 pt-12 text-white sm:pb-20 sm:pt-16 lg:pb-24">
-      <div className="mx-auto max-w-[900px] px-5 sm:px-8 lg:px-10">
+    <section className="overflow-x-clip bg-thm-purple-deep pb-16 pt-12 text-white sm:pb-20 sm:pt-16 lg:pb-24">
+      <div className="mx-auto w-full max-w-[900px] px-5 sm:px-8 lg:px-10">
         <header className="border-b border-white/10 pb-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-thm-gold">
             Caregiver II
