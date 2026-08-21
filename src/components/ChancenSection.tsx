@@ -15,15 +15,15 @@ const benefits = [
 
 const stats = [
   {
-    value: 9000,
+    value: 150,
     suffix: "+",
-    label: "Students financed globally",
+    label: "THM graduates since 2023",
     counter: true,
   },
   {
-    value: 93,
-    suffix: "%",
-    label: "Graduation rate",
+    value: 2,
+    suffix: "",
+    label: "Campus cities",
     counter: true,
   },
 ];
@@ -43,12 +43,11 @@ export function ChancenSection() {
             className="lg:col-span-7"
           >
             <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-              Study Now, Pay Later with CHANCEN International
+              Study Now, Pay Later at THM
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
-              THM partners with CHANCEN International so less-privileged youth
-              can train as caregivers without paying fees upfront — then repay
-              after completing their studies.
+              Less-privileged youth can train as caregivers at THM without
+              paying fees upfront — then repay after completing their studies.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -66,9 +65,14 @@ export function ChancenSection() {
               href="/contact"
               className="mt-9 inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 font-poppins text-base font-semibold text-thm-purple transition-colors hover:bg-thm-cream"
             >
-              Apply for CHANCEN funding
+              Apply with financing
               <ArrowRight className="h-4 w-4" />
             </Link>
+
+            <p className="mt-8 max-w-xl text-sm leading-relaxed text-white/55">
+              THM financing is delivered in partnership with CHANCEN
+              International.
+            </p>
           </motion.div>
 
           <motion.div
@@ -80,21 +84,14 @@ export function ChancenSection() {
           >
             <div className="rounded-2xl bg-white/10 p-6 sm:p-8">
               <p className="font-poppins text-sm font-semibold text-white/90">
-                CHANCEN track record
+                At a glance
               </p>
 
               <div className="mt-6 grid grid-cols-2 gap-4">
                 {stats.map((stat) => (
                   <div key={stat.label} className="rounded-xl bg-white/10 p-5">
                     <p className="font-poppins text-3xl font-bold text-white">
-                      {stat.counter ? (
-                        <AnimatedCounter to={stat.value} suffix={stat.suffix} />
-                      ) : (
-                        <>
-                          {stat.value}
-                          {stat.suffix}
-                        </>
-                      )}
+                      <AnimatedCounter to={stat.value} suffix={stat.suffix} />
                     </p>
                     <p className="mt-1.5 text-sm text-white/70">{stat.label}</p>
                   </div>

@@ -21,8 +21,7 @@ export function FinancingSection() {
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/85 sm:text-base">
             Remove the fee barrier. Eligible youth can train at THM without
-            paying upfront — then repay after finishing studies. CHANCEN has
-            financed 9,000+ students globally with a 93% graduation rate.
+            paying upfront — then repay after finishing studies.
           </p>
           <Stagger className="mt-6 grid gap-2 sm:grid-cols-2" stagger={0.06}>
             {points.map((p) => (
@@ -43,13 +42,13 @@ export function FinancingSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-xl bg-white/10 p-5">
                 <p className="font-poppins text-3xl font-bold text-white">
-                  9,000+
+                  150+
                 </p>
-                <p className="mt-1.5 text-sm text-white/70">Students financed</p>
+                <p className="mt-1.5 text-sm text-white/70">THM graduates</p>
               </div>
               <div className="rounded-xl bg-white/10 p-5">
-                <p className="font-poppins text-3xl font-bold text-white">93%</p>
-                <p className="mt-1.5 text-sm text-white/70">Graduation rate</p>
+                <p className="font-poppins text-3xl font-bold text-white">2</p>
+                <p className="mt-1.5 text-sm text-white/70">Campus cities</p>
               </div>
             </div>
             <Link
