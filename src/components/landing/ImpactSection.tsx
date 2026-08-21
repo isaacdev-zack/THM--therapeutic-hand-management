@@ -7,7 +7,7 @@ const stats = [
   { value: 150, suffix: "+", label: "Graduates since 2023" },
   { value: null, display: "NITA", label: "Curriculum standard" },
   { value: 2, suffix: "", label: "Counties served" },
-  { value: 93, suffix: "%", label: "CHANCEN graduation rate" },
+  { value: 4, suffix: "", label: "Placement settings" },
 ];
 
 function Count({

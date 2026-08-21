@@ -7,7 +7,7 @@ const steps = [
   {
     n: "01",
     title: "Enroll",
-    text: "Apply for Certificate in Caregiver training. Ask about CHANCEN financing.",
+    text: "Apply for Certificate in Caregiver training at THM.",
   },
   {
     n: "02",

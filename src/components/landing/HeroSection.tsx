@@ -62,8 +62,7 @@ export function HeroSection() {
               </Link>
             </div>
             <p className="mt-14 max-w-[280px] font-poppins text-lg font-normal leading-relaxed text-thm-cream/90 xl:text-xl">
-              NITA-certified training in Nairobi & Kisumu — with Study Now, Pay
-              Later.
+              NITA-certified training in Nairobi & Kisumu.
             </p>
           </div>
         </div>

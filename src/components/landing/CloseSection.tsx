@@ -12,8 +12,8 @@ export function CloseSection() {
             Ready for your caregiving career?
           </h2>
           <p className="mt-2 text-sm text-white/80 sm:text-base">
-            Apply for Nairobi or Kisumu — and ask about CHANCEN Study Now, Pay
-            Later.
+            Apply for Nairobi or Kisumu — flexible financing available for
+            eligible students.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

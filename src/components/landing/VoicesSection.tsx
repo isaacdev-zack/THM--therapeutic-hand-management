@@ -11,7 +11,7 @@ const voices = [
   },
   {
     quote:
-      "Placeholder — replace with a CHANCEN beneficiary story about Study Now, Pay Later.",
+      "Placeholder — replace with a real THM graduate story about training and placement.",
     name: "Graduate Name",
     role: "Class of — · Role",
   },
