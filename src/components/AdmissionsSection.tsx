@@ -167,6 +167,36 @@ export function AdmissionsSection() {
             </div>
           </div>
         </div>
+
+        <div className="mt-14 lg:mt-16">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-5 w-5 text-thm-gold" />
+              <h3 className="font-poppins text-lg font-semibold sm:text-xl">
+                Find us on the map
+              </h3>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=New+Waumini+House+Westlands+Nairobi+Kenya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-thm-gold transition-colors hover:text-white"
+            >
+              <MapPin className="h-4 w-4" />
+              Open in Google Maps
+            </a>
+          </div>
+          <div className="overflow-hidden rounded-2xl border-2 border-thm-gold/40 shadow-[0_12px_40px_rgba(0,0,0,0.25)]">
+            <iframe
+              title="THM campus — New Waumini House, Westlands, Nairobi"
+              src="https://maps.google.com/maps?q=New+Waumini+House,+Westlands,+Nairobi,+Kenya&hl=en&z=16&output=embed"
+              className="h-[280px] w-full border-0 sm:h-[360px] lg:h-[420px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -22,8 +22,9 @@ export function FinancingSection() {
             <span className="text-thm-gold">Pay when you&apos;re ready.</span>
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/85 sm:text-base">
-            Eligible youth can train at THM without paying upfront — then repay
-            after finishing studies.
+            Train under the NITA curriculum with supervised ward practice,
+            patient-centred labs, and instructors who prepare you for real care
+            settings — not just the classroom.
           </p>
           <Stagger className="mt-6 grid gap-2 sm:grid-cols-2" stagger={0.06}>
             {points.map((p) => (

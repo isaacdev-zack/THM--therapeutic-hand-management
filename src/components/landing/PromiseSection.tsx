@@ -43,9 +43,6 @@ export function PromiseSection() {
             <div className="relative z-10 mx-3 -mt-12 rounded-[28px] bg-white p-7 shadow-[0_16px_48px_rgba(30,19,38,0.08)] sm:mx-6 sm:p-9 lg:absolute lg:right-0 lg:top-1/2 lg:mx-0 lg:mt-0 lg:w-[52%] lg:-translate-y-1/2 lg:rounded-[36px] lg:p-11 xl:p-12">
               <h2 className="font-poppins text-[1.75rem] font-bold leading-[1.12] tracking-tight text-thm-ink sm:text-[2rem] lg:text-[2.25rem]">
                 NITA-certified caregiver training.
-                <span className="mt-2 block text-[1.05rem] font-semibold uppercase tracking-[0.04em] text-thm-gold sm:text-lg lg:text-xl">
-                  NITA Caregiver II training curriculum
-                </span>
               </h2>
 
               <p className="mt-5 text-[15px] leading-relaxed text-thm-muted sm:text-base">
