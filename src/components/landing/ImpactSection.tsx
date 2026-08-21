@@ -2,27 +2,31 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
+import { LoopingCounter } from "@/components/LoopingCounter";
 
 const stats = [
   {
-    value: 150,
+    kind: "loop" as const,
+    from: 150,
+    to: 500,
     suffix: "+",
     label: "Graduates building careers in care",
   },
   {
-    value: null,
+    kind: "text" as const,
     display: "NITA",
     label: "Certified training employers trust",
   },
   {
+    kind: "count" as const,
     value: 2,
     suffix: "",
     label: "Campuses — Nairobi & Kisumu",
   },
   {
-    value: 0,
-    suffix: "",
-    label: "Upfront tuition for eligible youth",
+    kind: "text" as const,
+    display: "100%",
+    label: "Hands-on labs & ward practice",
   },
 ];
 
@@ -80,9 +84,17 @@ export function ImpactSection() {
             }`}
           >
             <p className="font-poppins text-3xl font-bold tracking-tight text-thm-purple sm:text-4xl">
-              {s.display ?? (
+              {s.kind === "loop" ? (
+                <LoopingCounter
+                  from={s.from}
+                  to={s.to}
+                  suffix={s.suffix}
+                />
+              ) : s.kind === "text" ? (
+                s.display
+              ) : (
                 <Count
-                  to={s.value!}
+                  to={s.value}
                   suffix={s.suffix ?? ""}
                   active={inView}
                   reduce={reduce}
