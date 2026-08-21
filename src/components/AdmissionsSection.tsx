@@ -20,8 +20,8 @@ export function AdmissionsSection() {
               Take the next step
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-white/80">
-              Apply for caregiver training in Nairobi or Kisumu. Ask about
-              CHANCEN Study Now, Pay Later financing when you reach out.
+              Apply for caregiver training in Nairobi or Kisumu. Ask about THM
+              financing options when you reach out.
             </p>
 
             <ul className="mt-8 space-y-5">
@@ -148,8 +148,8 @@ export function AdmissionsSection() {
                       Financing *
                     </label>
                     <select className="h-12 w-full border-2 border-slate-200 bg-white px-4 text-sm outline-none focus:border-thm-purple">
-                      <option value="chancen">
-                        CHANCEN — Study Now, Pay Later
+                      <option value="financing">
+                        Study Now, Pay Later
                       </option>
                       <option value="self">Self-funded</option>
                     </select>

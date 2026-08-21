@@ -42,8 +42,7 @@ export function HomeCtaBand() {
             Ready to start your caregiving career?
           </h2>
           <p className="mt-2 text-white/80">
-            Apply for Certificate in Caregiver training in Nairobi or Kisumu —
-            and ask about CHANCEN Study Now, Pay Later.
+            Apply for Certificate in Caregiver training in Nairobi or Kisumu.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -110,11 +109,11 @@ export function HomeFinancingTeaser() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-8">
             <h2 className="font-poppins text-3xl font-bold tracking-tight sm:text-4xl">
-              Study Now, Pay Later with CHANCEN
+              Study Now, Pay Later at THM
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">
-              No upfront fees for eligible youth aged 19–35. Repay only after you
-              finish your studies — backed by CHANCEN&apos;s 93% graduation rate.
+              Eligible youth aged 19–35 can train without paying tuition
+              upfront — then repay after finishing studies.
             </p>
           </div>
           <div className="lg:col-span-4 lg:text-right">

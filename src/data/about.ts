@@ -37,7 +37,7 @@ export const aboutContent = {
   history: [
     "Therapeutic Hands Management was registered in April 2023 with a clear ambition: to become a household name and pace-setter in the caregiving market by empowering caregivers with specialised skills.",
     "Since founding, more than 150 caregivers have graduated from our programs and stepped into roles across healthcare, institutional care, and private homes.",
-    "Today THM operates in Nairobi (Westlands) and Kisumu Counties, and partners with CHANCEN International so eligible youth aged 19–35 can Study Now and Pay Later — removing upfront fee barriers to training.",
+    "Today THM operates in Nairobi (Westlands) and Kisumu Counties, with practical labs, supervised placements, and financing options for eligible youth aged 19–35.",
   ],
   valuesTitle: "Our Core Values",
   values: [

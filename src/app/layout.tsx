@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     template: "%s | THM Caregiver School",
   },
   description:
-    "NITA-certified caregiver training in Nairobi and Kisumu. Partnered with CHANCEN International for Study Now, Pay Later financing.",
+    "NITA-certified caregiver training in Nairobi and Kisumu. Study Now, Pay Later financing available for eligible students.",
   keywords: [
     "Caregiver training Nairobi",
     "Caregiver school Kenya",
     "NITA certified caregiving",
-    "CHANCEN study now pay later",
+    "Study now pay later caregiver training",
     "Therapeutic Hands Management",
   ],
 };
