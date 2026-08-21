@@ -734,7 +734,7 @@ export function CaregiverAdmissionForm() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             disabled={step === 1}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-white/25 px-6 font-poppins text-sm font-semibold text-white transition-colors enabled:hover:border-thm-gold enabled:hover:text-thm-gold disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-thm-purple/25 px-6 font-poppins text-sm font-semibold text-thm-purple transition-colors enabled:hover:border-thm-purple enabled:hover:bg-thm-purple/5 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronLeft className="h-4 w-4" />
             Back
