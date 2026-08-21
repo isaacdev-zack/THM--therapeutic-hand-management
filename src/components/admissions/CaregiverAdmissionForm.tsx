@@ -5,11 +5,12 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  FileText,
   Send,
 } from "lucide-react";
 import {
   FieldLabel,
+  FormField,
+  FormGrid,
   FormSection,
   RadioOption,
   SelectInput,
@@ -19,7 +20,6 @@ import {
 import {
   initialAdmissionForm,
   referralOptions,
-  requiredDocuments,
   type AdmissionFormData,
 } from "@/types/admission";
 
@@ -29,39 +29,6 @@ const steps = [
   { id: 3, title: "Fees & education" },
   { id: 4, title: "Declaration" },
 ] as const;
-
-function DocumentsBanner() {
-  return (
-    <div className="rounded-2xl border-2 border-thm-gold/50 bg-thm-cream p-5 sm:p-6">
-      <div className="flex items-start gap-3">
-        <FileText className="mt-0.5 h-5 w-5 shrink-0 text-thm-purple" />
-        <div>
-          <p className="font-poppins text-sm font-bold uppercase tracking-wide text-thm-purple">
-            Attach these documents
-          </p>
-          <p className="mt-1 text-sm text-thm-muted">
-            Bring the following when you visit campus or send copies to{" "}
-            <a href="mailto:info@thm.co.ke" className="font-medium text-thm-purple">
-              info@thm.co.ke
-            </a>
-            .
-          </p>
-          <ul className="mt-3 space-y-2">
-            {requiredDocuments.map((doc) => (
-              <li
-                key={doc}
-                className="flex items-start gap-2 text-sm text-thm-ink"
-              >
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-thm-gold" />
-                {doc}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function CaregiverAdmissionForm() {
   const [step, setStep] = useState(1);
@@ -121,51 +88,36 @@ export function CaregiverAdmissionForm() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border-2 border-thm-gold bg-white p-6 sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-thm-gold">
-          Caregiver II
-        </p>
-        <h3 className="mt-2 font-poppins text-2xl font-bold text-thm-purple sm:text-3xl">
-          Student admission application
-        </h3>
-        <p className="mt-2 text-sm text-thm-muted">
-          Complete all sections in block capitals where indicated. Fields marked
-          with * are required.
-        </p>
-
-        <div className="mt-6">
-          <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-thm-muted">
-            <span>
-              Step {step} of {steps.length}
+      <div className="rounded-2xl border-2 border-thm-gold bg-white p-5 sm:p-6">
+        <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-thm-muted">
+          <span>
+            Step {step} of {steps.length}
+          </span>
+          <span>{steps[step - 1].title}</span>
+        </div>
+        <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+          <div
+            className="h-full rounded-full bg-thm-gold transition-all duration-500"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {steps.map((s) => (
+            <span
+              key={s.id}
+              className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                s.id === step
+                  ? "bg-thm-purple text-white"
+                  : s.id < step
+                    ? "bg-thm-purple/15 text-thm-purple"
+                    : "bg-slate-100 text-thm-muted"
+              }`}
+            >
+              {s.title}
             </span>
-            <span>{steps[step - 1].title}</span>
-          </div>
-          <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-            <div
-              className="h-full rounded-full bg-thm-gold transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-          <div className="mt-3 hidden gap-2 sm:flex">
-            {steps.map((s) => (
-              <span
-                key={s.id}
-                className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                  s.id === step
-                    ? "bg-thm-purple text-white"
-                    : s.id < step
-                      ? "bg-thm-purple/15 text-thm-purple"
-                      : "bg-slate-100 text-thm-muted"
-                }`}
-              >
-                {s.title}
-              </span>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-
-      <DocumentsBanner />
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {step === 1 ? (
@@ -174,11 +126,9 @@ export function CaregiverAdmissionForm() {
             title="Applicant's personal details"
             description="Enter your details as they appear on your ID or passport."
           >
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div>
-                <FieldLabel required hint="First name">
-                  First name
-                </FieldLabel>
+            <FormGrid>
+              <FormField span={4}>
+                <FieldLabel required>First name</FieldLabel>
                 <TextInput
                   required
                   uppercase
@@ -186,22 +136,18 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("firstName", e.target.value)}
                   placeholder="Jane"
                 />
-              </div>
-              <div>
-                <FieldLabel hint="Second / middle name">
-                  Second name
-                </FieldLabel>
+              </FormField>
+              <FormField span={4}>
+                <FieldLabel>Second name</FieldLabel>
                 <TextInput
                   uppercase
                   value={form.secondName}
                   onChange={(e) => update("secondName", e.target.value)}
                   placeholder="Wanjiku"
                 />
-              </div>
-              <div>
-                <FieldLabel required hint="Surname">
-                  Surname
-                </FieldLabel>
+              </FormField>
+              <FormField span={4}>
+                <FieldLabel required>Surname</FieldLabel>
                 <TextInput
                   required
                   uppercase
@@ -209,11 +155,9 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("surname", e.target.value)}
                   placeholder="Otieno"
                 />
-              </div>
-            </div>
+              </FormField>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+              <FormField span={6}>
                 <FieldLabel required>ID / passport number</FieldLabel>
                 <TextInput
                   required
@@ -222,23 +166,18 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("idNumber", e.target.value)}
                   placeholder="12345678"
                 />
-              </div>
-              <div>
-                <FieldLabel required hint="DD / MM / YYYY">
-                  Date of birth
-                </FieldLabel>
+              </FormField>
+              <FormField span={6}>
+                <FieldLabel required>Date of birth</FieldLabel>
                 <TextInput
                   required
                   type="date"
                   value={form.dateOfBirth}
                   onChange={(e) => update("dateOfBirth", e.target.value)}
-                  className="normal-case tracking-normal"
                 />
-              </div>
-            </div>
+              </FormField>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div>
+              <FormField span={3}>
                 <FieldLabel required>Gender</FieldLabel>
                 <SelectInput
                   required
@@ -250,8 +189,8 @@ export function CaregiverAdmissionForm() {
                   <option value="male">Male</option>
                   <option value="other">Other</option>
                 </SelectInput>
-              </div>
-              <div>
+              </FormField>
+              <FormField span={3}>
                 <FieldLabel required>Religion</FieldLabel>
                 <TextInput
                   required
@@ -260,8 +199,8 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("religion", e.target.value)}
                   placeholder="Christian"
                 />
-              </div>
-              <div>
+              </FormField>
+              <FormField span={3}>
                 <FieldLabel required>Nationality</FieldLabel>
                 <TextInput
                   required
@@ -269,8 +208,8 @@ export function CaregiverAdmissionForm() {
                   value={form.nationality}
                   onChange={(e) => update("nationality", e.target.value)}
                 />
-              </div>
-              <div>
+              </FormField>
+              <FormField span={3}>
                 <FieldLabel required>Preferred campus</FieldLabel>
                 <SelectInput
                   required
@@ -282,14 +221,12 @@ export function CaregiverAdmissionForm() {
                     )
                   }
                 >
-                  <option value="nairobi">Nairobi (Westlands)</option>
+                  <option value="nairobi">Nairobi</option>
                   <option value="kisumu">Kisumu</option>
                 </SelectInput>
-              </div>
-            </div>
+              </FormField>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+              <FormField span={6}>
                 <FieldLabel required>County of origin</FieldLabel>
                 <TextInput
                   required
@@ -298,8 +235,8 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("countyOfOrigin", e.target.value)}
                   placeholder="Nairobi"
                 />
-              </div>
-              <div>
+              </FormField>
+              <FormField span={6}>
                 <FieldLabel required>Current residence</FieldLabel>
                 <TextInput
                   required
@@ -308,11 +245,9 @@ export function CaregiverAdmissionForm() {
                   onChange={(e) => update("currentResidence", e.target.value)}
                   placeholder="Westlands, Nairobi"
                 />
-              </div>
-            </div>
+              </FormField>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
+              <FormField span={6}>
                 <FieldLabel required>Active phone number</FieldLabel>
                 <TextInput
                   required
@@ -320,10 +255,9 @@ export function CaregiverAdmissionForm() {
                   value={form.phone}
                   onChange={(e) => update("phone", e.target.value)}
                   placeholder="07XX XXX XXX"
-                  className="normal-case tracking-normal"
                 />
-              </div>
-              <div>
+              </FormField>
+              <FormField span={6}>
                 <FieldLabel required>Active email</FieldLabel>
                 <TextInput
                   required
@@ -331,10 +265,9 @@ export function CaregiverAdmissionForm() {
                   value={form.email}
                   onChange={(e) => update("email", e.target.value)}
                   placeholder="you@email.com"
-                  className="normal-case tracking-normal"
                 />
-              </div>
-            </div>
+              </FormField>
+            </FormGrid>
           </FormSection>
         ) : null}
 
@@ -391,33 +324,33 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Father
                 </p>
-                <div className="mt-3 grid gap-4 sm:grid-cols-3">
-                  <div className="sm:col-span-3">
-                    <FieldLabel>Full name</FieldLabel>
-                    <TextInput
-                      uppercase
-                      value={form.fatherName}
-                      onChange={(e) => update("fatherName", e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <FieldLabel>Phone</FieldLabel>
-                    <TextInput
-                      type="tel"
-                      value={form.fatherPhone}
-                      onChange={(e) => update("fatherPhone", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <FieldLabel>Email</FieldLabel>
-                    <TextInput
-                      type="email"
-                      value={form.fatherEmail}
-                      onChange={(e) => update("fatherEmail", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
+                <div className="mt-3">
+                  <FormGrid>
+                    <FormField span={12}>
+                      <FieldLabel>Full name</FieldLabel>
+                      <TextInput
+                        uppercase
+                        value={form.fatherName}
+                        onChange={(e) => update("fatherName", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={5}>
+                      <FieldLabel>Phone</FieldLabel>
+                      <TextInput
+                        type="tel"
+                        value={form.fatherPhone}
+                        onChange={(e) => update("fatherPhone", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={7}>
+                      <FieldLabel>Email</FieldLabel>
+                      <TextInput
+                        type="email"
+                        value={form.fatherEmail}
+                        onChange={(e) => update("fatherEmail", e.target.value)}
+                      />
+                    </FormField>
+                  </FormGrid>
                 </div>
               </div>
 
@@ -425,33 +358,33 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Mother
                 </p>
-                <div className="mt-3 grid gap-4 sm:grid-cols-3">
-                  <div className="sm:col-span-3">
-                    <FieldLabel>Full name</FieldLabel>
-                    <TextInput
-                      uppercase
-                      value={form.motherName}
-                      onChange={(e) => update("motherName", e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <FieldLabel>Phone</FieldLabel>
-                    <TextInput
-                      type="tel"
-                      value={form.motherPhone}
-                      onChange={(e) => update("motherPhone", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <FieldLabel>Email</FieldLabel>
-                    <TextInput
-                      type="email"
-                      value={form.motherEmail}
-                      onChange={(e) => update("motherEmail", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
+                <div className="mt-3">
+                  <FormGrid>
+                    <FormField span={12}>
+                      <FieldLabel>Full name</FieldLabel>
+                      <TextInput
+                        uppercase
+                        value={form.motherName}
+                        onChange={(e) => update("motherName", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={5}>
+                      <FieldLabel>Phone</FieldLabel>
+                      <TextInput
+                        type="tel"
+                        value={form.motherPhone}
+                        onChange={(e) => update("motherPhone", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={7}>
+                      <FieldLabel>Email</FieldLabel>
+                      <TextInput
+                        type="email"
+                        value={form.motherEmail}
+                        onChange={(e) => update("motherEmail", e.target.value)}
+                      />
+                    </FormField>
+                  </FormGrid>
                 </div>
               </div>
 
@@ -459,33 +392,33 @@ export function CaregiverAdmissionForm() {
                 <p className="text-xs font-bold uppercase tracking-wide text-thm-purple">
                   Other next of kin
                 </p>
-                <div className="mt-3 grid gap-4 sm:grid-cols-3">
-                  <div className="sm:col-span-3">
-                    <FieldLabel>Full name</FieldLabel>
-                    <TextInput
-                      uppercase
-                      value={form.otherNokName}
-                      onChange={(e) => update("otherNokName", e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <FieldLabel>Phone</FieldLabel>
-                    <TextInput
-                      type="tel"
-                      value={form.otherNokPhone}
-                      onChange={(e) => update("otherNokPhone", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <FieldLabel>Email</FieldLabel>
-                    <TextInput
-                      type="email"
-                      value={form.otherNokEmail}
-                      onChange={(e) => update("otherNokEmail", e.target.value)}
-                      className="normal-case tracking-normal"
-                    />
-                  </div>
+                <div className="mt-3">
+                  <FormGrid>
+                    <FormField span={12}>
+                      <FieldLabel>Full name</FieldLabel>
+                      <TextInput
+                        uppercase
+                        value={form.otherNokName}
+                        onChange={(e) => update("otherNokName", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={5}>
+                      <FieldLabel>Phone</FieldLabel>
+                      <TextInput
+                        type="tel"
+                        value={form.otherNokPhone}
+                        onChange={(e) => update("otherNokPhone", e.target.value)}
+                      />
+                    </FormField>
+                    <FormField span={7}>
+                      <FieldLabel>Email</FieldLabel>
+                      <TextInput
+                        type="email"
+                        value={form.otherNokEmail}
+                        onChange={(e) => update("otherNokEmail", e.target.value)}
+                      />
+                    </FormField>
+                  </FormGrid>
                 </div>
               </div>
             </FormSection>
@@ -520,8 +453,8 @@ export function CaregiverAdmissionForm() {
                 ))}
               </div>
               {form.feePayer === "other" ? (
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <div>
+                <FormGrid>
+                  <FormField span={4}>
                     <FieldLabel required>Full name</FieldLabel>
                     <TextInput
                       required
@@ -531,8 +464,8 @@ export function CaregiverAdmissionForm() {
                         update("feePayerOtherName", e.target.value)
                       }
                     />
-                  </div>
-                  <div>
+                  </FormField>
+                  <FormField span={4}>
                     <FieldLabel required>Relationship</FieldLabel>
                     <TextInput
                       required
@@ -542,8 +475,8 @@ export function CaregiverAdmissionForm() {
                         update("feePayerOtherRelationship", e.target.value)
                       }
                     />
-                  </div>
-                  <div>
+                  </FormField>
+                  <FormField span={4}>
                     <FieldLabel required>Active phone</FieldLabel>
                     <TextInput
                       required
@@ -552,10 +485,9 @@ export function CaregiverAdmissionForm() {
                       onChange={(e) =>
                         update("feePayerOtherPhone", e.target.value)
                       }
-                      className="normal-case tracking-normal"
                     />
-                  </div>
-                </div>
+                  </FormField>
+                </FormGrid>
               ) : null}
             </FormSection>
 
@@ -564,8 +496,8 @@ export function CaregiverAdmissionForm() {
               title="Education background"
               description="Tell us about your most recent schooling."
             >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
+              <FormGrid>
+                <FormField span={6}>
                   <FieldLabel required>Last education level attained</FieldLabel>
                   <SelectInput
                     required
@@ -582,21 +514,17 @@ export function CaregiverAdmissionForm() {
                     <option value="secondary">Secondary</option>
                     <option value="college">College</option>
                   </SelectInput>
-                </div>
-                <div>
+                </FormField>
+                <FormField span={6}>
                   <FieldLabel required>Grade attained</FieldLabel>
                   <TextInput
                     required
-                    uppercase
                     value={form.gradeAttained}
                     onChange={(e) => update("gradeAttained", e.target.value)}
                     placeholder="C+"
-                    className="normal-case tracking-normal"
                   />
-                </div>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
+                </FormField>
+                <FormField span={6}>
                   <FieldLabel required>Name of school attended</FieldLabel>
                   <TextInput
                     required
@@ -604,11 +532,9 @@ export function CaregiverAdmissionForm() {
                     value={form.schoolName}
                     onChange={(e) => update("schoolName", e.target.value)}
                   />
-                </div>
-                <div>
-                  <FieldLabel required hint="Year completed">
-                    Year completed
-                  </FieldLabel>
+                </FormField>
+                <FormField span={6}>
+                  <FieldLabel required>Year completed</FieldLabel>
                   <TextInput
                     required
                     type="number"
@@ -617,30 +543,29 @@ export function CaregiverAdmissionForm() {
                     value={form.yearCompleted}
                     onChange={(e) => update("yearCompleted", e.target.value)}
                     placeholder="2020"
-                    className="normal-case tracking-normal"
                   />
-                </div>
-              </div>
-              <div>
-                <FieldLabel required>How did you know about THM?</FieldLabel>
-                <SelectInput
-                  required
-                  value={form.referralSource}
-                  onChange={(e) =>
-                    update(
-                      "referralSource",
-                      e.target.value as AdmissionFormData["referralSource"],
-                    )
-                  }
-                >
-                  <option value="">Select one</option>
-                  {referralOptions.map((opt) => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </SelectInput>
-              </div>
+                </FormField>
+                <FormField span={12}>
+                  <FieldLabel required>How did you know about THM?</FieldLabel>
+                  <SelectInput
+                    required
+                    value={form.referralSource}
+                    onChange={(e) =>
+                      update(
+                        "referralSource",
+                        e.target.value as AdmissionFormData["referralSource"],
+                      )
+                    }
+                  >
+                    <option value="">Select one</option>
+                    {referralOptions.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </SelectInput>
+                </FormField>
+              </FormGrid>
             </FormSection>
           </>
         ) : null}
