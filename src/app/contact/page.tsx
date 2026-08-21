@@ -4,7 +4,7 @@ import { AdmissionsSection } from "@/components/AdmissionsSection";
 export const metadata: Metadata = {
   title: "Contact & Admissions",
   description:
-    "Apply to THM caregiver training in Nairobi or Kisumu. Contact Westlands campus, phone, and email.",
+    "Apply for THM Caregiver II training in Nairobi or Kisumu. Complete the official admission form online.",
 };
 
 export default function ContactPage() {
