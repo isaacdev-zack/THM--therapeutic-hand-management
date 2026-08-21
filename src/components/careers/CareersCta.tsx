@@ -13,8 +13,8 @@ export function CareersCta() {
               Ready to take your next step in care?
             </h2>
             <p className="mt-3 text-white/80">
-              Apply for Nairobi or Kisumu — and ask about CHANCEN Study Now, Pay
-              Later.
+              Apply for Nairobi or Kisumu — flexible financing available for
+              eligible students.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

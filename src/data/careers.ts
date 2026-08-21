@@ -13,11 +13,11 @@ export const careersContent = {
     { value: "150+", label: "Graduates since 2023" },
     { value: "4", label: "Placement settings" },
     { value: "2", label: "Campus cities" },
-    { value: "93%", label: "CHANCEN graduation rate" },
+    { value: "NITA", label: "Curriculum standard" },
   ],
   about: {
     title: "We don’t just train caregivers. We place them.",
-    body: "Therapeutic Hands Management prepares students for the ward, the home, and the human moments in between — with practical labs, hospital placements, and a clear route into paid work. Eligible youth can train with CHANCEN Study Now, Pay Later.",
+    body: "Therapeutic Hands Management prepares students for the ward, the home, and the human moments in between — with practical labs, hospital placements, and a clear route into paid work.",
     ctaLabel: "Apply now",
     ctaHref: "/contact",
     collage: [
@@ -83,7 +83,7 @@ export const careersContent = {
     },
     {
       quote:
-        "CHANCEN meant I could train without paying upfront. Today I work in elder care — helping families keep their parents safe and comfortable at home.",
+        "THM's Study Now, Pay Later option meant I could train without paying upfront. Today I work in elder care — helping families keep their parents safe and comfortable at home.",
       name: "Brian Kamau",
       role: "Home-based elder care · Kisumu",
       image:
