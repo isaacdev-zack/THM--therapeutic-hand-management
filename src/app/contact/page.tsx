@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { AdmissionsSection } from "@/components/AdmissionsSection";
+import { ContactSection } from "@/components/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Contact & Admissions",
+  title: "Contact",
   description:
-    "Apply for THM Caregiver II training in Nairobi or Kisumu. Complete the official admission form online.",
+    "Contact THM caregiver training in Nairobi or Kisumu — campus, phone, email, and directions.",
 };
 
 export default function ContactPage() {
   return (
     <main className="bg-white pt-[76px]">
-      <AdmissionsSection />
+      <ContactSection />
     </main>
   );
 }
