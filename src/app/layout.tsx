@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+
+const Navbar = dynamic(
+  () => import("@/components/Navbar").then((mod) => mod.Navbar),
+  { ssr: true },
+);
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +38,11 @@ export const metadata: Metadata = {
   ],
 };
 
+const chunkRecoveryScript =
+  process.env.NODE_ENV === "development"
+    ? `(function(){var k="thm-chunk-reload";function recover(m){if(!m||m.indexOf("Loading chunk")===-1&&m.indexOf("ChunkLoadError")===-1)return;if(!sessionStorage.getItem(k)){sessionStorage.setItem(k,"1");location.reload();}}window.addEventListener("error",function(e){recover(e.message||"");});window.addEventListener("unhandledrejection",function(e){recover(String((e.reason&&e.reason.message)||e.reason||""));});window.addEventListener("load",function(){sessionStorage.removeItem(k);});})();`
+    : null;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,6 +53,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${poppins.variable} h-full antialiased`}
     >
+      <head>
+        {chunkRecoveryScript ? (
+          <script dangerouslySetInnerHTML={{ __html: chunkRecoveryScript }} />
+        ) : null}
+      </head>
       <body className="min-h-full flex flex-col font-inter bg-white text-thm-ink">
         <Navbar />
         <div className="flex-1">{children}</div>

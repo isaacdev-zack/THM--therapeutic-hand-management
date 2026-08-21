@@ -4,10 +4,26 @@ import { useEffect, useRef, useState } from "react";
 import { useInView, useReducedMotion } from "framer-motion";
 
 const stats = [
-  { value: 150, suffix: "+", label: "Graduates since 2023" },
-  { value: null, display: "NITA", label: "Curriculum standard" },
-  { value: 2, suffix: "", label: "Counties served" },
-  { value: 4, suffix: "", label: "Placement settings" },
+  {
+    value: 150,
+    suffix: "+",
+    label: "Graduates building careers in care",
+  },
+  {
+    value: null,
+    display: "NITA",
+    label: "Certified training employers trust",
+  },
+  {
+    value: 2,
+    suffix: "",
+    label: "Campuses — Nairobi & Kisumu",
+  },
+  {
+    value: 0,
+    suffix: "",
+    label: "Upfront tuition for eligible youth",
+  },
 ];
 
 function Count({
@@ -57,7 +73,7 @@ export function ImpactSection() {
         {stats.map((s, i) => (
           <div
             key={s.label}
-            className={`px-6 py-8 sm:px-8 sm:py-10 ${
+            className={`px-5 py-7 sm:px-7 sm:py-8 ${
               i % 2 === 1 ? "border-l border-thm-ink/10" : ""
             } ${i >= 2 ? "border-t border-thm-ink/10 lg:border-t-0" : ""} ${
               i >= 1 ? "lg:border-l lg:border-thm-ink/10" : ""
@@ -73,7 +89,9 @@ export function ImpactSection() {
                 />
               )}
             </p>
-            <p className="mt-1.5 text-sm font-medium text-thm-muted">{s.label}</p>
+            <p className="mt-1.5 text-sm font-medium leading-snug text-thm-muted">
+              {s.label}
+            </p>
           </div>
         ))}
       </div>

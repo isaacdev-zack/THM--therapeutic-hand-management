@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { LoopingCounter } from "@/components/LoopingCounter";
 import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
 const points = [
@@ -16,12 +17,13 @@ export function FinancingSection() {
     <section className="bg-thm-purple px-5 py-14 text-white sm:px-8 lg:px-10 lg:py-16">
       <div className="mx-auto grid max-w-[1120px] gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
         <FadeUp className="lg:col-span-7">
-          <h2 className="font-poppins text-[1.85rem] font-bold tracking-tight sm:text-3xl">
-            Study Now, Pay Later
+          <h2 className="font-poppins text-[1.85rem] font-bold leading-[1.15] tracking-tight sm:text-3xl">
+            Your skills first.{" "}
+            <span className="text-thm-gold">Pay when you&apos;re ready.</span>
           </h2>
           <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/85 sm:text-base">
-            Remove the fee barrier. Eligible youth can train at THM without
-            paying upfront — then repay after finishing studies.
+            Eligible youth can train at THM without paying upfront — then repay
+            after finishing studies.
           </p>
           <Stagger className="mt-6 grid gap-2 sm:grid-cols-2" stagger={0.06}>
             {points.map((p) => (
@@ -42,7 +44,7 @@ export function FinancingSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-xl bg-white/10 p-5">
                 <p className="font-poppins text-3xl font-bold text-white">
-                  150+
+                  <LoopingCounter from={150} to={500} />
                 </p>
                 <p className="mt-1.5 text-sm text-white/70">THM graduates</p>
               </div>

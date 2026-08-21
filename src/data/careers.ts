@@ -10,10 +10,10 @@ export const careersContent = {
     imageAlt: "Healthcare professionals collaborating in a care setting",
   },
   stats: [
-    { value: "150+", label: "Graduates since 2023" },
-    { value: "4", label: "Placement settings" },
-    { value: "2", label: "Campus cities" },
-    { value: "NITA", label: "Curriculum standard" },
+    { value: "150+", label: "Graduates building careers in care" },
+    { value: "NITA", label: "Certified training employers trust" },
+    { value: "2", label: "Campuses — Nairobi & Kisumu" },
+    { value: "0", label: "Upfront tuition for eligible youth" },
   ],
   about: {
     title: "We don’t just train caregivers. We place them.",

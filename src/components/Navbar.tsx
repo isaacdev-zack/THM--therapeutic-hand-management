@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -107,40 +106,36 @@ export function Navbar() {
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-nav"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden overflow-hidden border-t border-slate-100 bg-white"
-          >
-            <div className="flex flex-col px-5 py-3">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`font-poppins py-3.5 text-base font-medium border-b border-slate-100 last:border-0 ${
-                    pathname === link.href ? "text-thm-purple" : "text-thm-ink"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+      <div
+        id="mobile-nav"
+        className={`grid overflow-hidden border-t border-slate-100 bg-white transition-[grid-template-rows,opacity] duration-200 ease-out lg:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="min-h-0">
+          <div className="flex flex-col px-5 py-3">
+            {links.map((link) => (
               <Link
-                href="/contact"
+                key={link.href}
+                href={link.href}
                 onClick={() => setOpen(false)}
-                className="mt-4 mb-2 inline-flex h-12 items-center justify-center rounded-full bg-thm-gold font-poppins text-base font-semibold text-thm-ink"
+                className={`font-poppins border-b border-slate-100 py-3.5 text-base font-medium last:border-0 ${
+                  pathname === link.href ? "text-thm-purple" : "text-thm-ink"
+                }`}
               >
-                Apply Now
+                {link.label}
               </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mb-2 mt-4 inline-flex h-12 items-center justify-center rounded-full bg-thm-gold font-poppins text-base font-semibold text-thm-ink"
+            >
+              Apply Now
+            </Link>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

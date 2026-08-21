@@ -80,9 +80,9 @@ export function SkillsSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 grid items-stretch gap-8 lg:grid-cols-12 lg:gap-10"
+              className="mt-8 grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12"
             >
-              <div className="relative min-h-[280px] overflow-hidden sm:min-h-[340px] lg:col-span-5 lg:min-h-[420px]">
+              <div className="relative aspect-square overflow-hidden">
                 <motion.div
                   className="absolute inset-0"
                   initial={{ scale: 1.05 }}
@@ -94,25 +94,25 @@ export function SkillsSection() {
                     alt={`${current.name} training at THM`}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </motion.div>
                 <div className="absolute inset-0 bg-thm-purple/20 mix-blend-multiply" />
-                <div className="absolute bottom-0 left-0 right-0 bg-thm-ink/85 px-5 py-4">
-                  <p className="font-poppins text-sm font-semibold text-thm-gold">
+                <div className="absolute inset-x-0 bottom-0 bg-thm-ink/90 px-5 py-4 sm:px-6 sm:py-5">
+                  <p className="font-poppins text-sm font-semibold text-thm-gold sm:text-base">
                     {current.name}
                   </p>
-                  <p className="mt-0.5 text-sm text-white/80">{current.blurb}</p>
+                  <p className="mt-1 text-sm leading-snug text-white/85">
+                    {current.blurb}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center lg:col-span-7">
-                <ul>
-                  {current.skills.map((skill, i) => (
-                    <SkillListItem key={skill.title} skill={skill} index={i} />
-                  ))}
-                </ul>
-              </div>
+              <ul className="flex h-full min-h-0 flex-col justify-between">
+                {current.skills.map((skill, i) => (
+                  <SkillListItem key={skill.title} skill={skill} index={i} />
+                ))}
+              </ul>
             </motion.div>
           </AnimatePresence>
         </FadeUp>

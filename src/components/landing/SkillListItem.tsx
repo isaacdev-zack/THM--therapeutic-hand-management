@@ -27,8 +27,8 @@ export function SkillListItem({ skill, index }: SkillListItemProps) {
     <motion.li
       initial={reduce ? false : { opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.04, duration: 0.28 }}
-      className="group border-b border-thm-ink/10 last:border-b-0"
+      transition={{ delay: index * 0.05, duration: 0.32 }}
+      className="group flex flex-1 flex-col justify-center border-b border-thm-ink/10 last:border-b-0"
       onMouseEnter={canHover ? () => setExpanded(true) : undefined}
       onMouseLeave={canHover ? () => setExpanded(false) : undefined}
     >
@@ -36,10 +36,10 @@ export function SkillListItem({ skill, index }: SkillListItemProps) {
         type="button"
         aria-expanded={expanded}
         onClick={canHover ? undefined : () => setExpanded((prev) => !prev)}
-        className="flex w-full items-start gap-4 py-3.5 text-left first:pt-0 last:pb-0 sm:py-4"
+        className="flex w-full items-center gap-4 py-4 text-left sm:gap-5 sm:py-5"
       >
         <span
-          className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center transition-colors ${
+          className={`flex h-7 w-7 shrink-0 items-center justify-center transition-colors ${
             expanded
               ? "bg-thm-purple text-white"
               : "bg-thm-gold text-thm-ink group-hover:bg-thm-purple group-hover:text-white"
@@ -49,7 +49,7 @@ export function SkillListItem({ skill, index }: SkillListItemProps) {
         </span>
         <span className="min-w-0 flex-1">
           <span
-            className={`block font-poppins text-[15px] font-medium transition-colors sm:text-base ${
+            className={`block font-poppins text-[15px] font-semibold transition-colors sm:text-base ${
               expanded
                 ? "text-thm-purple"
                 : "text-thm-ink group-hover:text-thm-purple"
@@ -70,16 +70,22 @@ export function SkillListItem({ skill, index }: SkillListItemProps) {
             }
             className="overflow-hidden"
           >
-            <ul className="mt-2 space-y-1.5 pb-1">
-              {skill.details.map((detail) => (
-                <li
-                  key={detail}
-                  className="text-sm leading-relaxed text-thm-muted"
-                >
-                  {detail}
-                </li>
-              ))}
-            </ul>
+            <p className="mt-2 text-sm leading-relaxed text-thm-muted">
+              {skill.summary}
+            </p>
+            {skill.details && skill.details.length > 0 ? (
+              <ul className="mt-2.5 space-y-1 pb-1">
+                {skill.details.map((detail) => (
+                  <li
+                    key={detail}
+                    className="flex gap-2 text-sm leading-relaxed text-thm-ink/75"
+                  >
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-thm-purple" />
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
           </motion.div>
         </span>
       </button>
