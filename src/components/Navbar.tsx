@@ -87,7 +87,7 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <Link
-            href="/contact"
+            href="/apply"
             className="inline-flex h-11 items-center justify-center rounded-full bg-thm-gold px-6 font-poppins text-[15px] font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
           >
             Apply Now
@@ -127,7 +127,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/apply"
               onClick={() => setOpen(false)}
               className="mb-2 mt-4 inline-flex h-12 items-center justify-center rounded-full bg-thm-gold font-poppins text-base font-semibold text-thm-ink"
             >

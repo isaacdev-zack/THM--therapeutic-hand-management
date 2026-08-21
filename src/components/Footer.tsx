@@ -6,7 +6,8 @@ const navLinks = [
   { href: "/financing", label: "Financing" },
   { href: "/careers", label: "Career pathways" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Admissions" },
+  { href: "/apply", label: "Apply" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Footer() {

@@ -47,7 +47,7 @@ export function HomeCtaBand() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/contact"
+            href="/apply"
             className="inline-flex h-12 items-center rounded-full bg-thm-gold px-7 font-poppins text-base font-semibold text-thm-ink transition-colors hover:bg-thm-gold-hover"
           >
             Apply Now

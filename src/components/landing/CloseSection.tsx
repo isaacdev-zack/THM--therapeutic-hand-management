@@ -18,7 +18,7 @@ export function CloseSection() {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/contact"
+            href="/apply"
             className="inline-flex h-11 items-center rounded-full bg-thm-gold px-7 font-poppins text-sm font-semibold text-thm-ink transition-transform hover:bg-thm-gold-hover hover:scale-[1.03] active:scale-[0.98]"
           >
             Apply Now

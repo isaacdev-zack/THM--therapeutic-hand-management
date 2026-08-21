@@ -54,7 +54,7 @@ export function HeroSection() {
                 <span className="text-thm-gold">Life Saving Skills</span>
               </h1>
               <Link
-                href="/contact"
+                href="/apply"
                 className="inline-flex h-12 w-fit items-center justify-center gap-2 rounded-full bg-thm-purple px-7 font-poppins text-base font-bold text-white transition-all hover:bg-thm-purple-dark hover:scale-[1.02] active:scale-[0.98]"
               >
                 Enroll Today
@@ -79,7 +79,7 @@ export function HeroSection() {
             NITA-certified training in Nairobi & Kisumu.
           </p>
           <Link
-            href="/contact"
+            href="/apply"
             className="inline-flex h-11 items-center rounded-full bg-thm-purple px-6 font-poppins text-[15px] font-semibold text-white"
           >
             Enroll Today

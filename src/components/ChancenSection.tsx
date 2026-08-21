@@ -62,7 +62,7 @@ export function ChancenSection() {
             </ul>
 
             <Link
-              href="/contact"
+              href="/apply"
               className="mt-9 inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 font-poppins text-base font-semibold text-thm-purple transition-colors hover:bg-thm-cream"
             >
               Apply with financing

@@ -60,7 +60,7 @@ export function AboutHero({ headline, subhead }: AboutHeroProps) {
             className="pointer-events-auto mt-10 flex flex-col gap-4 sm:flex-row"
           >
             <Link
-              href="/contact"
+              href="/apply"
               className="font-poppins rounded-full bg-thm-gold px-8 py-4 text-[15px] font-bold text-thm-ink transition-transform hover:scale-105 active:scale-95"
             >
               Apply Now

@@ -19,7 +19,7 @@ export function CareersCta() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/contact"
+              href="/apply"
               className="inline-flex h-12 items-center rounded-full bg-white px-7 font-poppins text-sm font-semibold text-thm-purple transition-colors hover:bg-thm-cream"
             >
               Apply Now

@@ -19,7 +19,7 @@ export const careersContent = {
     title: "We don’t just train caregivers. We place them.",
     body: "Therapeutic Hands Management prepares students for the ward, the home, and the human moments in between — with practical labs, hospital placements, and a clear route into paid work.",
     ctaLabel: "Apply now",
-    ctaHref: "/contact",
+    ctaHref: "/apply",
     collage: [
       {
         src: "https://images.unsplash.com/photo-1645263012675-bb72c4752882?q=80&w=900&auto=format&fit=crop",
