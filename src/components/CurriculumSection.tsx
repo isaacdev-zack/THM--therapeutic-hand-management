@@ -41,7 +41,7 @@ const groups: {
       "Wheelchair transfer",
       "Use of medical equipment & assistive devices",
     ],
-    image: "/gallery/wheelchair-transfer.jpg",
+    image: "/gallery/students-linen-prep.jpg",
   },
   {
     id: "safety",
@@ -53,7 +53,7 @@ const groups: {
       "Disinfection & decontamination",
       "Standard & transmission-based precautions",
     ],
-    image: "/gallery/students-linen-prep.jpg",
+    image: "/gallery/lab-bedside-wide.jpg",
   },
 ];
 

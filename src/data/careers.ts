@@ -26,8 +26,8 @@ export const careersContent = {
         className: "left-0 top-0 h-[58%] w-[58%]",
       },
       {
-        src: "/gallery/wheelchair-transfer.jpg",
-        alt: "Wheelchair transfer practice",
+        src: "/gallery/branded-scrubs-close.jpg",
+        alt: "THM students in branded purple scrubs",
         className: "right-0 top-[8%] h-[42%] w-[48%]",
       },
       {
