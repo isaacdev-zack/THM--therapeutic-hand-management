@@ -9,13 +9,13 @@ const chapters = [
     num: "01",
     title: "Arrive ready to learn",
     text: "Whether you are fresh from school or changing careers — enrollment is your first confident step.",
-    src: "/gallery/instructor-with-students.jpg",
+    src: "/gallery/ng-tube-coaching.jpg",
   },
   {
     num: "02",
     title: "Train with your hands",
     text: "Labs turn theory into muscle memory — vitals, hygiene, transfers, and patient dignity.",
-    src: "/gallery/purple-ng-training.jpg",
+    src: "/gallery/feeding-practice.jpg",
   },
   {
     num: "03",

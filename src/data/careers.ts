@@ -5,8 +5,8 @@ export const careersContent = {
       "NITA-certified skills, supervised placements, and graduates working across Kenya’s care economy.",
     ctaLabel: "See pathways",
     ctaHref: "#pathways",
-    image: "/gallery/purple-ng-training.jpg",
-    imageAlt: "THM students practicing clinical skills in the simulation lab",
+    image: "/gallery/ng-tube-coaching.jpg",
+    imageAlt: "THM students practicing clinical procedures in the skills lab",
   },
   stats: [
     { value: "150+", label: "Graduates building careers in care" },
@@ -21,18 +21,18 @@ export const careersContent = {
     ctaHref: "/apply",
     collage: [
       {
-        src: "/gallery/instructor-with-students.jpg",
-        alt: "Instructor coaching THM students at the bedside",
+        src: "/gallery/lab-bedside-wide.jpg",
+        alt: "Students practicing bedside care",
         className: "left-0 top-0 h-[58%] w-[58%]",
       },
       {
-        src: "/gallery/branded-scrubs-close.jpg",
-        alt: "THM students in branded purple scrubs",
+        src: "/gallery/lab-team-practice.jpg",
+        alt: "THM students practicing as a team",
         className: "right-0 top-[8%] h-[42%] w-[48%]",
       },
       {
-        src: "/gallery/lab-team-practice.jpg",
-        alt: "Students practicing patient care together",
+        src: "/gallery/purple-ng-training.jpg",
+        alt: "Clinical skills practice in purple scrubs",
         className: "bottom-0 right-[6%] h-[44%] w-[62%]",
       },
     ],
@@ -42,7 +42,7 @@ export const careersContent = {
       title: "Hospital placements",
       body: "Train under registered nurse supervision on real wards — vitals, patient support, and clinical confidence before you graduate.",
       tags: ["Ward support", "Vital signs", "RN supervision"],
-      image: "/gallery/ng-tube-coaching.jpg",
+      image: "/gallery/instructor-with-students.jpg",
       href: "/programs",
     },
     {
@@ -63,7 +63,7 @@ export const careersContent = {
       title: "Private home care",
       body: "One-to-one support for recovering or at-risk clients — the intimate, high-trust work many families need most.",
       tags: ["One-to-one", "Recovery", "Family trust"],
-      image: "/gallery/eldercare-handholding.jpg",
+      image: "/gallery/private-home-care.jpg",
       href: "/contact",
     },
   ],

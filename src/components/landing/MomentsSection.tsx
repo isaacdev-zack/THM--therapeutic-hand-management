@@ -5,36 +5,32 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
+/** Distinct from PathPinned, Skills, and Careers pathways. */
 const gallery = [
   {
-    src: "/gallery/lab-bedside-wide.jpg",
-    caption: "Bedside care practice",
+    src: "/gallery/childcare-reading-together.jpg",
+    caption: "Childcare skills",
     span: "sm:col-span-2 min-h-[220px] lg:min-h-[280px]",
   },
   {
-    src: "/gallery/purple-ng-training.jpg",
-    caption: "Clinical skills lab",
+    src: "/gallery/branded-scrubs-close.jpg",
+    caption: "THM in training",
     span: "min-h-[180px] lg:min-h-[280px]",
   },
   {
-    src: "/gallery/childcare-students-toddler.jpg",
-    caption: "Childcare & safeguarding",
+    src: "/gallery/lab-practice-alt.jpg",
+    caption: "Skills assessment",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/instructor-coaching.jpg",
-    caption: "Guided instruction",
+    src: "/gallery/lab-practice-alt2.jpg",
+    caption: "Simulation ward",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/eldercare-handholding.jpg",
-    caption: "Dignity in elder care",
+    src: "/gallery/lab-practice-alt3.jpg",
+    caption: "Clinical confidence",
     span: "min-h-[180px]",
-  },
-  {
-    src: "/gallery/feeding-practice.jpg",
-    caption: "Hands-on procedures",
-    span: "min-h-[180px] sm:col-span-2 lg:col-span-1",
   },
 ];
 

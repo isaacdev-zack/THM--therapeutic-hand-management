@@ -53,7 +53,7 @@ const groups: {
       "Disinfection & decontamination",
       "Standard & transmission-based precautions",
     ],
-    image: "/gallery/instructor-with-students.jpg",
+    image: "/gallery/instructor-coaching.jpg",
   },
 ];
 

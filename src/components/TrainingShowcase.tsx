@@ -60,8 +60,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="/gallery/ng-tube-coaching.jpg"
-                alt="THM students practicing clinical skills with instructor guidance"
+                src="/gallery/lab-team-practice.jpg"
+                alt="THM students practicing patient care as a team"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -69,7 +69,7 @@ export function TrainingShowcase() {
               <div className="absolute inset-0 bg-thm-purple/40 mix-blend-multiply" />
               <div className="absolute bottom-0 left-0 right-0 bg-thm-ink/85 px-5 py-4">
                 <p className="font-poppins font-semibold text-white">
-                  Guided skills coaching
+                  Team-based learning
                 </p>
               </div>
             </motion.div>
@@ -82,8 +82,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="/gallery/feeding-practice.jpg"
-                alt="THM students in branded scrubs practicing tube feeding"
+                src="/gallery/purple-ng-training.jpg"
+                alt="THM students in branded scrubs practicing clinical skills"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 40vw"

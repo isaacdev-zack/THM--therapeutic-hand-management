@@ -141,7 +141,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "safety",
     name: "Safety & Equipment",
     blurb: "Infection control and safe handling in every care setting you enter.",
-    image: "/gallery/instructor-coaching.jpg",
+    image: "/gallery/lab-team-practice.jpg",
     skills: [
       {
         title: "Hand hygiene",

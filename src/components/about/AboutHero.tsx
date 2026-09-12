@@ -18,8 +18,8 @@ export function AboutHero({ headline, subhead }: AboutHeroProps) {
     <section className="relative w-full overflow-hidden bg-thm-ink">
       <div className="relative h-[min(100svh,900px)] min-h-[600px] w-full sm:min-h-[700px]">
         <Image
-          src="/gallery/lab-bedside-wide.jpg"
-          alt="THM caregiver trainees practicing bedside care in the skills lab"
+          src="/gallery/instructor-coaching.jpg"
+          alt="THM caregiver training in the skills lab"
           fill
           priority
           className="object-cover object-center"
