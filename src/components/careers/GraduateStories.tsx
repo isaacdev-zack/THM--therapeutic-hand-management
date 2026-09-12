@@ -74,11 +74,6 @@ export function GraduateStories() {
             </button>
           </div>
         </div>
-
-        <p className="mt-5 text-center text-xs text-white/40">
-          Sample graduate voices for layout — replace with verified THM alumni
-          when available.
-        </p>
       </div>
     </section>
   );
