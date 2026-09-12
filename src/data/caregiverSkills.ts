@@ -17,7 +17,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "clinical",
     name: "Clinical Basics",
     blurb: "Core procedures every caregiver must perform safely on the ward and in the home.",
-    image: "/gallery/purple-ng-training.jpg",
+    image: "/gallery/purple-vitals-cart.jpg",
     skills: [
       {
         title: "Vital signs",
@@ -79,7 +79,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "support",
     name: "Patient Support",
     blurb: "Daily living care that protects dignity, comfort, and independence.",
-    image: "/gallery/lab-bedside-wide.jpg",
+    image: "/gallery/wheelchair-transfer.jpg",
     skills: [
       {
         title: "Bed bath & grooming",
@@ -141,7 +141,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "safety",
     name: "Safety & Equipment",
     blurb: "Infection control and safe handling in every care setting you enter.",
-    image: "/gallery/lab-team-practice.jpg",
+    image: "/gallery/students-linen-prep.jpg",
     skills: [
       {
         title: "Hand hygiene",
