@@ -5,31 +5,31 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
-/** Distinct from PathPinned, Skills, and Careers pathways. */
+/** Real Skylit Wfolio shots — kept distinct from Promise / Skills / Path. */
 const gallery = [
   {
-    src: "/gallery/childcare-reading-together.jpg",
-    caption: "Childcare skills",
+    src: "/gallery/clinical-prep-alt.jpg",
+    caption: "Team clinical practice",
     span: "sm:col-span-2 min-h-[220px] lg:min-h-[280px]",
+  },
+  {
+    src: "/gallery/lab-action-alt.jpg",
+    caption: "Bedside skills",
+    span: "min-h-[180px] lg:min-h-[280px]",
   },
   {
     src: "/gallery/branded-scrubs-close.jpg",
     caption: "THM in training",
-    span: "min-h-[180px] lg:min-h-[280px]",
-  },
-  {
-    src: "/gallery/lab-practice-alt.jpg",
-    caption: "Skills assessment",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/lab-practice-alt2.jpg",
-    caption: "Simulation ward",
+    src: "/gallery/childcare-students-toddler.jpg",
+    caption: "Childcare pathway",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/lab-practice-alt3.jpg",
-    caption: "Clinical confidence",
+    src: "/gallery/portrait-graduate-female-b.jpg",
+    caption: "Ready for placement",
     span: "min-h-[180px]",
   },
 ];

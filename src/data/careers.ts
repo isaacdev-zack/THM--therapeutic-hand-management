@@ -5,8 +5,8 @@ export const careersContent = {
       "NITA-certified skills, supervised placements, and graduates working across Kenya’s care economy.",
     ctaLabel: "See pathways",
     ctaHref: "#pathways",
-    image: "/gallery/ng-tube-coaching.jpg",
-    imageAlt: "THM students practicing clinical procedures in the skills lab",
+    image: "/gallery/purple-team-vitals.jpg",
+    imageAlt: "THM students preparing vitals equipment in purple scrubs",
   },
   stats: [
     { value: "150+", label: "Graduates building careers in care" },
@@ -21,18 +21,18 @@ export const careersContent = {
     ctaHref: "/apply",
     collage: [
       {
-        src: "/gallery/lab-bedside-wide.jpg",
-        alt: "Students practicing bedside care",
+        src: "/gallery/purple-vitals-cart.jpg",
+        alt: "Students with vitals cart in the skills lab",
         className: "left-0 top-0 h-[58%] w-[58%]",
       },
       {
-        src: "/gallery/lab-team-practice.jpg",
-        alt: "THM students practicing as a team",
+        src: "/gallery/wheelchair-transfer.jpg",
+        alt: "Wheelchair transfer practice",
         className: "right-0 top-[8%] h-[42%] w-[48%]",
       },
       {
-        src: "/gallery/purple-ng-training.jpg",
-        alt: "Clinical skills practice in purple scrubs",
+        src: "/gallery/students-linen-prep.jpg",
+        alt: "Students preparing linens for patient care",
         className: "bottom-0 right-[6%] h-[44%] w-[62%]",
       },
     ],
@@ -42,7 +42,7 @@ export const careersContent = {
       title: "Hospital placements",
       body: "Train under registered nurse supervision on real wards — vitals, patient support, and clinical confidence before you graduate.",
       tags: ["Ward support", "Vital signs", "RN supervision"],
-      image: "/gallery/instructor-with-students.jpg",
+      image: "/gallery/purple-team-procedure.jpg",
       href: "/programs",
     },
     {
@@ -73,21 +73,21 @@ export const careersContent = {
         "After my hospital placement I felt ready for the ward. Within weeks of graduating I was supporting patients under a registered nurse — the same skills we practised in class.",
       name: "Amina Otieno",
       role: "Hospital caregiver · Nairobi",
-      image: "/gallery/graduate-portrait-amina.jpg",
+      image: "/gallery/portrait-graduate-female-a.jpg",
     },
     {
       quote:
         "THM's Study Now, Pay Later option meant I could train without paying upfront. Today I work in elder care — helping families keep their parents safe and comfortable at home.",
       name: "Brian Kamau",
       role: "Home-based elder care · Kisumu",
-      image: "/gallery/graduate-portrait-brian.jpg",
+      image: "/gallery/portrait-graduate-male.jpg",
     },
     {
       quote:
         "The childcare placement taught me more than theory. I use those safeguarding skills every day at the centre where I work now.",
       name: "Faith Njeri",
       role: "Childcare centre · Nairobi",
-      image: "/gallery/graduate-portrait-faith.jpg",
+      image: "/gallery/portrait-graduate-female-b.jpg",
     },
   ],
 } as const;

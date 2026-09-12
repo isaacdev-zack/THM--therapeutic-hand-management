@@ -9,19 +9,19 @@ const chapters = [
     num: "01",
     title: "Arrive ready to learn",
     text: "Whether you are fresh from school or changing careers — enrollment is your first confident step.",
-    src: "/gallery/ng-tube-coaching.jpg",
+    src: "/gallery/purple-team-procedure.jpg",
   },
   {
     num: "02",
     title: "Train with your hands",
     text: "Labs turn theory into muscle memory — vitals, hygiene, transfers, and patient dignity.",
-    src: "/gallery/feeding-practice.jpg",
+    src: "/gallery/students-vitals-mannequin.jpg",
   },
   {
     num: "03",
     title: "Graduate into service",
     text: "Walk into hospitals, homes, and centres prepared to safeguard lives with skill and heart.",
-    src: "/gallery/childcare-students-toddler.jpg",
+    src: "/gallery/ward-team-alt.jpg",
   },
 ];
 

@@ -34,8 +34,8 @@ export function TrainingShowcase() {
             className="relative aspect-[16/10] overflow-hidden bg-thm-purple-deep lg:col-span-7"
           >
             <Image
-              src="/gallery/instructor-with-students.jpg"
-              alt="THM instructor coaching students during bedside skills practice"
+              src="/gallery/purple-team-vitals.jpg"
+              alt="THM students preparing vitals equipment in the clinical skills lab"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 58vw"
@@ -60,8 +60,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="/gallery/lab-team-practice.jpg"
-                alt="THM students practicing patient care as a team"
+                src="/gallery/ward-team-alt.jpg"
+                alt="THM students practicing bed-making as a team"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -82,8 +82,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="/gallery/purple-ng-training.jpg"
-                alt="THM students in branded scrubs practicing clinical skills"
+                src="/gallery/students-vitals-mannequin.jpg"
+                alt="THM students taking vitals on a training mannequin"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 40vw"

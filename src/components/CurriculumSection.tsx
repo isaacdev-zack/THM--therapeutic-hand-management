@@ -27,7 +27,7 @@ const groups: {
       "Bedpan administration",
       "Hot and cold therapy",
     ],
-    image: "/gallery/branded-scrubs-close.jpg",
+    image: "/gallery/purple-vitals-cart.jpg",
   },
   {
     id: "support",
@@ -41,7 +41,7 @@ const groups: {
       "Wheelchair transfer",
       "Use of medical equipment & assistive devices",
     ],
-    image: "/gallery/lab-bedside-wide.jpg",
+    image: "/gallery/wheelchair-transfer.jpg",
   },
   {
     id: "safety",
@@ -53,7 +53,7 @@ const groups: {
       "Disinfection & decontamination",
       "Standard & transmission-based precautions",
     ],
-    image: "/gallery/instructor-coaching.jpg",
+    image: "/gallery/students-linen-prep.jpg",
   },
 ];
 

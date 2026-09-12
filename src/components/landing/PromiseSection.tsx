@@ -22,8 +22,8 @@ export function PromiseSection() {
           <div className="relative lg:min-h-[560px] xl:min-h-[600px]">
             <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] sm:rounded-[36px] lg:absolute lg:inset-y-0 lg:left-0 lg:aspect-auto lg:w-[64%] lg:min-h-[540px]">
               <Image
-                src="/gallery/instructor-coaching.jpg"
-                alt="THM instructor coaching caregiver trainees in the skills lab"
+                src="/gallery/purple-team-vitals.jpg"
+                alt="THM students in purple scrubs preparing vitals equipment in the skills lab"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 64vw"
