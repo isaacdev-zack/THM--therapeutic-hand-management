@@ -28,6 +28,8 @@ export function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  if (pathname.startsWith("/admin")) return null;
+
   const isHome = pathname === "/";
   const solid = isScrolled || open || !isHome;
 

@@ -3,22 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "NODE_OPTIONS='--dns-result-order=ipv4first' next dev --turbopack",
     "dev:clean": "rm -rf .next && next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:init": "NODE_OPTIONS='--dns-result-order=ipv4first' tsx src/lib/runDbInit.ts"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "framer-motion": "^12.4.7",
+    "jose": "^6.2.12",
     "lucide-react": "^0.475.0",
     "next": "^15.1.7",
+    "pg": "^8.23.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resend": "^6.28.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.7",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.4",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.20",
@@ -26,6 +33,7 @@
     "eslint-config-next": "^15.1.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.13",
     "typescript": "^5.7.3"
   }
 }
