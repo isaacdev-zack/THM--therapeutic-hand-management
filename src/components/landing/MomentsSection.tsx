@@ -7,28 +7,28 @@ import { FadeUp, Stagger, StaggerItem } from "./Motion";
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1645263012675-bb72c4752882?q=80&w=1200&auto=format&fit=crop",
-    caption: "Graduation day",
+    src: "/gallery/lab-bedside-wide.jpg",
+    caption: "Bedside care practice",
     span: "sm:col-span-2 min-h-[220px] lg:min-h-[280px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=900&auto=format&fit=crop",
-    caption: "Practical class",
+    src: "/gallery/purple-ng-training.jpg",
+    caption: "Clinical skills lab",
     span: "min-h-[180px] lg:min-h-[280px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?q=80&w=900&auto=format&fit=crop",
-    caption: "Proud graduates",
+    src: "/gallery/instructor-coaching.jpg",
+    caption: "Guided instruction",
     span: "min-h-[180px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1768489038182-7db6980fd841?q=80&w=900&auto=format&fit=crop",
-    caption: "Campus energy",
+    src: "/gallery/branded-scrubs-close.jpg",
+    caption: "THM in training",
     span: "min-h-[180px]",
   },
   {
-    src: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=900&auto=format&fit=crop",
-    caption: "Lab practice",
+    src: "/gallery/lab-team-practice.jpg",
+    caption: "Team practice",
     span: "min-h-[180px]",
   },
 ];

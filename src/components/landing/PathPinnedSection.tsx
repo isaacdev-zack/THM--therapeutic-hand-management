@@ -9,19 +9,19 @@ const chapters = [
     num: "01",
     title: "Arrive ready to learn",
     text: "Whether you are fresh from school or changing careers — enrollment is your first confident step.",
-    src: "https://images.unsplash.com/photo-1655720357761-f18ea9e5e7e6?q=80&w=1600&auto=format&fit=crop",
+    src: "/gallery/lab-team-practice.jpg",
   },
   {
     num: "02",
     title: "Train with your hands",
     text: "Labs turn theory into muscle memory — vitals, hygiene, transfers, and patient dignity.",
-    src: "https://images.unsplash.com/photo-1579165466949-3180a3d056d5?q=80&w=1600&auto=format&fit=crop",
+    src: "/gallery/purple-ng-training.jpg",
   },
   {
     num: "03",
     title: "Graduate into service",
     text: "Walk into hospitals, homes, and centres prepared to safeguard lives with skill and heart.",
-    src: "https://images.unsplash.com/photo-1645263012675-bb72c4752882?q=80&w=1600&auto=format&fit=crop",
+    src: "/gallery/branded-scrubs-close.jpg",
   },
 ];
 
