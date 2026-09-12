@@ -34,8 +34,8 @@ export function TrainingShowcase() {
             className="relative aspect-[16/10] overflow-hidden bg-thm-purple-deep lg:col-span-7"
           >
             <Image
-              src="https://images.unsplash.com/photo-1536064479547-7ee40b74b807?q=80&w=1400&auto=format&fit=crop"
-              alt="African healthcare professional consulting with a young patient"
+              src="/gallery/instructor-with-students.jpg"
+              alt="THM instructor coaching students during bedside skills practice"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 58vw"
@@ -60,8 +60,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1655720357761-f18ea9e5e7e6?q=80&w=1000&auto=format&fit=crop"
-                alt="African student with laptop ready for digital skills training"
+                src="/gallery/ng-tube-coaching.jpg"
+                alt="THM students practicing clinical skills with instructor guidance"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -69,7 +69,7 @@ export function TrainingShowcase() {
               <div className="absolute inset-0 bg-thm-purple/40 mix-blend-multiply" />
               <div className="absolute bottom-0 left-0 right-0 bg-thm-ink/85 px-5 py-4">
                 <p className="font-poppins font-semibold text-white">
-                  Energetic classroom learning
+                  Guided skills coaching
                 </p>
               </div>
             </motion.div>
@@ -82,8 +82,8 @@ export function TrainingShowcase() {
               className="relative min-h-[200px] flex-1 overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1643297654397-97b3201abc7c?q=80&w=1000&auto=format&fit=crop"
-                alt="Smiling African nurse in professional attire"
+                src="/gallery/feeding-practice.jpg"
+                alt="THM students in branded scrubs practicing tube feeding"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 1024px) 100vw, 40vw"

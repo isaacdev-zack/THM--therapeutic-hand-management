@@ -17,19 +17,24 @@ const gallery = [
     span: "min-h-[180px] lg:min-h-[280px]",
   },
   {
+    src: "/gallery/childcare-students-toddler.jpg",
+    caption: "Childcare & safeguarding",
+    span: "min-h-[180px]",
+  },
+  {
     src: "/gallery/instructor-coaching.jpg",
     caption: "Guided instruction",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/branded-scrubs-close.jpg",
-    caption: "THM in training",
+    src: "/gallery/eldercare-handholding.jpg",
+    caption: "Dignity in elder care",
     span: "min-h-[180px]",
   },
   {
-    src: "/gallery/lab-team-practice.jpg",
-    caption: "Team practice",
-    span: "min-h-[180px]",
+    src: "/gallery/feeding-practice.jpg",
+    caption: "Hands-on procedures",
+    span: "min-h-[180px] sm:col-span-2 lg:col-span-1",
   },
 ];
 
@@ -40,7 +45,7 @@ export function MomentsSection() {
         <FadeUp className="flex flex-col gap-2 border-b border-white/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="font-poppins text-[1.85rem] font-bold tracking-tight sm:text-3xl">
-              Training. Community. Graduation.
+              Training. Community. Care.
             </h2>
           </div>
           <Link

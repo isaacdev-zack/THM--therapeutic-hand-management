@@ -9,7 +9,7 @@ const chapters = [
     num: "01",
     title: "Arrive ready to learn",
     text: "Whether you are fresh from school or changing careers — enrollment is your first confident step.",
-    src: "/gallery/lab-team-practice.jpg",
+    src: "/gallery/instructor-with-students.jpg",
   },
   {
     num: "02",
@@ -21,7 +21,7 @@ const chapters = [
     num: "03",
     title: "Graduate into service",
     text: "Walk into hospitals, homes, and centres prepared to safeguard lives with skill and heart.",
-    src: "/gallery/branded-scrubs-close.jpg",
+    src: "/gallery/childcare-students-toddler.jpg",
   },
 ];
 
