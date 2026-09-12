@@ -35,6 +35,9 @@ const steps = [
 export function CaregiverAdmissionForm() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [applicationId, setApplicationId] = useState("");
   const [form, setForm] = useState<AdmissionFormData>(initialAdmissionForm);
   const [documentsReady, setDocumentsReady] = useState(false);
 
@@ -50,14 +53,39 @@ export function CaregiverAdmissionForm() {
     [step],
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (step < steps.length) {
       setStep((s) => s + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    setSubmitted(true);
+
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/applications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: form }),
+      });
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitError(
+          payload.error ||
+            "We couldn't submit your application. Please try again or email info@thm.co.ke.",
+        );
+        return;
+      }
+      setApplicationId(typeof payload.id === "string" ? payload.id : "");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "We couldn't submit your application. Please try again or email info@thm.co.ke.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -71,6 +99,12 @@ export function CaregiverAdmissionForm() {
           Thank you, {form.firstName} {form.surname}. Our admissions team will
           contact you at {form.phone} to confirm your Caregiver II application
           and document submission.
+          {applicationId ? (
+            <>
+              {" "}
+              Reference: <span className="font-semibold text-thm-ink">{applicationId}</span>.
+            </>
+          ) : null}
         </p>
         <button
           type="button"
@@ -79,6 +113,8 @@ export function CaregiverAdmissionForm() {
             setStep(1);
             setForm(initialAdmissionForm);
             setDocumentsReady(false);
+            setApplicationId("");
+            setSubmitError("");
           }}
           className="mt-8 h-11 rounded-full bg-thm-purple px-7 text-sm font-semibold text-white transition-colors hover:bg-thm-purple-dark"
         >
@@ -674,6 +710,12 @@ export function CaregiverAdmissionForm() {
           </FormSection>
         ) : null}
 
+        {submitError ? (
+          <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+            {submitError}
+          </p>
+        ) : null}
+
         <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
           <button
             type="button"
@@ -681,7 +723,7 @@ export function CaregiverAdmissionForm() {
               setStep((s) => Math.max(1, s - 1));
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            disabled={step === 1}
+            disabled={step === 1 || submitting}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-thm-purple/25 px-6 font-poppins text-sm font-semibold text-thm-purple transition-colors enabled:hover:border-thm-purple enabled:hover:bg-thm-purple/5 disabled:cursor-not-allowed disabled:opacity-40"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -689,11 +731,12 @@ export function CaregiverAdmissionForm() {
           </button>
           <button
             type="submit"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 font-poppins text-sm font-bold text-thm-ink transition-colors hover:bg-thm-gold-hover"
+            disabled={submitting}
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-thm-gold px-8 font-poppins text-sm font-bold text-thm-ink transition-colors hover:bg-thm-gold-hover disabled:opacity-70"
           >
             {step === steps.length ? (
               <>
-                Submit application
+                {submitting ? "Submitting…" : "Submit application"}
                 <Send className="h-4 w-4" />
               </>
             ) : (
