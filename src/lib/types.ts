@@ -13,3 +13,21 @@ export type ApplicationRecord = {
 export type ApplicationPayload = {
   data: AdmissionFormData;
 };
+
+export type ContactMessageRecord = {
+  id: string;
+  createdAt: string;
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};
+
+export type ContactPayload = {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+};

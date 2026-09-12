@@ -1,7 +1,12 @@
 import bcrypt from "bcryptjs";
 import { db } from "./db";
 import type { AdmissionFormData } from "@/types/admission";
-import type { ApplicationPayload, ApplicationRecord } from "./types";
+import type {
+  ApplicationPayload,
+  ApplicationRecord,
+  ContactMessageRecord,
+  ContactPayload,
+} from "./types";
 
 let seeded = false;
 
@@ -25,6 +30,23 @@ export async function ensureDatabase() {
   await db.query(`
     CREATE INDEX IF NOT EXISTS idx_applications_created_at
     ON applications (created_at DESC);
+  `);
+
+  await db.query(`
+    CREATE TABLE IF NOT EXISTS contact_messages (
+      id TEXT PRIMARY KEY,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      phone TEXT,
+      subject TEXT,
+      message TEXT NOT NULL
+    );
+  `);
+
+  await db.query(`
+    CREATE INDEX IF NOT EXISTS idx_contact_messages_created_at
+    ON contact_messages (created_at DESC);
   `);
 
   await db.query(`
@@ -87,6 +109,26 @@ export function rowToApplication(row: {
   };
 }
 
+export function rowToContact(row: {
+  id: string;
+  created_at: Date | string;
+  name: string;
+  email: string;
+  phone: string | null;
+  subject: string | null;
+  message: string;
+}): ContactMessageRecord {
+  return {
+    id: row.id,
+    createdAt: new Date(row.created_at).toISOString(),
+    name: row.name,
+    email: row.email,
+    phone: row.phone || "",
+    subject: row.subject || "General inquiry",
+    message: row.message,
+  };
+}
+
 export async function saveApplication(
   payload: ApplicationPayload,
 ): Promise<ApplicationRecord> {
@@ -139,6 +181,57 @@ export async function deleteApplication(id: string): Promise<boolean> {
   await ensureDatabase();
   const result = await db.query(
     "DELETE FROM applications WHERE id = $1 RETURNING id",
+    [id],
+  );
+  return result.rows.length > 0;
+}
+
+export async function saveContactMessage(
+  payload: ContactPayload,
+): Promise<ContactMessageRecord> {
+  await ensureDatabase();
+
+  const record: ContactMessageRecord = {
+    id: `msg_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+    createdAt: new Date().toISOString(),
+    name: payload.name.trim(),
+    email: payload.email.trim(),
+    phone: payload.phone.trim(),
+    subject: payload.subject.trim() || "General inquiry",
+    message: payload.message.trim(),
+  };
+
+  await db.query(
+    `INSERT INTO contact_messages (id, created_at, name, email, phone, subject, message)
+     VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+    [
+      record.id,
+      record.createdAt,
+      record.name,
+      record.email,
+      record.phone,
+      record.subject,
+      record.message,
+    ],
+  );
+
+  return record;
+}
+
+export async function listContactMessages(): Promise<ContactMessageRecord[]> {
+  await ensureDatabase();
+  const { rows } = await db.query(
+    `SELECT id, created_at, name, email, phone, subject, message
+     FROM contact_messages
+     ORDER BY created_at DESC`,
+  );
+  return rows.map(rowToContact);
+}
+
+export async function deleteContactMessage(id: string): Promise<boolean> {
+  await ensureDatabase();
+  const result = await db.query(
+    "DELETE FROM contact_messages WHERE id = $1 RETURNING id",
     [id],
   );
   return result.rows.length > 0;

@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import type { ApplicationRecord } from "./types";
+import type { ApplicationRecord, ContactMessageRecord } from "./types";
 
 const ADMIN_TO = "info@thm.co.ke";
 const ADMIN_CC = ["janipher@thm.co.ke", "sotieno@thm.co.ke"];
@@ -214,6 +214,73 @@ export async function emailApplicationConfirmation(app: ApplicationRecord) {
     to: app.email,
     subject: "THM — We received your Caregiver II application",
     text: `Dear ${first},\n\nThank you for applying to THM Caregiver II. We will contact you soon.\nReference: ${app.id}\n`,
+    html,
+    replyTo: ADMIN_TO,
+  });
+}
+
+
+function contactRows(msg: ContactMessageRecord) {
+  return [
+    ["Message ID", msg.id],
+    ["Name", msg.name],
+    ["Email", msg.email],
+    ["Phone", msg.phone],
+    ["Subject", msg.subject],
+    ["Message", msg.message],
+  ] as const;
+}
+
+export async function emailContactToAdmin(msg: ContactMessageRecord) {
+  if (!mailConfigured()) {
+    console.warn("RESEND_API_KEY missing; skipping contact notification email.");
+    return;
+  }
+
+  const rows = contactRows(msg);
+  const text = rows.map(([k, v]) => `${k}: ${v || "—"}`).join("\n");
+  const html = brandedEmail({
+    preheader: `New contact message from ${msg.name}`,
+    title: "New contact form message",
+    body: `
+      <p style="margin:0 0 16px;">Someone wrote through the website contact form.</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;">${definitionList(rows)}</table>
+    `,
+  });
+
+  await sendMail({
+    to: ADMIN_TO,
+    cc: ADMIN_CC,
+    subject: `Contact form — ${msg.subject} (${msg.name})`,
+    text,
+    html,
+    replyTo: msg.email || undefined,
+  });
+}
+
+export async function emailContactConfirmation(msg: ContactMessageRecord) {
+  if (!mailConfigured()) {
+    console.warn("RESEND_API_KEY missing; skipping contact confirmation email.");
+    return;
+  }
+
+  if (!msg.email) return;
+
+  const first = msg.name.split(/\s+/)[0] || "there";
+  const html = brandedEmail({
+    preheader: "We received your message",
+    title: "Message received",
+    body: `
+      <p style="margin:0 0 12px;">Dear ${escapeHtml(first)},</p>
+      <p style="margin:0 0 12px;">Thank you for contacting Therapeutic Hands Management. We received your message and will reply shortly.</p>
+      <p style="margin:0;">Reference: <strong>${escapeHtml(msg.id)}</strong></p>
+    `,
+  });
+
+  await sendMail({
+    to: msg.email,
+    subject: "THM — We received your message",
+    text: `Dear ${first},\n\nThank you for contacting THM. We received your message and will reply shortly.\nReference: ${msg.id}\n`,
     html,
     replyTo: ADMIN_TO,
   });

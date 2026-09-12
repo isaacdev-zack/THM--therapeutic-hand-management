@@ -123,7 +123,7 @@ export function ConfirmModal({
                 : "bg-thm-gold text-thm-ink hover:brightness-95"
             }`}
           >
-            {loading ? "Working..." : confirmLabel}
+            {loading ? "Please wait..." : confirmLabel}
           </button>
         </div>
       </div>

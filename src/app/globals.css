@@ -91,4 +91,65 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .admin-burger span {
+    transition: none;
+  }
+}
+
+.admin-burger {
+  position: relative;
+  display: block;
+  width: 1.4rem;
+  height: 0.95rem;
+}
+
+.admin-burger span {
+  position: absolute;
+  left: 0;
+  display: block;
+  height: 2.5px;
+  width: 100%;
+  border-radius: 999px;
+  background: currentColor;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    top 0.2s ease,
+    margin-top 0.2s ease;
+}
+
+.admin-burger span:nth-child(1) {
+  top: 0;
+}
+
+.admin-burger span:nth-child(2) {
+  top: 50%;
+  margin-top: -1.25px;
+}
+
+.admin-burger span:nth-child(3) {
+  top: calc(100% - 2.5px);
+}
+
+.admin-burger.is-spread {
+  height: 1.45rem;
+}
+
+.admin-burger.is-x span:nth-child(1),
+.admin-burger.is-x span:nth-child(3) {
+  top: 50%;
+  margin-top: -1.25px;
+}
+
+.admin-burger.is-x span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.admin-burger.is-x span:nth-child(2) {
+  opacity: 0;
+}
+
+.admin-burger.is-x span:nth-child(3) {
+  transform: rotate(-45deg);
 }

@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/Footer";
-
-const Navbar = dynamic(
-  () => import("@/components/Navbar").then((mod) => mod.Navbar),
-  { ssr: true },
-);
+import { SiteShell } from "@/components/SiteShell";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -58,10 +52,8 @@ export default function RootLayout({
           <script dangerouslySetInnerHTML={{ __html: chunkRecoveryScript }} />
         ) : null}
       </head>
-      <body className="min-h-full flex flex-col font-inter bg-white text-thm-ink">
-        <Navbar />
-        <div className="flex-1">{children}</div>
-        <Footer />
+      <body className="flex min-h-full flex-col font-inter bg-white text-thm-ink">
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

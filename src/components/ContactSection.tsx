@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, MapPin, Phone, Mail, User } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
 
 export function ContactSection() {
   return (
@@ -16,9 +17,9 @@ export function ContactSection() {
               Get in touch with THM
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/80">
-              Questions about campuses, financing, or training? Reach our team
-              directly — or start your official Caregiver II application when
-              you are ready.
+              Questions about campuses, financing, or training? Send us a
+              message — or start your official Caregiver II application when you
+              are ready.
             </p>
 
             <ul className="mt-8 space-y-5">
@@ -29,9 +30,7 @@ export function ContactSection() {
                   <p className="mt-0.5 text-sm text-white/75">
                     New Waumini House, 3rd Floor, Westlands, Nairobi
                   </p>
-                  <p className="text-sm text-white/55">
-                    P.O. Box 27268–00100
-                  </p>
+                  <p className="text-sm text-white/55">P.O. Box 27268–00100</p>
                 </div>
               </li>
               <li className="flex gap-3">
@@ -65,32 +64,40 @@ export function ContactSection() {
                 </div>
               </li>
             </ul>
+
+            <div className="mt-8 rounded-2xl border border-thm-gold/40 bg-white/5 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-thm-gold">
+                Admissions
+              </p>
+              <h3 className="mt-2 font-poppins text-xl font-bold">
+                Ready to apply?
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/75">
+                The official Caregiver II admission form is separate from this
+                contact page.
+              </p>
+              <Link
+                href="/apply"
+                className="mt-4 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-thm-gold px-6 font-poppins text-sm font-semibold text-thm-ink transition hover:brightness-95"
+              >
+                Start application
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
           <div className="lg:col-span-7">
             <div className="rounded-2xl border-2 border-thm-gold bg-white p-7 text-thm-ink sm:p-9">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-thm-gold">
-                Admissions
+                Write to us
               </p>
               <h3 className="mt-2 font-poppins text-2xl font-bold text-thm-purple sm:text-3xl">
-                Ready to apply?
+                Send a message
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-thm-muted sm:text-base">
-                The official Caregiver II admission form is separate from this
-                contact page. Complete it online with your personal details,
-                next of kin, education background, and declaration.
+              <p className="mt-3 mb-6 text-sm leading-relaxed text-thm-muted sm:text-base">
+                Tell us what you need help with and our team will follow up.
               </p>
-              <Link
-                href="/apply"
-                className="mt-6 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-thm-purple px-7 font-poppins text-sm font-semibold text-white transition-colors hover:bg-thm-purple-dark"
-              >
-                Start Caregiver II application
-                <ArrowRight className="h-4 w-4 text-thm-gold" />
-              </Link>
-              <p className="mt-4 text-xs text-thm-muted">
-                You will need Form Four certificate, ID copy, and two passport
-                photos.
-              </p>
+              <ContactForm />
             </div>
           </div>
         </div>

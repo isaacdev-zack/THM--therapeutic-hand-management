@@ -11,5 +11,9 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <AdminUiProvider>{children}</AdminUiProvider>;
+  return (
+    <AdminUiProvider>
+      <div className="h-dvh max-h-dvh overflow-hidden">{children}</div>
+    </AdminUiProvider>
+  );
 }
