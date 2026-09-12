@@ -79,7 +79,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "support",
     name: "Patient Support",
     blurb: "Daily living care that protects dignity, comfort, and independence.",
-    image: "/gallery/wheelchair-transfer.jpg",
+    image: "/gallery/students-linen-prep.jpg",
     skills: [
       {
         title: "Bed bath & grooming",
@@ -141,7 +141,7 @@ export const caregiverSkillGroups: SkillGroup[] = [
     id: "safety",
     name: "Safety & Equipment",
     blurb: "Infection control and safe handling in every care setting you enter.",
-    image: "/gallery/students-linen-prep.jpg",
+    image: "/gallery/lab-bedside-wide.jpg",
     skills: [
       {
         title: "Hand hygiene",
