@@ -2,7 +2,11 @@ import { Resend } from "resend";
 import type { ApplicationRecord, ContactMessageRecord } from "./types";
 
 const ADMIN_TO = "info@thm.co.ke";
-const ADMIN_CC = ["janipher@thm.co.ke", "sotieno@thm.co.ke"];
+const ADMIN_CC = [
+  "janipher@thm.co.ke",
+  "sotieno@thm.co.ke",
+  "thm-kisumu@thm.co.ke",
+];
 
 function unwrapEnv(value: string | undefined): string {
   if (!value) return "";
