@@ -49,7 +49,7 @@ export const careersContent = {
       title: "Elder care careers",
       body: "Support dignity in aging — mobility, daily living, and family communication in homes and residential care.",
       tags: ["Geriatric care", "Mobility", "Home visits"],
-      image: "/gallery/eldercare-handholding.jpg",
+      image: "/gallery/elder-care-original.jpg",
       href: "/programs",
     },
     {
@@ -63,7 +63,7 @@ export const careersContent = {
       title: "Private home care",
       body: "One-to-one support for recovering or at-risk clients — the intimate, high-trust work many families need most.",
       tags: ["One-to-one", "Recovery", "Family trust"],
-      image: "/gallery/private-home-care.jpg",
+      image: "/gallery/home-care-original.jpg",
       href: "/contact",
     },
   ],
